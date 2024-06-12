@@ -1,0 +1,271 @@
+---
+id: prometheus-container
+title: Prometheusのコンテナ化
+---
+
+# コンテナオーケストレーションを利用した高可用性システム構築マニュアル
+
+## Dockerfileを使用しない場合の設定
+
+##### Prometheus
+
+```bash
+podman run -d \
+  --name prometheus \
+  -p 9090:9090 \
+  -v /etc/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:Z \
+  prom/prometheus \
+  --config.file=/etc/prometheus/prometheus.yml
+```
+
+##### Grafana
+
+```bash
+podman run -d \
+  --name=grafana \
+  -p 3000:3000 \
+  -v /var/lib/grafana:/var/lib/grafana:Z \
+  grafana/grafana
+```
+
+##### Loki
+
+```bash
+podman run -d --name loki \
+  -p 3100:3100 \
+  -v /etc/loki:/mnt/config \
+  -v /tmp/loki:/mnt/data \
+  grafana/loki:latest -config.file=/mnt/config/config.yml
+```
+
+##### Promtail
+
+```bash
+podman run -d --name promtail \
+  -v /etc/promtail:/mnt/config \
+  -v /var/log:/var/log \
+  grafana/promtail:latest -config.file=/mnt/config/config.yml
+```
+
+##### Alertmanager
+
+```bash
+podman run -d \
+  --name alertmanager \
+  -p 9093:9093 \
+  -v /etc/prometheus/alertmanager.yml:/etc/alertmanager/alertmanager.yml:Z \
+  prom/alertmanager \
+  --config.file=/etc/alertmanager/alertmanager.yml
+```
+
+## Docker Compose を使用した設定
+
+### `docker-compose.yml` の例
+
+以下は、`docker-compose.yml` の具体的な例です。この設定では、Prometheus, Grafana, Zabbix, Loki, Promtail, そして Thanos のコンテナを定義しています。
+
+```yaml
+version: '3'
+services:
+  prometheus:
+    image: prom/prometheus:v2.26.0
+    volumes:
+      - ./prometheus:/etc/prometheus
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+    ports:
+      - "9090:9090"
+
+  grafana:
+    image: grafana/grafana:7.5.7
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=secret
+    ports:
+      - "3000:3000"
+
+  zabbix:
+    image: zabbix/zabbix-server-mysql:5.4.0
+    environment:
+      - DB_SERVER_HOST=mysql_host
+      - MYSQL_DATABASE=zabbix
+      - MYSQL_USER=zabbix
+      - MYSQL_PASSWORD=zabbix_password
+    ports:
+      - "10051:10051"
+
+  loki:
+    image: grafana/loki:2.2.1
+    ports:
+      - "3100:3100"
+
+  promtail:
+    image: grafana/promtail:2.2.1
+    volumes:
+      - ./promtail:/etc/promtail
+    command:
+      - "--config.file=/etc/promtail/config.yml"
+
+  thanos:
+    image: thanosio/thanos:v0.17.2
+    command:
+      - sidecar
+      - --prometheus.url=http://localhost:9090
+      - --tsdb.path=/prometheus
+      - --objstore.config-file=/etc/thanos/azure.yaml
+    depends_on:
+      - prometheus
+```
+
+`prometheus.yml` と `promtail/config.yml` の設定ファイルは、適切な監視ターゲットやログ収集の設定を含める必要があります。
+
+### 起動方法
+
+設定が完了したら、以下のコマンドでコンテナ群を起動します。
+
+```bash
+docker-compose up -d
+```
+
+## Kubernetes を使用した設定
+
+Kubernetes を使用する場合、Deployment, Service, および必要に応じて PersistentVolumeClaim を定義する必要があります。
+
+### Prometheus の Deployment 例
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: prometheus
+  template:
+    metadata:
+      labels:
+        app: prometheus
+    spec:
+      containers:
+        - name: prometheus
+          image: prom/prometheus:v2.26.0
+          args:
+            - "--config.file=/etc/prometheus/prometheus.yml"
+            - "--storage.tsdb.path=/prometheus"
+          ports:
+            - containerPort: 9090
+          volumeMounts:
+            - name: prometheus-config
+              mountPath: /etc/prometheus
+            - name: prometheus-storage
+              mountPath: /prometheus
+      volumes:
+        - name: prometheus-config
+          configMap:
+            name: prometheus-config
+        - name: prometheus-storage
+          persistentVolumeClaim:
+            claimName: prometheus-pvc
+```
+
+この例では、Prometheus の設定を含む ConfigMap とデータを永続化するための PersistentVolumeClaim を使用しています。
+
+### Grafana, Loki, および Thanos の Deployment
+
+Grafana, Loki, および Thanos についても、同様に Kubernetes の Deployment を定義します。それぞれの構成に応じて、ConfigMap, Secret, PersistentVolumeClaim を適切に設定してください。
+
+### Zabbix の Deployment
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zabbix-server
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: zabbix-server
+  template:
+    metadata:
+      labels:
+        app: zabbix-server
+    spec:
+      containers:
+      - name: zabbix-server
+        image: zabbix/zabbix-server-mysql:5.4.0
+        env:
+        - name: DB_SERVER_HOST
+          value: "mysql_host"
+        - name: MYSQL_DATABASE
+          value: "zabbix"
+        - name: MYSQL_USER
+          value: "zabbix"
+        - name: MYSQL_PASSWORD
+          value: "zabbix_password"
+        ports:
+        - containerPort: 10051
+```
+
+この例では、Zabbix サーバーが使用するデータベースの接続情報を環境変数で指定しています。実際の運用では、Secrets を利用して機密情報を安全に管理することが推奨されます。
+
+### Service と Ingress の設定
+
+各サービス（Prometheus, Grafana, Zabbix, Loki, Thanos）へのアクセスを制御するために、Kubernetes の Service と Ingress を適切に設定します。外部からのアクセスを可能にする場合、Ingress を使用してルーティングを設定します。
+
+### Prometheus の Service 例
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus
+spec:
+  type: ClusterIP
+  ports:
+  - port: 9090
+    targetPort: 9090
+  selector:
+    app: prometheus
+```
+
+### Ingress の設定例
+
+Ingress の設定は、使用する Kubernetes クラスタの Ingress コントローラーに依存しますが、以下は一般的な例です。
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: example-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /prometheus
+        pathType: Prefix
+        backend:
+          service:
+            name: prometheus
+            port:
+              number: 9090
+      - path: /grafana
+        pathType: Prefix
+        backend:
+          service:
+            name: grafana
+            port:
+              number: 3000
+```
+
+この設定により、`/prometheus` のパスで Prometheus へ、`/grafana` のパスで Grafana へアクセスできるようになります。
+
+## 注意点
+
+- コンテナやサービスの設定変更時には、適切に ConfigMap や Secret を更新し、デプロイメントを再起動する必要があります。
+- 高可用性を確保するためには、複数のレプリカを持つ Deployment を設定し、データの永続化には PersistentVolumeClaim を使用します。
+- ネットワークのセキュリティを確保するために、不要な外部アクセスを遮断し、必要な通信のみを許可するように Service と Ingress の設定を厳密に行ってください。
+
+以上で、Prometheus, Grafana, Zabbix, Loki, Promtail, Thanos を使用した高可用性システムの構築マニュアルの概要を終わります。具体的な設定や運用にあたっては、各コンポーネントのドキュメントを参照し、環境に応じた調整を行ってください。

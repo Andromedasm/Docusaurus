@@ -5,7 +5,9 @@ const sidebars: SidebarsConfig = {
         {
             type: 'category',
             label: 'Microsoft 365',
-            items: ['microsoft-365/intro'],
+            items: ['microsoft-365/intro',
+                    'microsoft-365/teams-cache'
+            ],
         },
         {
             type: 'category',
@@ -15,7 +17,10 @@ const sidebars: SidebarsConfig = {
         {
             type: 'category',
             label: 'PC',
-            items: ['pc/intro'],
+            items: ['pc/intro',
+                    'pc/bios',
+                    'pc/powershell-kitting',
+            ],
         },
         {
             type: 'category',
@@ -35,12 +40,21 @@ const sidebars: SidebarsConfig = {
         {
             type: 'category',
             label: 'Server',
-            items: ['server/intro'],
+            items: ['server/intro',
+                    'server/prometheus',
+                    'server/prometheus-grafana',
+                    'server/alert',
+                    'server/prometheus-zabbix',
+                    'server/thanos',
+                    'server/prometheus-container',
+            ],
         },
         {
             type: 'category',
             label: "desknet's NEO",
-            items: ['desknet-neo/intro'],
+            items: ['desknet-neo/intro',
+                    'desknet-neo/config',
+            ],
         },
         {
             type: 'category',
