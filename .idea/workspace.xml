@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99e448e3-76ac-4557-a624-0f2b3fd51d4e" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/another/cool-effects.mdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/another/mdx-tutorial.mdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/src/components/AnimatedBox.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/src/components/HelloWorld.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/docusaurus.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docusaurus.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/another/git.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/another/cool-effects.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/another/cool-effects.mdx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/manual-website/sidebars.ts" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/sidebars.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/src/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/src/css/custom.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,7 +164,7 @@
       <workItem from="1718153124399" duration="1500000" />
       <workItem from="1718154678300" duration="1849000" />
       <workItem from="1718166541081" duration="4149000" />
-      <workItem from="1718172068873" duration="2856000" />
+      <workItem from="1718172068873" duration="4373000" />
     </task>
     <servers />
   </component>

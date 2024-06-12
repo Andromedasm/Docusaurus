@@ -72,6 +72,7 @@ const sidebars: SidebarsConfig = {
             items: ['another/intro',
                     'another/mdx-tutorial',
                     'another/cool-effects',
+                    'another/git',
             ],
         },
     ],

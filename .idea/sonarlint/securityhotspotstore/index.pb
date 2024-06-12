@@ -69,3 +69,5 @@ Q
 -manual-website/src/components/AnimatedBox.tsx,a\5\a561893ef75cabf8298abc1f21698e0e78bc4542
 \
 ,manual-website/docs/another/cool-effects.mdx,0\5\05ff05d97bcdcfc2c3e8d0b2f71ab41e26bf97be
+S
+#manual-website/docs/another/git.mdx,9\3\93792aeb7220fe468453ae13bec7e1b69aca5916
