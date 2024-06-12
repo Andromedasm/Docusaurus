@@ -7,8 +7,6 @@ L
 manual-website/docs/intro.md,1\4\1444f3c7e663f8b16802eab6695c8eaaaad50fbf
 J
 manual-website/sidebars.ts,a\b\abae1004bccc9dc059845d8a8c8761f7ecf7fe63
-W
-'manual-website/docs/ container/intro.md,0\4\049e322d800a636299d934a04c2816fe2f4bcfdb
 R
 "manual-website/docs/azure/intro.md,2\8\28a2e72a4dc865dc8aaca0cb1f3be3a0f9671fb8
 U
@@ -31,8 +29,6 @@ T
 $manual-website/docs/another/intro.md,e\e\ee084151746ab0766e3082e8e8e4e2e2253fa1f4
 V
 &manual-website/docs/container/intro.md,7\b\7bee3931efa148ee30a4a368e3c1487b3d82bea4
-N
-manual-website/docs/pc/bios.md,3\3\33e1e12cfdec27be4a73fc87205db0ddb8af2b98
 O
 manual-website/docs/pc/bios.mdx,2\7\27be25d34d8b1a84adcf48763705910c6ea32f8e
 Z
@@ -41,8 +37,6 @@ a
 1manual-website/docs/microsoft-365/teams-cache.mdx,c\1\c18ae769b2c2977876da857da8be078d863fc8f5
 ]
 -manual-website/docs/pc/powershell-kitting.mdx,7\5\754c5dff4e740384a0ad1727b877c5a41ea44781
-f
-6manual-website/docs/container/prometheus-container.mdx,9\f\9f14d477c932bafff6b5dce70727bc73faad052a
 U
 %manual-website/docs/server/thanos.mdx,7\3\73cd7b551a9bddb8d3f5ee35d8abdb2662a17441
 `
@@ -55,3 +49,23 @@ T
 $manual-website/docs/server/alert.mdx,7\8\789e902bed83201ce98633eb172e676f1f35bb49
 c
 3manual-website/docs/server/prometheus-container.mdx,c\d\cd7674e8e1ad85f72823c7993029c100fee01b20
+R
+"manual-website/src/pages/index.tsx,a\e\aec8aab69178581b210b23dc74f4cd090d850fea
+Y
+)manual-website/src/pages/markdown-page.md,c\e\cebd1a29c2e01795295e9d4a022f64f94466a7ea
+Y
+)manual-website/src/pages/index.module.css,e\4\e43f7591549f56532effeca179ab8606c73c78b4
+h
+8manual-website/src/components/HomepageFeatures/index.tsx,5\8\58e1deddbaf95e6e7f9a20d4f006c7d741a6f838
+S
+#manual-website/docusaurus.config.ts,6\b\6bda7fb732f50cc9c12fe5008370ffc8158a9388
+\
+,manual-website/docs/another/mdx-tutorial.mdx,3\f\3fb3b931c317f058e9124d3c8288dd7d468d3412
+Q
+!manual-website/src/css/custom.css,6\4\64dd52b0a1fee3eb3bd43469679330243a612162
+\
+,manual-website/src/components/HelloWorld.tsx,a\b\abb43e829688baba0c62f1eba055d27f77607dfd
+]
+-manual-website/src/components/AnimatedBox.tsx,a\5\a561893ef75cabf8298abc1f21698e0e78bc4542
+\
+,manual-website/docs/another/cool-effects.mdx,0\5\05ff05d97bcdcfc2c3e8d0b2f71ab41e26bf97be

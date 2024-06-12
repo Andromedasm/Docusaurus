@@ -1,0 +1,135 @@
+---
+id: mdx-tutorial
+title: MDX チュートリアル
+---
+
+# MDX チュートリアル
+
+MDX (Markdown + JSX) は、Markdown ファイル内で JSX コードを埋め込むことができるフォーマットです。これにより、ドキュメント内で React コンポーネントを簡単に使用できます。
+
+## MDXとは？
+
+MDX は、Markdown の簡潔さと JSX の柔軟性を兼ね備えています。通常の Markdown 記法を使用してドキュメントを作成しながら、React コンポーネントを埋め込むことができます。
+
+例えば、次のように簡単な MDX ドキュメントを書くことができます：
+
+```mdx
+# これは見出しです
+
+これは段落で、**太字**や*斜体*のテキストを含むことができます。
+
+<SomeReactComponent />
+```
+- これはリスト項目
+- これは別のリスト項目
+
+### MDXの使い方
+Docusaurus で MDX を使うのは非常に簡単です。docs ディレクトリに .mdx ファイルを作成し、その中にコンテンツを書くだけです。
+
+### 例: カスタム React コンポーネントの導入
+まず、簡単な React コンポーネントを作成します。例えば src/components/HelloWorld.tsx というファイルを作成します：
+
+```tsx
+import React from 'react';
+
+const HelloWorld = () => {
+  return <div>Hello, world!</div>;
+};
+
+export default HelloWorld;
+```
+
+次に、このコンポーネントを MDX ファイル内で使用します：
+
+```mdx
+import HelloWorld from '@site/src/components/HelloWorld';
+
+# カスタムコンポーネントの使用
+
+ここではカスタムの React コンポーネントを導入し、使用します：
+
+<HelloWorld />
+```
+
+### アニメーションの追加
+簡単なアニメーションを追加するために、react-spring ライブラリを使用します。
+
+まず、ライブラリをインストールします：
+
+```bash
+npm install @react-spring/web
+```
+
+次に、アニメーションコンポーネントを作成します。例えば src/components/AnimatedBox.tsx：
+
+```tsx
+import React from 'react';
+import { useSpring, animated } from '@react-spring/web';
+
+const AnimatedBox: React.FC = () => {
+  const styles = useSpring({
+    loop: true,
+    to: [{ opacity: 1, color: '#ffaaee' }, { opacity: 0, color: 'rgb(14,26,19)' }],
+    from: { opacity: 0, color: 'red' },
+  });
+
+  return <animated.div style={styles}>私はアニメーションです！</animated.div>;
+};
+
+export default AnimatedBox;
+```
+
+これを MDX ファイルで使用します：
+
+```mdx
+import AnimatedBox from '@site/src/components/AnimatedBox';
+
+# アニメーションの例
+
+<AnimatedBox />
+```
+
+### まとめ
+MDX を使うと、ドキュメント内で React コンポーネントを簡単に使用できます。Markdown の簡潔さと JSX の柔軟性を組み合わせることで、リッチでインタラクティブなドキュメントを作成することができます。
+
+```arduino
+
+### ステップ 3：サイドバーの更新
+
+新しいドキュメントがサイドバーに表示されるように `sidebars.ts` ファイルを更新します。適切な場所に `mdx-tutorial` を追加します：
+
+```typescript
+const sidebars: SidebarsConfig = {
+  tutorialSidebar: [
+    {
+      type: 'category',
+      label: 'Manual',
+      items: [
+        'intro',
+        'mdx-tutorial', // ここを追加
+      ],
+    },
+    // 他のカテゴリ...
+  ],
+};
+
+export default sidebars;
+```
+
+### ステップ 4：ローカル開発サーバーを実行
+すべての変更を保存した後、ローカル開発サーバーを実行して結果を確認します：
+
+```bash
+npm run start
+```
+
+ブラウザを開いて http://localhost:3000/docs/mdx-tutorial にアクセスすると、新しい MDX チュートリアルページが表示されます。
+
+### ステップ 5：GitHub にプッシュしてデプロイ
+変更をコミットして GitHub リポジトリにプッシュすると、Azure Static Web Apps が自動的にビルドとデプロイを行います：
+
+```bash
+git add .
+git commit -m "Add MDX tutorial page with cool effects"
+git push origin main
+```

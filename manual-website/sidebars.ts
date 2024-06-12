@@ -69,7 +69,10 @@ const sidebars: SidebarsConfig = {
         {
             type: 'category',
             label: 'Another',
-            items: ['another/intro'],
+            items: ['another/intro',
+                    'another/mdx-tutorial',
+                    'another/cool-effects',
+            ],
         },
     ],
 };
