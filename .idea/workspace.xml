@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="99e448e3-76ac-4557-a624-0f2b3fd51d4e" name="更改" comment="" />
+    <list default="true" id="99e448e3-76ac-4557-a624-0f2b3fd51d4e" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/ container/intro.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/another/intro.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/azure/intro.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/container/intro.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/database/intro.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/desknet-neo/intro.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/microsoft-365/intro.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/mobile-device/intro.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/network/intro.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/pc/intro.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/printer/intro.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/server/intro.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/sidebars.ts" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/sidebars.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,29 +30,33 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Andromedasm"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Andromedasm&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Andromedasm/Docusaurus.git",
-    "accountId": "eab80c6e-565d-4bc2-b23b-dcfbcbf41d72"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Andromedasm/Docusaurus.git&quot;,
+    &quot;accountId&quot;: &quot;eab80c6e-565d-4bc2-b23b-dcfbcbf41d72&quot;
   }
-}]]></component>
+}</component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\PHP\php.exe" />
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2hkzyOKWeF5XPFhg2HILXLyK9o9" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.go.formatter.settings.were.checked": "true",
     "RunOnceActivity.go.migrated.go.modules.settings": "true",
@@ -43,13 +64,15 @@
     "go.import.settings.migrated": "true",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/DS201906079/OneDrive - 株式会社城山/Documents/Source Code/Thunder/Admin Panel",
+    "last_opened_file_path": "C:/Users/DS201906079/Downloads/Github/Personal/Docusaurus/manual-website/docs/container",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "npm.start.executor": "Run",
     "settings.editor.selected.configurable": "application.passwordSafe",
+    "ts.external.directory.path": "C:\\Users\\DS201906079\\Downloads\\Github\\Personal\\Docusaurus\\manual-website\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -61,6 +84,15 @@
         <entry key="com.intellij.reactbuddy.storybook" value="false" />
       </map>
     </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\docs\container" />
+      <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\docs\another" />
+      <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\docs\server" />
+      <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\docs\printer" />
+      <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\docs\pc" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="AZURE_FUNCTION_SUPPORT" factoryName="Run Functions">
@@ -93,6 +125,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/manual-website/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -110,12 +157,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1718153122500</updated>
-      <workItem from="1718153124399" duration="326000" />
+      <workItem from="1718153124399" duration="1500000" />
+      <workItem from="1718154678300" duration="1849000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
