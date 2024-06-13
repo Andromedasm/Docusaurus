@@ -5,8 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99e448e3-76ac-4557-a624-0f2b3fd51d4e" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/another/git.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/docs/another/cool-effects.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/another/cool-effects.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/cloud/intro.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/domain/intro.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/ijs/intro.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/router/intro.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/security/intro.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/surveillance-camera/intro.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/thunder/intro.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/trouble-shooting/intro.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/azure/intro.md" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/attendance/intro.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docusaurus.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docusaurus.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/manual-website/sidebars.ts" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/sidebars.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,28 +65,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/DS201906079/Downloads/Github/Personal/Docusaurus/manual-website/docs/container&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.start.executor&quot;: &quot;Run&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;application.passwordSafe&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\DS201906079\\Downloads\\Github\\Personal\\Docusaurus\\manual-website\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "git-widget-placeholder": "main",
+    "go.import.settings.migrated": "true",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/DS201906079/Downloads/Github/Personal/Docusaurus/manual-website/docs/trouble-shooting",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.start.executor": "Run",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "C:\\Users\\DS201906079\\Downloads\\Github\\Personal\\Docusaurus\\manual-website\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -88,11 +98,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\docs\container" />
-      <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\docs\another" />
-      <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\docs\server" />
-      <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\docs\printer" />
-      <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\docs\pc" />
+      <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\docs\trouble-shooting" />
+      <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\docs\thunder" />
+      <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\docs\surveillance-camera" />
+      <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\docs\security" />
+      <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\docs\router" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\docs\server" />
@@ -164,7 +174,10 @@
       <workItem from="1718153124399" duration="1500000" />
       <workItem from="1718154678300" duration="1849000" />
       <workItem from="1718166541081" duration="4149000" />
-      <workItem from="1718172068873" duration="4373000" />
+      <workItem from="1718172068873" duration="5991000" />
+      <workItem from="1718233070356" duration="146000" />
+      <workItem from="1718233277731" duration="25000" />
+      <workItem from="1718236753317" duration="1968000" />
     </task>
     <servers />
   </component>

@@ -1,8 +1,8 @@
 ---
 id: intro
-title: Introduction to Azure
+title: Introduction to Cloud
 ---
 
-# Introduction to Azure
+# Introduction to IJS
 
 Welcome to the Azure documentation.
