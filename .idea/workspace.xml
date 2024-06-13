@@ -4,26 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99e448e3-76ac-4557-a624-0f2b3fd51d4e" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/another/markdown-tutorial.mdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/mobile-device/ios-exchange.mdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ios-exchange/step1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ios-exchange/step2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ios-exchange/step3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ios-exchange/step4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ios-exchange/step5.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/docs/another/intro.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/docs/attendance/joumon.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/attendance/joumon.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/docs/desknet-neo/intro.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/docs/microsoft-365/intro.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/docs/mobile-device/intro.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/docs/pc/intro.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/docs/server/intro.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/docs/server/prometheus-grafana.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/docs/server/prometheus.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/server/prometheus.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/docusaurus.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docusaurus.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/sidebars.ts" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/sidebars.ts" afterDir="false" />
-    </list>
+    <list default="true" id="99e448e3-76ac-4557-a624-0f2b3fd51d4e" name="更改" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,29 +52,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.migrated.go.modules.settings": "true",
-    "git-widget-placeholder": "main",
-    "go.import.settings.migrated": "true",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/DS201906079/Downloads/Github/Personal/Docusaurus/manual-website/docs/another",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.start.executor": "Run",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "C:\\Users\\DS201906079\\Downloads\\Github\\Personal\\Docusaurus\\manual-website\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/DS201906079/Downloads/Github/Personal/Docusaurus/manual-website/docs/another&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.start.executor&quot;: &quot;Run&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\DS201906079\\Downloads\\Github\\Personal\\Docusaurus\\manual-website\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -186,6 +167,7 @@
       <workItem from="1718233070356" duration="146000" />
       <workItem from="1718233277731" duration="25000" />
       <workItem from="1718236753317" duration="18105000" />
+      <workItem from="1718264710260" duration="20000" />
     </task>
     <servers />
   </component>

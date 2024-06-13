@@ -23,21 +23,21 @@ const sidebars: SidebarsConfig = {
             type: 'category',
             label: 'Cloud',
             items: [
-                'cloud/intro'
+                'cloud/cloud-guide'
             ],
         },
         {
             type: 'category',
             label: 'Container',
             items: [
-                'container/intro',
+                'container/container-guide',
             ],
         },
         {
             type: 'category',
             label: 'Database',
             items: [
-                'database/intro',
+                'database/database-guide',
             ],
         },
         {
@@ -51,7 +51,7 @@ const sidebars: SidebarsConfig = {
             type: 'category',
             label: 'Domain',
             items: [
-                'domain/intro',
+                'domain/domain-guide',
             ],
         },
         {
@@ -79,7 +79,7 @@ const sidebars: SidebarsConfig = {
             type: 'category',
             label: 'Network',
             items: [
-                'network/intro',
+                'network/network-guide',
             ],
         },
         {
@@ -94,14 +94,14 @@ const sidebars: SidebarsConfig = {
             type: 'category',
             label: 'Printer',
             items: [
-                'printer/intro',
+                'printer/printer-setup-guide',
             ],
         },
         {
             type: 'category',
             label: 'Router',
             items: [
-                'router/intro'
+                'router/telnet-guide'
             ],
         },
         {
@@ -120,6 +120,7 @@ const sidebars: SidebarsConfig = {
                 'server/prometheus-zabbix',
                 'server/thanos',
                 'server/prometheus-container',
+                'server/ssh-guide',
             ],
         },
         {
