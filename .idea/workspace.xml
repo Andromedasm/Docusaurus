@@ -5,32 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99e448e3-76ac-4557-a624-0f2b3fd51d4e" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/attendance/joumon.mdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/attendance/attendance1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/attendance/attendance2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/attendance/main_menu1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/attendance/main_menu2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/attendance/main_menu3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/attendance/register1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/attendance/register10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/attendance/register2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/attendance/register3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/attendance/register4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/attendance/register5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/attendance/register6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/attendance/register7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/attendance/register8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/attendance/register9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/attendance/shain_master1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/attendance/shain_reregister1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/attendance/shain_search1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/attendance/shoukai1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/attendance/shoukai2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/attendance/shoukai3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/docs/attendance/intro.md" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/another/markdown-tutorial.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/mobile-device/ios-exchange.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ios-exchange/step1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ios-exchange/step2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ios-exchange/step3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ios-exchange/step4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ios-exchange/step5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/another/intro.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/attendance/joumon.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/attendance/joumon.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/desknet-neo/intro.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/microsoft-365/intro.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/mobile-device/intro.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/pc/intro.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/server/intro.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/server/prometheus-grafana.mdx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/server/prometheus.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/server/prometheus.mdx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/manual-website/docusaurus.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docusaurus.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/manual-website/sidebars.ts" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/sidebars.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,6 +36,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript JSX File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -89,7 +81,8 @@
     "go.import.settings.migrated": "true",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/DS201906079/Downloads/Github/Personal/Docusaurus/manual-website/static/img/attendance",
+    "last_opened_file_path": "C:/Users/DS201906079/Downloads/Github/Personal/Docusaurus/manual-website/docs/another",
+    "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -112,11 +105,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\docs\another" />
+      <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\static\img\ios-exchange" />
       <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\static\img\attendance" />
       <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\docs\trouble-shooting" />
       <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\docs\thunder" />
-      <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\docs\surveillance-camera" />
-      <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\docs\security" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\static\img\attendance" />
@@ -192,7 +185,7 @@
       <workItem from="1718172068873" duration="5991000" />
       <workItem from="1718233070356" duration="146000" />
       <workItem from="1718233277731" duration="25000" />
-      <workItem from="1718236753317" duration="9613000" />
+      <workItem from="1718236753317" duration="18105000" />
     </task>
     <servers />
   </component>

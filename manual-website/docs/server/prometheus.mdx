@@ -5,41 +5,6 @@ title: Prometheusマニュアル
 
 # Prometheusによるサーバー/ネットワーク機器監視マニュアル
 
----
-
-## 1. はじめに
-
-> 1.1. Prometheusの紹介1.2. Prometheusの仕組みと各種Exporterの機能
-
-## 2. Prometheusインストールと設定方法
-
-> 2.1. Prometheusのインストール2.2. Prometheusの設定方法
-
-## 3.Prometheusのsystemdを使用した起動方法
-
-> 3.1. Prometheusサービスファイルの作成3.2. Prometheusサービスの有効化と起動3.3. windows_exporterのインストールと設定方法3.4. apache_exporterのインストールと設定方法3.5. postgres_exporterのインストールと設定方法
-
-## 4. 各種Exporterインストールと設定方法
-
-> 4.1. node_exporter4.2. blackbox_exporter4.3. windows_exporter4.4. apache_exporter4.5. postgres_exporter
-
-## 5. Grafanaインストールと使い方
-
-> 5.1. Grafanaのインストール5.2. データソースの設定5.3. Dashboardの使い方5.4. PromQLの紹介と書き方5.5. よく使うPromQL
-
-## 6. LokiとPromtailインストールと設定方法
-
-> 6.1. LokiとPromtailのインストール6.2. Log監視の設定方法6.3. Apacheとシステムログの監視用にPromtailを設定6.4. GrafanaにLokiデータソースを設定6.5. Grafanaでログを表示するダッシュボードを作成
-
-## 7. alertmanagerの使い方
-
-> 7.1. alertmanagerのインストール7.2. Teamsへアラート送信の設定方法7.3. Grafanaでのアラート設定とTeamsへの通知7.4. Grafanaでのアラート設定手順7.5. Blackbox Exporterがダウンした際のアラート例7.6. Teamsへの通知設定
-
-## 8.よくある問題と解決方法
-
-> 8..1. Prometrheusがデータを収集できない8.2. Alertmanagerがアラートを送信しない8.3. GrafanaがPrometheusと連携できない8.4. Prometheusの高負荷とパフォーマンス問題8.5. PingのターゲットがオフラインなのにPrometheusとGrafanaがオンライン表示する8.6. Azure VMのログがローカルのGrafanaで取得できない
-
----
 
 ## 1. はじめに
 
@@ -53,7 +18,7 @@ Prometheusは、SoundCloudが2012年に開始したプロジェクトとして�
 
 - **マルチディメンション**：Prometheusのデータモデルはキーとバリューのセットを持つ時系列データで、効率的なクエリをサポートしています。
 - **組み込みのアラート**：Prometheusのアラートルールに基づいて、異常やリスクをリアルタイムで検知します。
-- **軽量**：PrometheusはGo言語で書かれており、シングルバイナリとして配布されます。これにより、容易にデプロイや管理が可能です。
+- **軽量**：PrometheusはGo言語で書かれており、シングルバイナリとして配布されます。これにより、容易にデプロイおよび管理が容易です。
 - **高可用性と連携**: 他のPrometheusサーバーと連携し、高可用性を実現できます。
 
 ### 1.2. Prometheusの仕組みと各種Exporterの機能
@@ -78,14 +43,16 @@ Prometheusのセットアップは簡単で、特にRHEL環境においても手
 RHELにPrometheusをインストールする手順は以下の通りです：
 
 1. **前提パッケージのインストール**
+
 RHELでPrometheusを動作させるための必要なパッケージをインストールします。
 
   ```bash
   sudo dnf install wget tar -y
   ```
 
-2.**Prometheusのバイナリのダウンロード** Prometheusの公式サイトから最新のリリースをダウンロードします。
+2.**Prometheusのバイナリのダウンロード**
 
+Prometheusの公式サイトから最新のリリースをダウンロードします。
 
 ```bash
 wget https://github.com/prometheus/prometheus/releases/download/v2.X.X/prometheus-2.X.X.linux-amd64.tar.gz
@@ -394,6 +361,7 @@ Grafanaは、Prometheusなどのデータソースからのメトリクスを可
   EOF
   ```
 
+
   ```bash
   sudo dnf update
   sudo dnf install grafana
@@ -548,7 +516,7 @@ LokiはGrafana Labsが開発した、Prometheusにインスパイアされたロ
 
 1. **Lokiのインストール**
 
-バイナリを公式サイトからダウンロードし、展開します。
+バイナリを公式サイトからダウンロードし、解凍します。
 
   ```bash
   wget https://github.com/grafana/loki/releases/download/vX.Y.Z/loki-linux-amd64.zip
