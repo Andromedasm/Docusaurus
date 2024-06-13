@@ -16,7 +16,7 @@ const sidebars: SidebarsConfig = {
             type: 'category',
             label: 'Attendance',
             items: [
-                'attendance/intro'
+                'attendance/joumon',
             ],
         },
         {

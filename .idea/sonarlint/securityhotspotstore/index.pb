@@ -91,3 +91,7 @@ $manual-website/docs/thunder/intro.md,d\7\d7c6b3c7ed65162f37348c0804fa89c42d2d7
 -manual-website/docs/trouble-shooting/intro.md,f\0\f0117da15c92c00b6ec3629af689cae0b94463c3
 V
 &manual-website/src/theme/SearchBar.tsx,a\c\ac52de76f94c403782aa925a0f2931ad9c4e98a2
+Y
+)manual-website/docs/attendance/joumon.mdx,b\3\b361af25399b6626299c1790df1dc1c423df8f00
+N
+manual-website/babel.config.js,0\8\081520a3cea2ed081d1ef295082616ca81d25829

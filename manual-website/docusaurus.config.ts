@@ -42,6 +42,19 @@ const config: Config = {
     ],
   ],
 
+  plugins: [
+    [
+      '@docusaurus/plugin-ideal-image',
+      {
+        quality: 70,
+        max: 1030, // max resized image's size.
+        min: 640, // min resized image's size. if original is lower, use that size.
+        steps: 2, // the max number of images generated between min and max (inclusive)
+        disableInDev: false,
+      },
+    ],
+  ],
+
   themeConfig: {
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
@@ -114,15 +127,6 @@ const config: Config = {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
     },
-    // 注释掉或移除 algolia 配置
-    // algolia: {
-    //   apiKey: 'fe1c5d749c1d15f0484683fd74b0d94c',
-    //   indexName: 'docusaurus',
-    //   appId: 'F0WS00GCR6',
-    //   contextualSearch: true,
-    //   searchParameters: {},
-    //   searchPagePath: 'search',
-    // },
   } satisfies Preset.ThemeConfig,
 };
 
