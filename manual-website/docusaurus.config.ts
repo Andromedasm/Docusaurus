@@ -7,23 +7,15 @@ const config: Config = {
   tagline: 'システム部マニュアル',
   favicon: 'img/favicon.ico',
 
-  // Set the production url of your site here
   url: 'https://your-docusaurus-site.example.com',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
   organizationName: 'facebook', // Usually your GitHub org/user name.
   projectName: 'docusaurus', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -35,15 +27,11 @@ const config: Config = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.ts'),
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl:
               'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl:
               'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
@@ -55,7 +43,6 @@ const config: Config = {
   ],
 
   themeConfig: {
-    // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
       title: 'Manual Website',
@@ -127,14 +114,15 @@ const config: Config = {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
     },
-    algolia: {
-      apiKey: 'fe1c5d749c1d15f0484683fd74b0d94c',
-      indexName: 'docusaurus',
-      appId: 'F0WS00GCR6', // 如果需要，可以添加 Algolia 应用 ID
-      contextualSearch: true,
-      searchParameters: {},
-      searchPagePath: 'search',
-    },
+    // 注释掉或移除 algolia 配置
+    // algolia: {
+    //   apiKey: 'fe1c5d749c1d15f0484683fd74b0d94c',
+    //   indexName: 'docusaurus',
+    //   appId: 'F0WS00GCR6',
+    //   contextualSearch: true,
+    //   searchParameters: {},
+    //   searchPagePath: 'search',
+    // },
   } satisfies Preset.ThemeConfig,
 };
 

@@ -89,3 +89,5 @@ T
 $manual-website/docs/thunder/intro.md,d\7\d7c6b3c7ed65162f37348c0804fa89c42d2d7087
 ]
 -manual-website/docs/trouble-shooting/intro.md,f\0\f0117da15c92c00b6ec3629af689cae0b94463c3
+V
+&manual-website/src/theme/SearchBar.tsx,a\c\ac52de76f94c403782aa925a0f2931ad9c4e98a2

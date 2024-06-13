@@ -5,19 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99e448e3-76ac-4557-a624-0f2b3fd51d4e" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/cloud/intro.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/domain/intro.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/ijs/intro.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/router/intro.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/security/intro.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/surveillance-camera/intro.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/thunder/intro.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/trouble-shooting/intro.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/docs/azure/intro.md" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/attendance/intro.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/src/theme/SearchBar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/manual-website/docusaurus.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docusaurus.config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/manual-website/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/manual-website/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/sidebars.ts" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/sidebars.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +168,7 @@
       <workItem from="1718172068873" duration="5991000" />
       <workItem from="1718233070356" duration="146000" />
       <workItem from="1718233277731" duration="25000" />
-      <workItem from="1718236753317" duration="1968000" />
+      <workItem from="1718236753317" duration="4628000" />
     </task>
     <servers />
   </component>
