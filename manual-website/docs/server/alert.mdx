@@ -9,31 +9,38 @@ title: AlertmanagerとGrafanaアラート
 
 ## Prometheus Alertmanager の設定
 
-Prometheus Alertmanagerは、アラートの送信とルーティングを管理します。以下に、基本的な設定方法を示します。
+Prometheus Alertmanagerは、アラートの送信とルーティングを管理します。 以下に、基本的な設定方法を示します。
 
 ### Alertmanager 設定ファイルの作成
 
-Alertmanagerの設定は、`alertmanager.yml` に記述します。以下は、Teamsと電子メールでのアラート設定の例です。
+Alertmanagerの設定は、`alertmanager.yml` に記述します。 以下は、Teamsと電子メールでのアラート設定の例です。
 
 ```yaml
 global:
   resolve_timeout: 5m
 
 route:
+  group_by: ['alertname']
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 12h
   receiver: 'teams-webhook'
+  routes:
+    - receiver: 'email-notification'
 
 receivers:
-- name: 'teams-webhook'
-  webhook_configs:
-  - url: '<Microsoft Teams の Webhook URL>'
+  - name: 'teams-webhook'
+    webhook_configs:
+      - url: '<Microsoft Teams の Webhook URL>'
 
-- name: 'email-notification'
-  email_configs:
-  - to: '<受信者のメールアドレス>'
-    from: '<送信者のメールアドレス>'
-    smarthost: '<SMTPサーバのアドレス>:<ポート>'
-    auth_username: '<SMTP認証のユーザー名>'
-    auth_password: '<SMTP認証のパスワード>'
+  - name: 'email-notification'
+    email_configs:
+      - to: '<受信者のメールアドレス>'
+        from: '<送信者のメールアドレス>'
+        smarthost: '<SMTPサーバのアドレス>:<ポート>'
+        auth_username: '<SMTP認証のユーザー名>'
+        auth_password: '<SMTP認証のパスワード>'
+        require_tls: true
 ```
 
 ### Alertmanager の起動
@@ -50,22 +57,35 @@ Grafanaでは、ダッシュボード内の特定の条件に基づいてアラ�
 
 ### Grafana でのアラート設定
 
-1. Grafana ダッシュボードを開き、「パネル」を選択して編集画面を開きます。
-2. 「Alert」タブを選択し、「Create Alert」ボタンをクリックします。
-3. アラート条件を設定します（例：クエリ(A)の平均が5分間で100を超えた場合にアラート）。
-4. 「Notifications」セクションで、「New channel」を選択し、アラート通知先を設定します。
+1. Grafana ダッシュボードを開き、編集したいパネルを選択して「Edit」をクリックします。
+2. の編集画面で「Alert」タブを選択し、「New alert rule」をクリックします。
+3. アラートルールの名前を入力し、アラート条件を設定します（例：クエリAの平均値が5分間で100を超えた場合にアラート）。
+4. 「Conditions」セクションで、アラート条件を設定します。例えば、WHEN クエリ A の avg() 値が IS ABOVE 100 である場合。
+5. 「Evaluate every」でアラート評価の頻度を設定し（例：1分ごと）、アラートが何分間続いた場合に通知を送信するかを「For」に設定します。
+6. 設定が完了したら、「Save」をクリックしてアラートルールを保存します。
+
+### 通知チャネルの設定
+
+1. Grafanaのサイドメニューから「Alerting」 > 「Notification channels」を選択します。
+2. 「New channel」をクリックします。
+3. 通知チャネルの名前を入力し、通知方法を選択します（例：Webhook または Email）。
 
 ### Microsoft Teams への通知
 
-1. 「Type」で「Microsoft Teams」を選択します。
-2. 「Webhook URL」に、Microsoft TeamsのチャンネルWebhook URLを入力します。
-3. 「Save」をクリックして設定を保存します。
+1. 「Webhook」を選択します。
+2. 「Name」に通知チャネルの名前を入力します。
+3. 「URL」にMicrosoft TeamsのWebhook URLを入力します。
+4. 必要に応じて、カスタムメッセージを設定します（例：`${{ alertName }} alert is triggered`）。
+5. 「Save」をクリックして設定を保存します。
+
 
 ### 電子メールへの通知
 
-1. 「Type」で「Email」を選択します。
-2. 「Email addresses」に、通知を受け取るメールアドレスを入力します。
-3. その他のSMTP設定を適宜入力します。
-4. 「Save」をクリックして設定を保存します。
+1. 「Email」を選択します。
+2. 「Name」に通知チャネルの名前を入力します。
+3. 「Email addresses」に通知を受け取るメールアドレスを入力します。
+4. 必要に応じて、件名やメッセージをカスタマイズします（例：`${{ alertName }} alert is triggered`）。
+5. 「Save」をクリックして設定を保存します。
+
 
 これで、PrometheusのAlertmanagerとGrafanaでアラートを設定し、Microsoft Teamsと電子メールで通知を受け取る準備が整いました。

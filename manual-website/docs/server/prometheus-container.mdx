@@ -1,11 +1,11 @@
 ---
 id: prometheus-container
-title: Prometheusのコンテナ化
+title: サーバー監視のコンテナ化
 ---
 
-# コンテナオーケストレーションを利用した高可用性システム構築マニュアル
+# コンテナオーケストレーションを利用したサーバー監視システム構築マニュアル
 
-## Dockerfileを使用しない場合の設定
+## Podmanを使用する場合の設定
 
 ##### Prometheus
 
@@ -178,6 +178,8 @@ Grafana, Loki, および Thanos についても、同様に Kubernetes の Deplo
 
 ### Zabbix の Deployment
 
+#### MySQL を使用する例
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -204,6 +206,39 @@ spec:
         - name: MYSQL_USER
           value: "zabbix"
         - name: MYSQL_PASSWORD
+          value: "zabbix_password"
+        ports:
+        - containerPort: 10051
+```
+
+#### PostgreSQL を使用する例
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zabbix-server
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: zabbix-server
+  template:
+    metadata:
+      labels:
+        app: zabbix-server
+    spec:
+      containers:
+      - name: zabbix-server
+        image: zabbix/zabbix-server-pgsql:5.4.0
+        env:
+        - name: DB_SERVER_HOST
+          value: "postgresql_host"
+        - name: POSTGRES_DB
+          value: "zabbix"
+        - name: POSTGRES_USER
+          value: "zabbix"
+        - name: POSTGRES_PASSWORD
           value: "zabbix_password"
         ports:
         - containerPort: 10051

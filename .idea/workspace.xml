@@ -4,7 +4,52 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99e448e3-76ac-4557-a624-0f2b3fd51d4e" name="更改" comment="" />
+    <list default="true" id="99e448e3-76ac-4557-a624-0f2b3fd51d4e" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/cloud/aws-lambda.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/cloud/azure-cli.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/cloud/azure-functions.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/container/docker-guide.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/container/kubernetes-guide.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/container/podman-guide.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/database/apache-cassandra-guide.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/database/apache-hadoop-guide.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/database/apache-hive-guide.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/database/apache-spark-guide.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/database/aws-dynamodb-guide.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/database/azure-cosmosdb-guide.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/database/db2-guide.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/database/mongodb-guide.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/database/mysql-guide.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/database/neo4j-guide.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/database/oracle-guide.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/database/postgresql-guide.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/database/redis-guide.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/database/sqlite-guide.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/database/sqlserver-guide.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/linux/rhel-guide.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/linux/shell-guide.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/linux/ubuntu-guide.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/microsoft-365/excel-functions.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/microsoft-365/office-scripts.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/surveillance-camera/hikvision-ivms4200-guide.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/unix/freebsd-guide.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/windows/powershell-guide.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/windows/wsl-guide.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/src/components/CounterButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/src/components/Dropdown.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/another/git.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/linux/git.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/another/mdx-tutorial.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/another/mdx-tutorial.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/database/database-guide.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/database/database-guide.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/network/network-guide.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/network/network-guide.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/printer/printer-setup-guide.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/printer/printer-setup-guide.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/router/telnet-guide.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/router/telnet-guide.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/server/alert.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/server/alert.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/server/prometheus-container.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/server/prometheus-container.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/server/ssh-guide.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/server/ssh-guide.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/server/thanos.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/server/thanos.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/surveillance-camera/intro.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/sidebars.ts" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/sidebars.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,8 +61,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
         <option value="CSS File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -62,7 +107,7 @@
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/DS201906079/Downloads/Github/Personal/Docusaurus/manual-website/docs/another&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/DS201906079/Downloads/Github/Personal/Docusaurus/manual-website/docs/printer&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -86,13 +131,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\docs\another" />
-      <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\static\img\ios-exchange" />
-      <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\static\img\attendance" />
-      <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\docs\trouble-shooting" />
-      <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\docs\thunder" />
+      <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\docs\printer" />
+      <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\docs\cloud" />
+      <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\docs\container" />
+      <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\docs\database" />
+      <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\docs\domain" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\docs\linux" />
       <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\static\img\attendance" />
       <recent name="C:\Users\DS201906079\Downloads\Github\Personal\Docusaurus\manual-website\docs\server" />
     </key>
@@ -168,6 +214,15 @@
       <workItem from="1718233277731" duration="25000" />
       <workItem from="1718236753317" duration="18105000" />
       <workItem from="1718264710260" duration="20000" />
+      <workItem from="1718265450498" duration="2972000" />
+      <workItem from="1718325285351" duration="823000" />
+      <workItem from="1718349156193" duration="425000" />
+      <workItem from="1718600523987" duration="10014000" />
+      <workItem from="1718677665331" duration="113000" />
+      <workItem from="1718677796061" duration="1664000" />
+      <workItem from="1718846777940" duration="245000" />
+      <workItem from="1718852731334" duration="817000" />
+      <workItem from="1718933939483" duration="23095000" />
     </task>
     <servers />
   </component>

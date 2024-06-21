@@ -9,12 +9,11 @@ const sidebars: SidebarsConfig = {
                 'another/markdown-tutorial',
                 'another/mdx-tutorial',
                 'another/cool-effects',
-                'another/git',
             ],
         },
         {
             type: 'category',
-            label: 'Attendance',
+            label: '勤怠',
             items: [
                 'attendance/joumon',
             ],
@@ -23,7 +22,10 @@ const sidebars: SidebarsConfig = {
             type: 'category',
             label: 'Cloud',
             items: [
-                'cloud/cloud-guide'
+                'cloud/cloud-guide',
+                'cloud/azure-cli',
+                'cloud/azure-functions',
+                'cloud/aws-lambda',
             ],
         },
         {
@@ -31,6 +33,9 @@ const sidebars: SidebarsConfig = {
             label: 'Container',
             items: [
                 'container/container-guide',
+                'container/docker-guide',
+                'container/podman-guide',
+                'container/kubernetes-guide',
             ],
         },
         {
@@ -38,6 +43,21 @@ const sidebars: SidebarsConfig = {
             label: 'Database',
             items: [
                 'database/database-guide',
+                'database/postgresql-guide',
+                'database/mysql-guide',
+                'database/sqlserver-guide',
+                'database/oracle-guide',
+                'database/db2-guide',
+                'database/sqlite-guide',
+                'database/mongodb-guide',
+                'database/redis-guide',
+                'database/apache-cassandra-guide',
+                'database/apache-hadoop-guide',
+                'database/apache-hive-guide',
+                'database/neo4j-guide',
+                'database/azure-cosmosdb-guide',
+                'database/aws-dynamodb-guide',
+                'database/apache-spark-guide',
             ],
         },
         {
@@ -56,16 +76,21 @@ const sidebars: SidebarsConfig = {
         },
         {
             type: 'category',
-            label: 'IJS',
+            label: 'Microsoft 365',
             items: [
-                'ijs/intro'
+                'microsoft-365/teams-cache',
+                'microsoft-365/excel-functions',
+                'microsoft-365/office-scripts',
             ],
         },
         {
             type: 'category',
-            label: 'Microsoft 365',
+            label: 'Linux',
             items: [
-                'microsoft-365/teams-cache',
+                'linux/shell-guide',
+                'linux/git',
+                'linux/ubuntu-guide',
+                'linux/rhel-guide',
             ],
         },
         {
@@ -125,23 +150,45 @@ const sidebars: SidebarsConfig = {
         },
         {
             type: 'category',
-            label: 'Surveillance camera',
+            label: 'Trouble Shooting',
             items: [
-                'surveillance-camera/intro',
+                'trouble-shooting/intro',
             ],
         },
         {
             type: 'category',
-            label: 'Thunder',
+            label: 'Unix',
+            items: [
+                'unix/freebsd-guide',
+            ],
+        },
+        {
+            type: 'category',
+            label: 'Windows',
+            items: [
+                'windows/powershell-guide',
+                'windows/wsl-guide'
+            ],
+        },
+        {
+            type: 'category',
+            label: '売上原価PRO',
+            items: [
+                'ijs/intro'
+            ],
+        },
+        {
+            type: 'category',
+            label: '雷検知',
             items: [
                 'thunder/intro',
             ],
         },
         {
             type: 'category',
-            label: 'Trouble Shooting',
+            label: '防犯カメラ',
             items: [
-                'trouble-shooting/intro',
+                'surveillance-camera/hikvision-ivms4200-guide',
             ],
         },
     ],

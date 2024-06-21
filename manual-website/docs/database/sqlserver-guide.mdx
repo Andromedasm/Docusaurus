@@ -1,0 +1,275 @@
+---
+id: sqlserver-guide
+title: SQL Serverマニュアル
+---
+
+# SQL Server 使用マニュアル
+
+このガイドでは、SQL Serverの基本的な使用方法から応用的なテクニックまでを詳細に説明します。SQL Serverは、Microsoftが提供するリレーショナルデータベース管理システム（RDBMS）であり、高いパフォーマンスと信頼性を提供します。
+
+## 目次
+1. [SQL Serverのインストール](#sql-serverのインストール)
+    - [Windowsでのインストール](#windowsでのインストール)
+    - [Linuxでのインストール](#linuxでのインストール)
+2. [基本設定](#基本設定)
+    - [初期設定とデータベースの作成](#初期設定とデータベースの作成)
+    - [設定ファイルの調整](#設定ファイルの調整)
+3. [遠隔アクセスの設定](#遠隔アクセスの設定)
+4. [ユーザーと権限の管理](#ユーザーと権限の管理)
+    - [ユーザーの作成](#ユーザーの作成)
+    - [権限の付与](#権限の付与)
+5. [基本的なクエリ](#基本的なクエリ)
+    - [データの挿入](#データの挿入)
+    - [データの取得](#データの取得)
+    - [データの更新](#データの更新)
+    - [データの削除](#データの削除)
+6. [高度なクエリ](#高度なクエリ)
+    - [ジョイン](#ジョイン)
+    - [サブクエリ](#サブクエリ)
+    - [トリガー](#トリガー)
+7. [高度な使用方法](#高度な使用方法)
+    - [トランザクション](#トランザクション)
+    - [ストアドプロシージャと関数](#ストアドプロシージャと関数)
+    - [レプリケーション](#レプリケーション)
+    - [パフォーマンスチューニング](#パフォーマンスチューニング)
+
+## SQL Serverのインストール
+
+### Windowsでのインストール
+
+1. SQL Serverの公式サイト（[https://www.microsoft.com/sql-server](https://www.microsoft.com/sql-server)）からインストーラをダウンロードします。
+2. インストーラを実行し、画面の指示に従ってインストールを進めます。
+
+### Linuxでのインストール
+
+以下は、UbuntuでのSQL Serverのインストール手順です。
+
+1. Microsoftのリポジトリを追加します。
+    ```bash
+    wget -qO- https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+    sudo add-apt-repository "$(wget -qO- https://packages.microsoft.com/config/ubuntu/20.04/mssql-server-2019.list)"
+    sudo apt-get update
+    ```
+
+2. SQL Serverをインストールします。
+    ```bash
+    sudo apt-get install -y mssql-server
+    ```
+
+3. インストール後、セットアップを実行します。
+    ```bash
+    sudo /opt/mssql/bin/mssql-conf setup
+    ```
+
+## 基本設定
+
+### 初期設定とデータベースの作成
+
+インストール後、SQL Serverサービスを起動し、初期設定を行います。
+
+- SQL Serverサービスの起動（Linux）
+    ```bash
+    sudo systemctl start mssql-server
+    sudo systemctl enable mssql-server
+    ```
+
+- SQL Server Management Studio（SSMS）またはsqlcmdを使用して、デフォルトの`sa`ユーザーでログインし、データベースを作成します。
+    ```sql
+    CREATE DATABASE mydb;
+    CREATE LOGIN myuser WITH PASSWORD = 'mypassword';
+    CREATE USER myuser FOR LOGIN myuser;
+    ALTER ROLE db_owner ADD MEMBER myuser;
+    ```
+
+### 設定ファイルの調整
+
+SQL Serverの設定ファイルは通常、`/var/opt/mssql/mssql.conf`（Linux）またはSQL Server Configuration Manager（Windows）で調整します。
+
+- 設定ファイルの編集（Linux）
+    ```bash
+    sudo nano /var/opt/mssql/mssql.conf
+    ```
+
+- 設定変更後、SQL Serverサービスを再起動します。
+    ```bash
+    sudo systemctl restart mssql-server
+    ```
+
+## 遠隔アクセスの設定
+
+遠隔アクセスを許可するためには、SQL Serverの設定を調整し、ファイアウォールでポート1433を開放します。
+
+```bash
+# mssql.conf（Linuxの場合）
+[tcp]
+default port = 1433
+
+# ファイアウォールの設定（例：UFW）
+sudo ufw allow 1433/tcp
+```
+リモートユーザーの設定も行います。
+
+```sql
+CREATE LOGIN myuser WITH PASSWORD = 'mypassword';
+CREATE USER myuser FOR LOGIN myuser;
+GRANT CONNECT TO myuser;
+```
+
+## ユーザーと権限の管理
+### ユーザーの作成
+新しいユーザーを作成し、データベースへのアクセス権を設定します。
+
+```sql
+CREATE LOGIN newuser WITH PASSWORD = 'newpassword';
+CREATE USER newuser FOR LOGIN newuser;
+```
+
+### 権限の付与
+ユーザーにデータベースやテーブルへの権限を付与します。
+
+```sql
+GRANT SELECT, INSERT, UPDATE, DELETE ON mydb.dbo.mytable TO newuser;
+```
+
+## 基本的なクエリ
+### データの挿入
+テーブルにデータを挿入します。
+
+```sql
+INSERT INTO mytable (column1, column2) VALUES ('value1', 'value2');
+```
+
+### データの取得
+テーブルからデータを取得します。
+```sql
+SELECT column1, column2 FROM mytable WHERE condition;
+```
+
+### データの更新
+テーブルのデータを更新します。
+```sql
+UPDATE mytable SET column1 = 'newvalue' WHERE condition;
+```
+
+### データの削除
+テーブルのデータを削除します。
+```sql
+DELETE FROM mytable WHERE condition;
+```
+
+## 高度なクエリ
+### ジョイン
+複数のテーブルを結合してデータを取得します。
+```sql
+SELECT a.column1, b.column2
+FROM table1 a
+JOIN table2 b ON a.common_column = b.common_column;
+```
+
+### サブクエリ
+サブクエリを使用して、複雑なクエリを作成します。
+```sql
+SELECT column1
+FROM mytable
+WHERE column2 IN (SELECT column2 FROM anothertable WHERE condition);
+```
+
+### トリガー
+トリガーを使用して、特定の操作が実行されたときに自動的に実行されるアクションを定義します。
+```sql
+CREATE TRIGGER mytrigger
+ON mytable
+AFTER INSERT
+AS
+BEGIN
+-- トリガーが実行するSQL文
+END;
+```
+
+## 高度な使用方法
+### トランザクション
+トランザクションを使用して、一連の操作をアトミックに実行します。
+
+```sql
+
+BEGIN TRANSACTION;
+UPDATE account SET balance = balance - 100 WHERE account_id = 1;
+UPDATE account SET balance = balance + 100 WHERE account_id = 2;
+COMMIT;
+```
+
+### ストアドプロシージャと関数
+ストアドプロシージャと関数を使用して、再利用可能なコードを作成します。
+
+- ストアドプロシージャの作成
+
+```sql
+CREATE PROCEDURE increment_value @val INT
+AS
+BEGIN
+UPDATE mytable SET column1 = column1 + @val;
+END;
+```
+- ストアドプロシージャの呼び出し
+```sql
+EXEC increment_value 5;
+```
+
+### レプリケーション
+レプリケーションを使用して、データの冗長性と可用性を向上させます。
+
+- マスターノードの設定
+```bash
+# mssql.conf（Linuxの場合）
+[replication]
+server id = 1
+log_bin = /var/opt/mssql/log/mysql-bin.log
+```
+
+- スレーブノードの設定
+```bash
+# mssql.conf（Linuxの場合）
+[replication]
+server id = 2
+relay-log = /var/opt/mssql/log/mysql-relay-bin.log
+```
+
+- レプリケーションの開始
+
+```sql
+CHANGE MASTER TO
+MASTER_HOST='master_host',
+MASTER_USER='replication_user',
+MASTER_PASSWORD='replication_password',
+MASTER_LOG_FILE='mysql-bin.000001',
+MASTER_LOG_POS=  107;
+START SLAVE;
+```
+
+### パフォーマンスチューニング
+SQL Serverのパフォーマンスを向上させるための設定と最適化を行います。
+
+- インデックスの作成
+
+```sql
+CREATE INDEX myindex ON mytable (mycolumn);
+```
+
+- クエリプランの確認
+```sql
+SET STATISTICS TIME ON;
+SET STATISTICS IO ON;
+SELECT * FROM mytable WHERE mycolumn = 'value';
+SET STATISTICS TIME OFF;
+SET STATISTICS IO OFF;
+```
+
+- データベースのメンテナンス
+
+```sql
+DBCC CHECKDB;
+DBCC SHRINKDATABASE (mydb);
+DBCC REINDEX;
+```
+
+以上で、SQL Serverの基本的な使用方法と高度な操作についての説明を終わります。SQL Serverは強力で柔軟なデータベース管理システムですが、効率的に使用するためには各機能を理解し、適切に活用することが重要です。

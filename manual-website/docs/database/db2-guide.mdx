@@ -1,0 +1,236 @@
+---
+id: db2-guide
+title: IBM Db2マニュアル
+---
+
+# IBM Db2 使用マニュアル
+
+このガイドでは、IBM Db2の基本的な使用方法から応用的なテクニックまでを詳細に説明します。IBM Db2は、高いパフォーマンスと信頼性を提供するリレーショナルデータベース管理システム（RDBMS）です。
+
+## 目次
+1. [IBM Db2のインストール](#ibm-db2のインストール)
+    - [Linuxでのインストール](#linuxでのインストール)
+    - [Windowsでのインストール](#windowsでのインストール)
+2. [基本設定](#基本設定)
+    - [初期設定とデータベースの作成](#初期設定とデータベースの作成)
+    - [設定ファイルの調整](#設定ファイルの調整)
+3. [遠隔アクセスの設定](#遠隔アクセスの設定)
+4. [ユーザーと権限の管理](#ユーザーと権限の管理)
+    - [ユーザーの作成](#ユーザーの作成)
+    - [権限の付与](#権限の付与)
+5. [基本的なクエリ](#基本的なクエリ)
+    - [データの挿入](#データの挿入)
+    - [データの取得](#データの取得)
+    - [データの更新](#データの更新)
+    - [データの削除](#データの削除)
+6. [高度なクエリ](#高度なクエリ)
+    - [ジョイン](#ジョイン)
+    - [サブクエリ](#サブクエリ)
+    - [トリガー](#トリガー)
+7. [高度な使用方法](#高度な使用方法)
+    - [トランザクション](#トランザクション)
+    - [ストアドプロシージャと関数](#ストアドプロシージャと関数)
+    - [パフォーマンスチューニング](#パフォーマンスチューニング)
+
+## IBM Db2のインストール
+
+### Linuxでのインストール
+
+1. IBMの公式サイト（[https://www.ibm.com/products/db2](https://www.ibm.com/products/db2)）からDb2のインストーラをダウンロードします。
+2. 必要なパッケージをインストールします。
+    ```bash
+    sudo yum install -y libaio
+    ```
+3. ダウンロードしたインストーラを解凍し、インストールを開始します。
+    ```bash
+    tar -xvf db2_v11.5_linuxx64_server.tar.gz
+    cd server_dec
+    sudo ./db2setup
+    ```
+
+### Windowsでのインストール
+
+1. IBMの公式サイト（[https://www.ibm.com/products/db2](https://www.ibm.com/products/db2)）からDb2のインストーラをダウンロードします。
+2. ダウンロードしたインストーラを実行し、画面の指示に従ってインストールを進めます。
+
+## 基本設定
+
+### 初期設定とデータベースの作成
+
+インストール後、データベースの作成と初期設定を行います。
+
+- `db2`ユーザーでログインし、データベースインスタンスを作成します。
+    ```bash
+    sudo su - db2inst1
+    db2 create db mydb
+    ```
+
+- Db2コマンドラインプロセッサー（CLP）を使用して、データベースに接続します。
+    ```bash
+    db2 connect to mydb
+    ```
+
+### 設定ファイルの調整
+
+Db2の設定ファイルは通常、インスタンスディレクトリ内にあります。
+
+- `db2set`コマンドを使用して、基本設定を調整します。
+    ```bash
+    db2set DB2COMM=TCPIP
+    db2 update dbm cfg using SVCENAME 50000
+    ```
+
+設定変更後、Db2インスタンスを再起動します。
+
+```bash
+db2stop
+db2start
+```
+
+### 遠隔アクセスの設定
+遠隔アクセスを許可するためには、Db2の設定を調整し、ファイアウォールでポート50000を開放します。
+
+```bash
+# db2setコマンドでTCP/IP通信を有効化
+db2set DB2COMM=TCPIP
+
+# データベース管理者の設定
+db2 update dbm cfg using SVCENAME 50000
+
+# ファイアウォールの設定（例：UFW）
+sudo ufw allow 50000/tcp
+```
+## ユーザーと権限の管理
+### ユーザーの作成
+新しいユーザーを作成し、データベースへのアクセス権を設定します。
+
+```bash
+# OSユーザーの作成
+sudo useradd newuser
+sudo passwd newuser
+
+# データベースユーザーの作成と権限付与
+db2 connect to mydb
+db2 grant connect on database to user newuser
+```
+
+### 権限の付与
+ユーザーにデータベースやテーブルへの権限を付与します。
+
+```bash
+db2 grant select, insert, update, delete on table mytable to user newuser
+```
+
+## 基本的なクエリ
+### データの挿入
+テーブルにデータを挿入します。
+
+```sql
+INSERT INTO mytable (column1, column2) VALUES ('value1', 'value2');
+```
+
+### データの取得
+テーブルからデータを取得します。
+
+```sql
+SELECT column1, column2 FROM mytable WHERE condition;
+```
+
+### データの更新
+テーブルのデータを更新します。
+
+```sql
+UPDATE mytable SET column1 = 'newvalue' WHERE condition;
+```
+
+### データの削除
+テーブルのデータを削除します。
+
+```sql
+DELETE FROM mytable WHERE condition;
+```
+
+## 高度なクエリ
+### ジョイン
+複数のテーブルを結合してデータを取得します。
+
+```sql
+SELECT a.column1, b.column2
+FROM table1 a
+JOIN table2 b ON a.common_column = b.common_column;
+```
+
+### サブクエリ
+サブクエリを使用して、複雑なクエリを作成します。
+
+```sql
+SELECT column1
+FROM mytable
+WHERE column2 IN (SELECT column2 FROM anothertable WHERE condition);
+```
+
+### トリガー
+トリガーを使用して、特定の操作が実行されたときに自動的に実行されるアクションを定義します。
+
+```sql
+CREATE TRIGGER mytrigger
+AFTER INSERT ON mytable
+FOR EACH ROW
+BEGIN
+-- トリガーが実行するSQL文
+END;
+```
+
+## 高度な使用方法
+### トランザクション
+トランザクションを使用して、一連の操作をアトミックに実行します。
+
+```sql
+BEGIN;
+UPDATE account SET balance = balance - 100 WHERE account_id = 1;
+UPDATE account SET balance = balance + 100 WHERE account_id = 2;
+COMMIT;
+```
+
+### ストアドプロシージャと関数
+ストアドプロシージャと関数を使用して、再利用可能なコードを作成します。
+
+- ストアドプロシージャの作成
+
+```sql
+CREATE PROCEDURE increment_value(IN val INT)
+BEGIN
+UPDATE mytable SET column1 = column1 + val;
+END;
+```
+
+- ストアドプロシージャの呼び出し
+
+```sql
+CALL increment_value(5);
+```
+
+### パフォーマンスチューニング
+Db2のパフォーマンスを向上させるための設定と最適化を行います。
+
+- インデックスの作成
+
+```sql
+CREATE INDEX myindex ON mytable (mycolumn);
+```
+
+- クエリプランの確認
+
+```sql
+EXPLAIN PLAN FOR
+SELECT * FROM mytable WHERE mycolumn = 'value';
+```
+
+- データベースのメンテナンス
+
+```sql
+RUNSTATS ON TABLE mytable WITH DISTRIBUTION AND SAMPLED DETAILED INDEXES ALL;
+REORG TABLE mytable;
+```
+
+以上で、IBM Db2の基本的な使用方法と高度な操作についての説明を終わります。Db2は強力で柔軟なデータベース管理システムですが、効率的に使用するためには各機能を理解し、適切に活用することが重要です。

@@ -170,21 +170,17 @@ GrafanaにThanos Query Frontendをデータソースとして設定し、MinIO�
 ### Q5: Thanos Sidecar から Azure Storage へのデータ同期が行われない
 
 - **A5:**
-
 - **原因:** Thanos Sidecar の設定誤り、Azure Storage の権限不足、またはネットワーク問題が考えられます。
-
 - **解決策:**
 
 1. Thanos Sidecar の設定で正しいオブジェクトストレージ設定が使用されていることを確認してください。
-
 2. Azure Storage へのアクセス権限が ThanosSidecar に適切に付与されていることを確認してください。
-
-  3. ネットワーク設定を確認し、外部ストレージへの接続が可能であることを確認してください。
-  4. Thanos Sidecar のログを確認し、データ同期時にエラーが発生していないかを確認してください。
+3. ネットワーク設定を確認し、外部ストレージへの接続が可能であることを確認してください。
+4. Thanos Sidecar のログを確認し、データ同期時にエラーが発生していないかを確認してください。
 
 ### Q6: Prometheus のデータが Thanos に正しく転送されない
 
-  - **A6:**
+- **A6:**
 - **原因:** Prometheus と Thanos Sidecar 間の設定ミスやネットワーク問題が考えられます。
 - **解決策:**
 1. Prometheus の設定で `--storage.tsdb.path` が正しく Thanos Sidecar が監視するパスに設定されていることを確認してください。
@@ -193,7 +189,7 @@ GrafanaにThanos Query Frontendをデータソースとして設定し、MinIO�
 
 ### Q7: Grafana で Thanos ソースのデータが表示されない
 
-  - **A7:**
+- **A7:**
 - **原因:** Grafana のデータソース設定の誤りや Thanos Query コンポーネントの設定問題が考えられます。
 - **解決策:**
 1. Grafana の Thanos データソース設定で正しい URL（Thanos Query Frontend のアドレス）を指定していることを確認してください。
@@ -202,7 +198,7 @@ GrafanaにThanos Query Frontendをデータソースとして設定し、MinIO�
 
 ### Q8: コンテナ化された Thanos 環境でのパフォーマンス問題
 
-  - **A8:**
+- **A8:**
 - **原因:** リソース制限、ストレージのパフォーマンス問題、またはネットワークの遅延が考えられます。
 - **解決策:**
 1. Kubernetes のリソース制限（CPU、メモリ）を見直し、必要に応じて調整してください。
@@ -211,13 +207,12 @@ GrafanaにThanos Query Frontendをデータソースとして設定し、MinIO�
 
 ### Q9: Thanos Sidecarのハードリンクエラーに関するトラブルシューティング
 
-**A9:**
-
-  - **原因:** この問題は、Thanos SidecarがPrometheusデータをオブジェクトストレージにアップロードする過程でハードリンクを作成しようとした際に発生します。通常、以下のような状況でこのエラーが発生します：
-
+- **A9:**
+- **原因:** この問題は、Thanos SidecarがPrometheusデータをオブジェクトストレージにアップロードする過程でハードリンクを作成しようとした際に発生します。通常、以下のような状況でこのエラーが発生します：
+- **解決策:**
 1. **ファイルシステムの権限**: Prometheusが実行されているユーザー（通常は`nobody`や`node_exporter`など）とThanos Sidecarの実行ユーザーが異なり、ファイルシステムレベルでの適切な書き込み権限またはハードリンクの作成権限がない場合。
 2. **SELinuxポリシー**: SELinuxが有効なシステムで、適切なコンテキストやポリシーが設定されていない場合、権限エラーが発生することがあります。
-  - **解決策:**
+
 
 以下の手順に従って、Thanos SidecarとPrometheusが同一のファイルシステムリソースに対して適切なアクセス権を持つように設定します。
 
@@ -227,7 +222,7 @@ ThanosとPrometheusが同じユーザーやグループで実行されている�
 
 ```bash
 sudo chown -R prometheus:prometheus /var/lib/prometheus/data/`
-        ```
+```
 
 #### ステップ 2: ディレクトリとファイルの権限設定
 
@@ -235,7 +230,7 @@ Thanos Sidecarがデータを読み書きできるように、適切な権限を
 
 ```bash
 sudo chmod -R 775 /var/lib/prometheus/data/`
-        ```
+```
 
 #### ステップ 3: SELinuxの設定
 
@@ -244,11 +239,10 @@ SELinuxが有効な場合は、SELinuxポリシーを調整して、Thanos Sidec
 ```bash
 semanage fcontext -a -t prometheus_var_lib_t "/var/lib/prometheus/data(/.*)?"
 restorecon -Rv /var/lib/prometheus/data`
-        ```
+```
 
 #### ステップ 4: ハードリンクの代わりにコピーを使用
 
 Thanos Sidecarの設定で、ハードリンクの代わりにファイルのコピーを使用するように設定することも一つの方法です。これはThanosの設定オプションで直接サポートされていないため、デプロイメント環境やスクリプトを調整する必要があります。
 
-
-      これらは一般的な問題と解決策ですが、特定の状況によっては、より詳細な調査とカスタマイズされたアプローチが必要になる場合があります。問題が解決しない場合は、公式ドキュメントやコミュニティフォーラムを参照することをお勧めします。
+これらは一般的な問題と解決策ですが、特定の状況によっては、より詳細な調査とカスタマイズされたアプローチが必要になる場合があります。問題が解決しない場合は、公式ドキュメントやコミュニティフォーラムを参照することをお勧めします。

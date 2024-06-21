@@ -1,0 +1,188 @@
+---
+id: wsl-guide
+title: WSL使用説明書
+---
+
+# WSL 使用説明書
+
+このガイドでは、Windows Subsystem for Linux (WSL) の基本的な使用方法から応用的なテクニックまでを詳細に説明します。WSLは、Windows上でネイティブにLinuxカーネルを実行できる環境を提供し、LinuxとWindowsの間の橋渡しをする強力なツールです。
+
+## 目次
+1. [WSLの基本説明](#wslの基本説明)
+    - [WSLのインストール](#wslのインストール)
+    - [WSLの設定](#wslの設定)
+2. [WSLの基本機能](#wslの基本機能)
+    - [基本的なLinuxコマンドの使用](#基本的なlinuxコマンドの使用)
+    - [ファイルシステムの操作](#ファイルシステムの操作)
+    - [ソフトウェアのインストール](#ソフトウェアのインストール)
+3. [WSLの高度な機能](#wslの高度な機能)
+    - [WSL 2の使用](#wsl-2の使用)
+    - [WindowsとLinux間のファイル共有](#windowsとlinux間のファイル共有)
+    - [開発環境の設定](#開発環境の設定)
+    - [Dockerとの連携](#dockerとの連携)
+    - [ネットワークの設定](#ネットワークの設定)
+
+## WSLの基本説明
+
+### WSLのインストール
+
+WSLをインストールするには、以下の手順に従います。
+
+1. **WSLの有効化**
+
+   管理者権限でPowerShellを開き、次のコマンドを実行します。
+
+   ```powershell
+   dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+   dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+   ```
+
+WSL 2の設定
+
+WSL 2を使用するために、WSL 2用のLinuxカーネル更新プログラムパッケージをダウンロードしてインストールします。Microsoftの公式サイトから入手できます。
+
+デフォルトバージョンの設定
+
+WSL 2をデフォルトバージョンとして設定します。
+
+powershell
+复制代码
+wsl --set-default-version 2
+Linuxディストリビューションのインストール
+
+Microsoft Storeから好みのLinuxディストリビューション（例：Ubuntu）をインストールします。
+
+WSLの設定
+WSLを初めて起動すると、ユーザー名とパスワードの設定が求められます。これで基本的な設定は完了です。
+
+WSLの基本機能
+基本的なLinuxコマンドの使用
+WSLでは、標準的なLinuxコマンドを使用できます。いくつかの基本的なコマンドを紹介します。
+
+ディレクトリの移動
+sh
+复制代码
+cd /home/username
+ファイルの一覧表示
+sh
+复制代码
+ls -la
+ファイルのコピー
+sh
+复制代码
+cp source.txt destination.txt
+ファイルの移動
+sh
+复制代码
+mv oldname.txt newname.txt
+ファイルの削除
+sh
+复制代码
+rm filename.txt
+ファイルシステムの操作
+WSLでは、WindowsファイルシステムとLinuxファイルシステムを相互に操作できます。
+
+Windowsファイルへのアクセス
+Linux環境からWindowsのファイルシステムにアクセスするには、次のようにします。
+
+sh
+复制代码
+cd /mnt/c/Users/username/Documents
+Linuxファイルへのアクセス
+WindowsエクスプローラーでLinuxファイルシステムにアクセスするには、次のパスを使用します。
+
+plaintext
+复制代码
+\\wsl$\Ubuntu\home\username
+ソフトウェアのインストール
+WSLでは、aptパッケージマネージャーを使用してソフトウェアをインストールできます。
+
+ソフトウェアの更新
+sh
+复制代码
+sudo apt update
+sudo apt upgrade
+Gitのインストール
+sh
+复制代码
+sudo apt install git
+Node.jsのインストール
+sh
+复制代码
+sudo apt install nodejs
+sudo apt install npm
+WSLの高度な機能
+WSL 2の使用
+WSL 2は完全なLinuxカーネルを使用し、パフォーマンスが向上しています。以下はWSL 2の設定方法です。
+
+WSL 2への変換
+既存のディストリビューションをWSL 2に変換します。
+
+powershell
+复制代码
+wsl --set-version Ubuntu 2
+WindowsとLinux間のファイル共有
+WSLでは、WindowsとLinux間でファイルを簡単に共有できます。
+
+ファイルのコピー
+WindowsからLinuxにファイルをコピーします。
+
+powershell
+复制代码
+copy C:\path\to\file.txt \\wsl$\Ubuntu\home\username
+開発環境の設定
+WSLを使用して、強力な開発環境を構築できます。
+
+Visual Studio Codeの使用
+Visual Studio Codeは、WSLと連携してシームレスな開発体験を提供します。
+
+Visual Studio Codeをインストールします。
+Remote - WSL拡張機能をインストールします。
+Visual Studio CodeからWSL環境に接続します。
+Python開発環境の設定
+Pythonをインストールします。
+
+sh
+复制代码
+sudo apt install python3
+仮想環境を作成し、アクティベートします。
+
+sh
+复制代码
+python3 -m venv myenv
+source myenv/bin/activate
+必要なパッケージをインストールします。
+
+sh
+复制代码
+pip install numpy pandas
+Dockerとの連携
+WSL 2はDockerと連携して、コンテナをネイティブに実行できます。
+
+Dockerのインストール
+Docker Desktopをインストールします。
+
+Docker Desktopの設定でWSL 2を有効にします。
+
+DockerをWSL環境で使用します。
+
+sh
+复制代码
+docker run hello-world
+ネットワークの設定
+WSL 2では、ネットワーク設定を調整して、WindowsとLinux間の通信を最適化できます。
+
+ポートフォワーディング
+WindowsのホストからWSLのサービスにアクセスするには、ポートフォワーディングを設定します。
+
+WSLでサービスを実行します。
+
+sh
+复制代码
+python3 -m http.server 8000
+Windowsのブラウザからアクセスします。
+
+plaintext
+复制代码
+http://localhost:8000
+以上で、WSLの基本的な使用方法と高度な操作についての説明を終わります。WSLは、Windows上でLinux環境をシームレスに統合する強力なツールであり、効率的に使用するためには各機能を理解し、適切に活用することが重要です。

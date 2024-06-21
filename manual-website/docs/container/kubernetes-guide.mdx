@@ -1,0 +1,420 @@
+---
+id: kubernetes-guide
+title: Kubernetesマニュアル
+---
+
+# Kubernetes 使用マニュアル
+
+このガイドでは、Kubernetesの基本的な使用方法から応用的なテクニックまでを詳細に説明します。Kubernetesは、コンテナ化されたアプリケーションのデプロイ、スケーリング、運用を自動化するためのオープンソースのプラットフォームです。
+
+## 目次
+1. [Kubernetesの基本説明](#kubernetesの基本説明)
+    - [Kubernetesのインストール](#kubernetesのインストール)
+    - [Kubernetesの設定](#kubernetesの設定)
+2. [Kubernetesの基本機能](#kubernetesの基本機能)
+    - [Podの作成と管理](#podの作成と管理)
+    - [サービスの作成と管理](#サービスの作成と管理)
+    - [デプロイメントの使用](#デプロイメントの使用)
+    - [ボリュームと永続ストレージ](#ボリュームと永続ストレージ)
+3. [Kubernetesの高度な機能](#kubernetesの高度な機能)
+    - [ConfigMapとシークレット](#configmapとシークレット)
+    - [ヘルスチェックと自己修復](#ヘルスチェックと自己修復)
+    - [水平ポッドオートスケーリング](#水平ポッドオートスケーリング)
+    - [ネットワークポリシー](#ネットワークポリシー)
+    - [Helmを使用したパッケージ管理](#helmを使用したパッケージ管理)
+
+## Kubernetesの基本説明
+
+### Kubernetesのインストール
+
+Kubernetesは主要なOSで使用可能です。以下は各OSでのインストール手順です。
+
+#### Minikubeのインストール
+
+Minikubeは、ローカルKubernetesクラスターを実行するためのツールです。
+
+1. Minikubeをインストールします。
+    ```bash
+    curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+    sudo install minikube-linux-amd64 /usr/local/bin/minikube
+    ```
+
+#### kubectlのインストール
+
+kubectlは、Kubernetesクラスターを操作するためのコマンドラインツールです。
+
+1. kubectlをインストールします。
+    ```bash
+    curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
+    chmod +x ./kubectl
+    sudo mv ./kubectl /usr/local/bin/kubectl
+    ```
+
+### Kubernetesの設定
+
+1. Minikubeを使用してローカルKubernetesクラスターを起動します。
+    ```bash
+    minikube start
+    ```
+
+2. クラスター情報を確認します。
+    ```bash
+    kubectl cluster-info
+    ```
+
+## Kubernetesの基本機能
+
+### Podの作成と管理
+
+Podは、Kubernetesの最小デプロイメント単位です。
+
+#### Podの作成
+
+1. `pod.yaml`ファイルを作成し、以下の内容を追加します。
+    ```yaml
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: my-pod
+    spec:
+      containers:
+      - name: my-container
+        image: nginx
+    ```
+
+2. Podを作成します。
+    ```bash
+    kubectl apply -f pod.yaml
+    ```
+
+#### Podの管理
+
+1. Podの一覧を表示します。
+    ```bash
+    kubectl get pods
+    ```
+
+2. Podの詳細を表示します。
+    ```bash
+    kubectl describe pod my-pod
+    ```
+
+3. Podを削除します。
+    ```bash
+    kubectl delete pod my-pod
+    ```
+
+### サービスの作成と管理
+
+サービスは、Podの集合に対するネットワークアクセスを提供します。
+
+#### サービスの作成
+
+1. `service.yaml`ファイルを作成し、以下の内容を追加します。
+    ```yaml
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: my-service
+    spec:
+      selector:
+        app: my-app
+      ports:
+        - protocol: TCP
+          port: 80
+          targetPort: 80
+    ```
+
+2. サービスを作成します。
+    ```bash
+    kubectl apply -f service.yaml
+    ```
+
+#### サービスの管理
+
+1. サービスの一覧を表示します。
+    ```bash
+    kubectl get services
+    ```
+
+2. サービスの詳細を表示します。
+    ```bash
+    kubectl describe service my-service
+    ```
+
+3. サービスを削除します。
+    ```bash
+    kubectl delete service my-service
+    ```
+
+### デプロイメントの使用
+
+デプロイメントは、宣言的にPodのデプロイと管理を行います。
+
+#### デプロイメントの作成
+
+1. `deployment.yaml`ファイルを作成し、以下の内容を追加します。
+    ```yaml
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: my-deployment
+    spec:
+      replicas: 3
+      selector:
+        matchLabels:
+          app: my-app
+      template:
+        metadata:
+          labels:
+            app: my-app
+        spec:
+          containers:
+          - name: my-container
+            image: nginx
+    ```
+
+2. デプロイメントを作成します。
+    ```bash
+    kubectl apply -f deployment.yaml
+    ```
+
+#### デプロイメントの管理
+
+1. デプロイメントの一覧を表示します。
+    ```bash
+    kubectl get deployments
+    ```
+
+2. デプロイメントの詳細を表示します。
+    ```bash
+    kubectl describe deployment my-deployment
+    ```
+
+3. デプロイメントをスケールアウトします。
+    ```bash
+    kubectl scale deployment my-deployment --replicas=5
+    ```
+
+4. デプロイメントを削除します。
+    ```bash
+    kubectl delete deployment my-deployment
+    ```
+
+### ボリュームと永続ストレージ
+
+ボリュームは、Podのライフサイクルを超えてデータを保存します。
+
+#### 永続ボリュームの作成
+
+1. `pv.yaml`ファイルを作成し、以下の内容を追加します。
+    ```yaml
+    apiVersion: v1
+    kind: PersistentVolume
+    metadata:
+      name: my-pv
+    spec:
+      capacity:
+        storage: 1Gi
+      accessModes:
+        - ReadWriteOnce
+      hostPath:
+        path: "/mnt/data"
+    ```
+
+2. 永続ボリュームを作成します。
+    ```bash
+    kubectl apply -f pv.yaml
+    ```
+
+#### 永続ボリュームクレームの作成
+
+1. `pvc.yaml`ファイルを作成し、以下の内容を追加します。
+    ```yaml
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      name: my-pvc
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 1Gi
+    ```
+
+2. 永続ボリュームクレームを作成します。
+    ```bash
+    kubectl apply -f pvc.yaml
+    ```
+
+#### Podにボリュームをマウント
+
+1. Podの設定ファイルにボリュームとボリュームマウントを追加します。
+    ```yaml
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: my-pod
+    spec:
+      containers:
+      - name: my-container
+        image: nginx
+        volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: my-volume
+      volumes:
+      - name: my-volume
+        persistentVolumeClaim:
+          claimName: my-pvc
+    ```
+
+## Kubernetesの高度な機能
+
+### ConfigMapとシークレット
+
+ConfigMapとシークレットを使用して、設定データや機密情報を管理します。
+
+#### ConfigMapの作成
+
+1. `configmap.yaml`ファイルを作成し、以下の内容を追加します。
+    ```yaml
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: my-config
+    data:
+      key1: value1
+      key2: value2
+    ```
+
+2. ConfigMapを作成します。
+    ```bash
+    kubectl apply -f configmap.yaml
+    ```
+
+#### シークレットの作成
+
+1. シークレットを作成します。
+    ```bash
+    kubectl create secret generic my-secret --from-literal=password=my-password
+    ```
+
+#### PodでConfigMapとシークレットを使用
+
+1. Podの設定ファイルに環境変数としてConfigMapとシークレットを追加します。
+    ```yaml
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: my-pod
+    spec:
+      containers:
+      - name: my-container
+        image: nginx
+        env:
+        - name: CONFIG_KEY1
+          valueFrom:
+            configMapKeyRef:
+              name: my-config
+              key: key1
+        - name: SECRET_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: my-secret
+              key: password
+    ```
+
+### ヘルスチェックと自己修復
+
+Kubernetesは、Podの健康状態を監視し、自動的に修復します。
+
+#### ヘルスチェックの設定
+
+1. Podの設定ファイルにヘルスチェックを追加します。
+    ```yaml
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: my-pod
+    spec:
+      containers:
+      - name: my-container
+        image: nginx
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 3
+          periodSeconds: 3
+    ```
+
+### 水平ポッドオートスケーリング
+
+Kubernetesは、リソースの使用状況に基づいてPodの数を自動的にスケーリングします。
+
+#### オートスケーラーの作成
+
+1. デプロイメントに基づいてオートスケーラーを作成します。
+    ```bash
+    kubectl autoscale deployment my-deployment --cpu-percent=50 --min=1 --max=10
+    ```
+
+### ネットワークポリシー
+
+ネットワークポリシーを使用して、Pod間のネットワークトラフィックを制御します。
+
+#### ネットワークポリシーの作成
+
+1. `networkpolicy.yaml`ファイルを作成し、以下の内容を追加します。
+    ```yaml
+    apiVersion: networking.k8s.io/v1
+    kind: NetworkPolicy
+    metadata:
+      name: my-network-policy
+    spec:
+      podSelector:
+        matchLabels:
+          role: db
+      policyTypes:
+      - Ingress
+      ingress:
+      - from:
+        - podSelector:
+            matchLabels:
+              role: frontend
+    ```
+
+2. ネットワークポリシーを作成します。
+    ```bash
+    kubectl apply -f networkpolicy.yaml
+    ```
+
+### Helmを使用したパッケージ管理
+
+Helmを使用して、Kubernetesアプリケーションのパッケージ管理を行います。
+
+#### Helmのインストール
+
+1. Helmをインストールします。
+    ```bash
+    curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+    ```
+
+#### チャートの使用
+
+1. Nginxチャートをインストールします。
+    ```bash
+    helm repo add stable https://charts.helm.sh/stable
+    helm repo update
+    helm install my-nginx stable/nginx-ingress
+    ```
+
+#### チャートの作成
+
+1. 新しいチャートを作成します。
+    ```bash
+    helm create my-chart
+    ```
+
+以上で、Kubernetesの基本的な使用方法と高度な操作についての説明を終わります。Kubernetesは強力で柔軟なコンテナオーケストレーションプラットフォームであり、効率的に使用するためには各機能を理解し、適切に活用することが重要です。

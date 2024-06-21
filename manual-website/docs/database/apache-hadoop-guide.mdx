@@ -1,0 +1,336 @@
+---
+id: apache-hadoop-guide
+title: Apache Hadoopマニュアル
+---
+
+# Apache Hadoop 使用マニュアル
+
+このガイドでは、Apache Hadoopの基本的な使用方法から応用的なテクニックまでを詳細に説明します。Apache Hadoopは、大規模データの分散処理を行うためのオープンソースソフトウェアフレームワークです。
+
+## 目次
+1. [Apache Hadoopのインストール](#apache-hadoopのインストール)
+    - [Linuxでのインストール](#linuxでのインストール)
+    - [Windowsでのインストール](#windowsでのインストール)
+    - [macOSでのインストール](#macosでのインストール)
+2. [基本設定](#基本設定)
+    - [初期設定とクラスタの構築](#初期設定とクラスタの構築)
+    - [設定ファイルの調整](#設定ファイルの調整)
+3. [遠隔アクセスの設定](#遠隔アクセスの設定)
+4. [ユーザーと権限の管理](#ユーザーと権限の管理)
+    - [ユーザーの作成](#ユーザーの作成)
+    - [権限の付与](#権限の付与)
+5. [基本的なクエリ](#基本的なクエリ)
+    - [HDFSへのデータのアップロード](#hdfsへのデータのアップロード)
+    - [HDFSからのデータの取得](#hdfsからのデータの取得)
+6. [高度なクエリ](#高度なクエリ)
+    - [MapReduceジョブの作成](#mapreduceジョブの作成)
+    - [Hiveの使用](#hiveの使用)
+    - [Pigの使用](#pigの使用)
+7. [高度な使用方法](#高度な使用方法)
+    - [YARNの設定と使用](#yarnの設定と使用)
+    - [クラスタの監視と管理](#クラスタの監視と管理)
+    - [パフォーマンスチューニング](#パフォーマンスチューニング)
+
+## Apache Hadoopのインストール
+
+### Linuxでのインストール
+
+1. Javaのインストール（HadoopはJavaが必要です）。
+    ```bash
+    sudo apt-get update
+    sudo apt-get install default-jdk
+    ```
+
+2. Hadoopのダウンロードと解凍。
+    ```bash
+    wget https://downloads.apache.org/hadoop/common/hadoop-3.3.1/hadoop-3.3.1.tar.gz
+    tar -xzvf hadoop-3.3.1.tar.gz
+    sudo mv hadoop-3.3.1 /usr/local/hadoop
+    ```
+
+3. 環境変数の設定。
+    ```bash
+    echo "export HADOOP_HOME=/usr/local/hadoop" >> ~/.bashrc
+    echo "export PATH=\$PATH:\$HADOOP_HOME/bin:\$HADOOP_HOME/sbin" >> ~/.bashrc
+    source ~/.bashrc
+    ```
+
+### Windowsでのインストール
+
+1. Hadoopの公式サイト（[https://hadoop.apache.org/releases.html](https://hadoop.apache.org/releases.html)）からWindows用のバイナリをダウンロードします。
+2. ダウンロードしたZIPファイルを解凍し、適当なフォルダに配置します。
+3. 環境変数の設定（システムプロパティから環境変数を設定します）。
+
+### macOSでのインストール
+
+1. Homebrewを使用してHadoopをインストールします。
+    ```bash
+    brew install hadoop
+    ```
+
+2. 環境変数の設定。
+    ```bash
+    echo "export HADOOP_HOME=/usr/local/Cellar/hadoop/3.3.1" >> ~/.bash_profile
+    echo "export PATH=\$PATH:\$HADOOP_HOME/bin:\$HADOOP_HOME/sbin" >> ~/.bash_profile
+    source ~/.bash_profile
+    ```
+
+## 基本設定
+
+### 初期設定とクラスタの構築
+
+1. Hadoopの設定ファイル（`core-site.xml`, `hdfs-site.xml`, `yarn-site.xml`, `mapred-site.xml`）を編集してクラスタを構築します。
+
+    - `core-site.xml` の設定
+        ```xml
+        <configuration>
+            <property>
+                <name>fs.defaultFS</name>
+                <value>hdfs://localhost:9000</value>
+            </property>
+        </configuration>
+        ```
+
+    - `hdfs-site.xml` の設定
+        ```xml
+        <configuration>
+            <property>
+                <name>dfs.replication</name>
+                <value>1</value>
+            </property>
+            <property>
+                <name>dfs.namenode.name.dir</name>
+                <value>file:///usr/local/hadoop/data/namenode</value>
+            </property>
+            <property>
+                <name>dfs.datanode.data.dir</name>
+                <value>file:///usr/local/hadoop/data/datanode</value>
+            </property>
+        </configuration>
+        ```
+
+    - `yarn-site.xml` の設定
+        ```xml
+        <configuration>
+            <property>
+                <name>yarn.nodemanager.aux-services</name>
+                <value>mapreduce_shuffle</value>
+            </property>
+        </configuration>
+        ```
+
+    - `mapred-site.xml` の設定
+        ```xml
+        <configuration>
+            <property>
+                <name>mapreduce.framework.name</name>
+                <value>yarn</value>
+            </property>
+        </configuration>
+        ```
+
+2. Hadoopファイルシステムのフォーマット。
+    ```bash
+    hdfs namenode -format
+    ```
+
+3. Hadoopデーモンの起動。
+    ```bash
+    start-dfs.sh
+    start-yarn.sh
+    ```
+
+### 設定ファイルの調整
+
+必要に応じて、設定ファイルのパスやその他の詳細設定を調整します。
+
+## 遠隔アクセスの設定
+
+遠隔アクセスを許可するために、必要なポート（Webインターフェイスは50070、YARNリソースマネージャーは8088など）をファイアウォールで開放します。
+
+```bash
+# ファイアウォールの設定（例：UFW）
+sudo ufw allow 50070/tcp
+sudo ufw allow 8088/tcp
+```
+
+## ユーザーと権限の管理
+### ユーザーの作成
+Hadoopのユーザーを作成し、適切な権限を設定します。
+
+```bash
+sudo adduser hadoopuser
+sudo usermod -aG sudo hadoopuser
+```
+
+### 権限の付与
+Hadoopのファイルシステムに対してユーザーの権限を設定します。
+
+```bash
+hdfs dfs -mkdir /user/hadoopuser
+hdfs dfs -chown hadoopuser:hadoopuser /user/hadoopuser
+```
+
+## 基本的なクエリ
+### HDFSへのデータのアップロード
+ローカルファイルをHDFSにアップロードします。
+
+```bash
+hdfs dfs -put localfile.txt /user/hadoopuser/
+```
+
+### HDFSからのデータの取得
+HDFSからローカルファイルにデータを取得します。
+
+```bash
+hdfs dfs -get /user/hadoopuser/localfile.txt
+```
+
+## 高度なクエリ
+### MapReduceジョブの作成
+シンプルなMapReduceジョブを作成して実行します。
+
+- Mapperの作成（WordCountMapper.java）
+```java
+import java.io.IOException;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+
+public class WordCountMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
+private final static IntWritable one = new IntWritable(1);
+private Text word = new Text();
+
+    @Override
+    protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
+        String[] words = value.toString().split("\\s+");
+        for (String str : words) {
+            word.set(str);
+            context.write(word, one);
+        }
+    }
+}
+```
+
+- Reducerの作成（WordCountReducer.java）
+```java
+import java.io.IOException;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Reducer;
+
+public class WordCountReducer extends Reducer<Text, IntWritable, Text, IntWritable> {
+@Override
+protected void reduce(Text key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
+int sum = 0;
+for (IntWritable val : values) {
+sum += val.get();
+}
+context.write(key, new IntWritable(sum));
+}
+}
+```
+
+- ドライバークラスの作成（WordCount.java）
+
+```java
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+
+public class WordCount {
+public static void main(String[] args) throws Exception {
+Configuration conf = new Configuration();
+Job job = Job.getInstance(conf, "word count");
+job.setJarByClass(WordCount.class);
+job.setMapperClass(WordCountMapper.class);
+job.setCombinerClass(WordCountReducer.class);
+job.setReducerClass(WordCountReducer.class);
+job.setOutputKeyClass(Text.class);
+job.setOutputValueClass(IntWritable.class);
+FileInputFormat.addInputPath(job, new Path(args[0]));
+FileOutputFormat.setOutputPath(job, new Path(args[1]));
+System.exit(job.waitForCompletion(true) ? 0 : 1);
+}
+}
+```
+
+- ジョブの実行
+
+```bash
+hadoop jar wordcount.jar WordCount /user/hadoopuser/input /user/hadoopuser/output
+```
+
+### Hiveの使用
+Hiveを使用して、SQLライクなクエリを実行します。
+
+- Hiveシェルの起動
+
+```bash
+hive
+```
+
+- テーブルの作成とデータの挿入
+
+```sql
+CREATE TABLE mytable (id INT, name STRING);
+LOAD DATA INPATH '/user/hadoopuser/inputfile.txt' INTO TABLE mytable;\
+```
+
+- クエリの実行
+
+```sql
+SELECT * FROM mytable;
+```
+
+### Pigの使用
+Pigを使用して、データの分析を行います。
+
+- Pigシェルの起動
+
+```bash
+pig
+```
+
+- スクリプトの実行
+```pig
+A = LOAD 'inputfile.txt' AS (id:int, name:chararray);
+B = FOREACH A GENERATE name;
+DUMP B;
+```
+
+## 高度な使用方法
+###  YARNの設定と使用
+YARN（Yet Another Resource Negotiator）を使用して、リソース管理を行います。
+
+- YARNのリソースマネージャーとノードマネージャーの起動
+
+```bash
+start-yarn.sh
+```
+
+- ジョブの送信
+
+```bash
+yarn jar example.jar example.MainClass
+```
+
+###  クラスタの監視と管理
+Hadoopのクラスタを監視および管理するためのツールを使用します。
+
+- Hadoop Webインターフェース（NameNode：````http://localhost:9870````、ResourceManager：````http://localhost:8088````）にアクセスします。
+
+### パフォーマンスチューニング
+Hadoopのパフォーマンスを向上させるための設定と最適化を行います。
+
+- クラスタの設定を最適化するために、core-site.xml、hdfs-site.xml、yarn-site.xml、mapred-site.xmlのパラメータを調整します。
+- 必要に応じて、クラスタのハードウェアリソースを増強します。
+- データの分散とレプリケーションの設定を見直します。
+
+
+以上で、Apache Hadoopの基本的な使用方法と高度な操作についての説明を終わります。Hadoopは大規模データの処理に最適なフレームワークですが、効率的に使用するためには各機能を理解し、適切に活用することが重要です。

@@ -1,0 +1,227 @@
+---
+id: apache-cassandra-guide
+title: Apache Cassandraマニュアル
+---
+
+# Apache Cassandra 使用マニュアル
+
+このガイドでは、Apache Cassandraの基本的な使用方法から応用的なテクニックまでを詳細に説明します。Apache Cassandraは、高い可用性とスケーラビリティを提供する分散型NoSQLデータベースです。
+
+## 目次
+1. [Apache Cassandraのインストール](#apache-cassandraのインストール)
+    - [Linuxでのインストール](#linuxでのインストール)
+    - [Windowsでのインストール](#windowsでのインストール)
+    - [macOSでのインストール](#macosでのインストール)
+2. [基本設定](#基本設定)
+    - [初期設定とデータベースの作成](#初期設定とデータベースの作成)
+    - [設定ファイルの調整](#設定ファイルの調整)
+3. [遠隔アクセスの設定](#遠隔アクセスの設定)
+4. [ユーザーと権限の管理](#ユーザーと権限の管理)
+    - [ユーザーの作成](#ユーザーの作成)
+    - [権限の付与](#権限の付与)
+5. [基本的なクエリ](#基本的なクエリ)
+    - [データの挿入](#データの挿入)
+    - [データの取得](#データの取得)
+    - [データの更新](#データの更新)
+    - [データの削除](#データの削除)
+6. [高度なクエリ](#高度なクエリ)
+    - [ジョイン](#ジョイン)
+    - [サブクエリ](#サブクエリ)
+    - [トリガー](#トリガー)
+7. [高度な使用方法](#高度な使用方法)
+    - [トランザクション](#トランザクション)
+    - [バックアップと復元](#バックアップと復元)
+    - [パフォーマンスチューニング](#パフォーマンスチューニング)
+
+## Apache Cassandraのインストール
+
+### Linuxでのインストール
+
+1. Apache Cassandraの公式リポジトリを追加します（以下はUbuntuの場合）。
+    ```bash
+    echo "deb https://downloads.apache.org/cassandra/debian 311x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
+    wget -q -O - https://www.apache.org/dist/cassandra/KEYS | sudo apt-key add -
+    sudo apt-get update
+    ```
+
+2. Apache Cassandraをインストールします。
+    ```bash
+    sudo apt-get install cassandra
+    ```
+
+3. Cassandraサービスを起動します。
+    ```bash
+    sudo systemctl start cassandra
+    sudo systemctl enable cassandra
+    ```
+
+### Windowsでのインストール
+
+1. Apache Cassandraの公式サイト（[https://cassandra.apache.org/download/](https://cassandra.apache.org/download/)）からバイナリをダウンロードします。
+2. ダウンロードしたZIPファイルを解凍し、適当なフォルダに配置します。
+3. コマンドプロンプトを開き、Cassandraを起動します。
+    ```bash
+    cd path\to\cassandra\bin
+    cassandra.bat
+    ```
+
+### macOSでのインストール
+
+1. Homebrewを使用してApache Cassandraをインストールします。
+    ```bash
+    brew install cassandra
+    ```
+
+2. Cassandraサービスを起動します。
+    ```bash
+    brew services start cassandra
+    ```
+
+## 基本設定
+
+### 初期設定とデータベースの作成
+
+Cassandraに接続して、初期設定とデータベースを作成します。
+
+```bash
+cqlsh
+CREATE KEYSPACE mykeyspace WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
+USE mykeyspace;
+```
+
+### 設定ファイルの調整
+Cassandraの設定ファイルは通常、````/etc/cassandra/cassandra.yaml````（Linux）または
+````/usr/local/etc/cassandra/cassandra.yaml````（macOS）にあります。
+
+- 設定ファイルの編集
+```yaml
+cluster_name: 'Test Cluster'
+listen_address: localhost
+rpc_address: 0.0.0.0
+endpoint_snitch: SimpleSnitch
+```
+設定変更後、Cassandraサービスを再起動します。
+
+```bash
+sudo systemctl restart cassandra
+```
+
+### 遠隔アクセスの設定
+遠隔アクセスを許可するためには、Cassandraの設定を調整し、ファイアウォールでポート9042を開放します。
+
+```bash
+# ファイアウォールの設定（例：UFW）
+sudo ufw allow 9042/tcp
+```
+
+リモートユーザーの設定も行います。
+
+```bash
+CREATE ROLE myuser WITH PASSWORD = 'mypassword' AND LOGIN = true;
+GRANT ALL PERMISSIONS ON KEYSPACE mykeyspace TO myuser;
+```
+
+## ユーザーと権限の管理
+### ユーザーの作成
+新しいユーザーを作成し、データベースへのアクセス権を設定します。
+
+```bash
+CREATE ROLE newuser WITH PASSWORD = 'newpassword' AND LOGIN = true;
+```
+### 権限の付与
+ユーザーにデータベースやテーブルへの権限を付与します。
+
+```bash
+GRANT ALL PERMISSIONS ON KEYSPACE mykeyspace TO newuser;
+```
+
+## 基本的なクエリ
+### データの挿入
+テーブルにデータを挿入します。
+
+```bash
+INSERT INTO mytable (id, name, age) VALUES (1, 'John', 30);
+```
+
+### データの取得
+テーブルからデータを取得します。
+
+```bash
+SELECT name, age FROM mytable WHERE id = 1;
+```
+
+### データの更新
+テーブルのデータを更新します。
+
+```bash
+UPDATE mytable SET age = 31 WHERE id = 1;
+```
+
+### データの削除
+テーブルのデータを削除します。
+
+```bash
+DELETE FROM mytable WHERE id = 1;
+```
+
+## 高度なクエリ
+### ジョイン
+Cassandraはジョイン操作をサポートしていませんが、データを正規化して分散キーを効果的に使用することで同様の結果を得ることができます。
+
+### サブクエリ
+Cassandraはサブクエリもサポートしていません。複雑なクエリはアプリケーション側で分割して実行する必要があります。
+
+### トリガー
+Cassandraのトリガーを使用して、特定の操作が実行されたときに自動的に実行されるアクションを定義します。
+
+```bash
+CREATE TRIGGER mytrigger ON mytable
+USING 'org.apache.cassandra.triggers.MyTrigger';
+```
+
+## 高度な使用方法
+### トランザクション
+Cassandraは軽量トランザクションをサポートしています。
+
+```bash
+BEGIN BATCH
+INSERT INTO mytable (id, name, age) VALUES (2, 'Alice', 25);
+UPDATE mytable SET age = 26 WHERE id = 2;
+APPLY BATCH;
+```
+
+### バックアップと復元
+Cassandraデータベースのバックアップと復元を行います。
+
+- バックアップ
+
+```bash
+nodetool snapshot mykeyspace
+```
+
+- 復元
+```bash
+nodetool clearsnapshot mykeyspace
+cp /var/lib/cassandra/data/mykeyspace/* /var/lib/cassandra/data/mykeyspace/
+```
+
+### パフォーマンスチューニング
+Cassandraのパフォーマンスを向上させるための設定と最適化を行います。
+
+- クエリプランの確認
+```bash
+EXPLAIN SELECT * FROM mytable WHERE id = 1;
+```
+
+- インデックスの再構築
+
+```bash
+nodetool rebuild_index mykeyspace myindex;
+```
+
+- テーブルの最適化
+
+```bash
+nodetool compact mykeyspace mytable;
+```
+以上で、Apache Cassandraの基本的な使用方法と高度な操作についての説明を終わります。Cassandraは高いスケーラビリティと可用性を備えた分散型データベースですが、効率的に使用するためには各機能を理解し、適切に活用することが重要です。
