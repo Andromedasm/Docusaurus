@@ -9,51 +9,51 @@ title: Apache Hadoopマニュアル
 
 ## 目次
 1. [Apache Hadoopのインストール](#apache-hadoopのインストール)
-    - [Linuxでのインストール](#linuxでのインストール)
-    - [Windowsでのインストール](#windowsでのインストール)
-    - [macOSでのインストール](#macosでのインストール)
+ - [Linuxでのインストール](#linuxでのインストール)
+ - [Windowsでのインストール](#windowsでのインストール)
+ - [macOSでのインストール](#macosでのインストール)
 2. [基本設定](#基本設定)
-    - [初期設定とクラスタの構築](#初期設定とクラスタの構築)
-    - [設定ファイルの調整](#設定ファイルの調整)
+ - [初期設定とクラスタの構築](#初期設定とクラスタの構築)
+ - [設定ファイルの調整](#設定ファイルの調整)
 3. [遠隔アクセスの設定](#遠隔アクセスの設定)
 4. [ユーザーと権限の管理](#ユーザーと権限の管理)
-    - [ユーザーの作成](#ユーザーの作成)
-    - [権限の付与](#権限の付与)
+ - [ユーザーの作成](#ユーザーの作成)
+ - [権限の付与](#権限の付与)
 5. [基本的なクエリ](#基本的なクエリ)
-    - [HDFSへのデータのアップロード](#hdfsへのデータのアップロード)
-    - [HDFSからのデータの取得](#hdfsからのデータの取得)
+ - [HDFSへのデータのアップロード](#hdfsへのデータのアップロード)
+ - [HDFSからのデータの取得](#hdfsからのデータの取得)
 6. [高度なクエリ](#高度なクエリ)
-    - [MapReduceジョブの作成](#mapreduceジョブの作成)
-    - [Hiveの使用](#hiveの使用)
-    - [Pigの使用](#pigの使用)
+ - [MapReduceジョブの作成](#mapreduceジョブの作成)
+ - [Hiveの使用](#hiveの使用)
+ - [Pigの使用](#pigの使用)
 7. [高度な使用方法](#高度な使用方法)
-    - [YARNの設定と使用](#yarnの設定と使用)
-    - [クラスタの監視と管理](#クラスタの監視と管理)
-    - [パフォーマンスチューニング](#パフォーマンスチューニング)
+ - [YARNの設定と使用](#yarnの設定と使用)
+ - [クラスタの監視と管理](#クラスタの監視と管理)
+ - [パフォーマンスチューニング](#パフォーマンスチューニング)
 
 ## Apache Hadoopのインストール
 
 ### Linuxでのインストール
 
 1. Javaのインストール（HadoopはJavaが必要です）。
-    ```bash
-    sudo apt-get update
-    sudo apt-get install default-jdk
-    ```
+```bash
+ sudo apt-get update
+ sudo apt-get install default-jdk
+```
 
 2. Hadoopのダウンロードと解凍。
-    ```bash
-    wget https://downloads.apache.org/hadoop/common/hadoop-3.3.1/hadoop-3.3.1.tar.gz
-    tar -xzvf hadoop-3.3.1.tar.gz
-    sudo mv hadoop-3.3.1 /usr/local/hadoop
-    ```
+```bash
+ wget https://downloads.apache.org/hadoop/common/hadoop-3.3.1/hadoop-3.3.1.tar.gz
+ tar -xzvf hadoop-3.3.1.tar.gz
+ sudo mv hadoop-3.3.1 /usr/local/hadoop
+```
 
 3. 環境変数の設定。
-    ```bash
-    echo "export HADOOP_HOME=/usr/local/hadoop" >> ~/.bashrc
-    echo "export PATH=\$PATH:\$HADOOP_HOME/bin:\$HADOOP_HOME/sbin" >> ~/.bashrc
-    source ~/.bashrc
-    ```
+```bash
+ echo "export HADOOP_HOME=/usr/local/hadoop" >> ~/.bashrc
+ echo "export PATH=\$PATH:\$HADOOP_HOME/bin:\$HADOOP_HOME/sbin" >> ~/.bashrc
+ source ~/.bashrc
+```
 
 ### Windowsでのインストール
 
@@ -64,16 +64,16 @@ title: Apache Hadoopマニュアル
 ### macOSでのインストール
 
 1. Homebrewを使用してHadoopをインストールします。
-    ```bash
-    brew install hadoop
-    ```
+```bash
+ brew install hadoop
+```
 
 2. 環境変数の設定。
-    ```bash
-    echo "export HADOOP_HOME=/usr/local/Cellar/hadoop/3.3.1" >> ~/.bash_profile
-    echo "export PATH=\$PATH:\$HADOOP_HOME/bin:\$HADOOP_HOME/sbin" >> ~/.bash_profile
-    source ~/.bash_profile
-    ```
+```bash
+ echo "export HADOOP_HOME=/usr/local/Cellar/hadoop/3.3.1" >> ~/.bash_profile
+ echo "export PATH=\$PATH:\$HADOOP_HOME/bin:\$HADOOP_HOME/sbin" >> ~/.bash_profile
+ source ~/.bash_profile
+```
 
 ## 基本設定
 
@@ -81,64 +81,64 @@ title: Apache Hadoopマニュアル
 
 1. Hadoopの設定ファイル（`core-site.xml`, `hdfs-site.xml`, `yarn-site.xml`, `mapred-site.xml`）を編集してクラスタを構築します。
 
-    - `core-site.xml` の設定
-        ```xml
-        <configuration>
-            <property>
-                <name>fs.defaultFS</name>
-                <value>hdfs://localhost:9000</value>
-            </property>
-        </configuration>
-        ```
+ - `core-site.xml` の設定
+```xml
+  <configuration>
+      <property>
+          <name>fs.defaultFS</name>
+          <value>hdfs://localhost:9000</value>
+      </property>
+  </configuration>
+```
 
-    - `hdfs-site.xml` の設定
-        ```xml
-        <configuration>
-            <property>
-                <name>dfs.replication</name>
-                <value>1</value>
-            </property>
-            <property>
-                <name>dfs.namenode.name.dir</name>
-                <value>file:///usr/local/hadoop/data/namenode</value>
-            </property>
-            <property>
-                <name>dfs.datanode.data.dir</name>
-                <value>file:///usr/local/hadoop/data/datanode</value>
-            </property>
-        </configuration>
-        ```
+ - `hdfs-site.xml` の設定
+```xml
+  <configuration>
+      <property>
+          <name>dfs.replication</name>
+          <value>1</value>
+      </property>
+      <property>
+          <name>dfs.namenode.name.dir</name>
+          <value>file:///usr/local/hadoop/data/namenode</value>
+      </property>
+      <property>
+          <name>dfs.datanode.data.dir</name>
+          <value>file:///usr/local/hadoop/data/datanode</value>
+      </property>
+  </configuration>
+```
 
-    - `yarn-site.xml` の設定
-        ```xml
-        <configuration>
-            <property>
-                <name>yarn.nodemanager.aux-services</name>
-                <value>mapreduce_shuffle</value>
-            </property>
-        </configuration>
-        ```
+ - `yarn-site.xml` の設定
+```xml
+  <configuration>
+      <property>
+          <name>yarn.nodemanager.aux-services</name>
+          <value>mapreduce_shuffle</value>
+      </property>
+  </configuration>
+```
 
-    - `mapred-site.xml` の設定
-        ```xml
-        <configuration>
-            <property>
-                <name>mapreduce.framework.name</name>
-                <value>yarn</value>
-            </property>
-        </configuration>
-        ```
+ - `mapred-site.xml` の設定
+```xml
+  <configuration>
+      <property>
+          <name>mapreduce.framework.name</name>
+          <value>yarn</value>
+      </property>
+  </configuration>
+```
 
 2. Hadoopファイルシステムのフォーマット。
-    ```bash
-    hdfs namenode -format
-    ```
+```bash
+ hdfs namenode -format
+```
 
 3. Hadoopデーモンの起動。
-    ```bash
-    start-dfs.sh
-    start-yarn.sh
-    ```
+```bash
+ start-dfs.sh
+ start-yarn.sh
+```
 
 ### 設定ファイルの調整
 

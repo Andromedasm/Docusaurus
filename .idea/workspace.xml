@@ -5,50 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99e448e3-76ac-4557-a624-0f2b3fd51d4e" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/cloud/aws-lambda.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/cloud/azure-cli.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/cloud/azure-functions.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/container/docker-guide.mdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/container/kubernetes-guide.mdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/container/podman-guide.mdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/database/apache-cassandra-guide.mdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/database/apache-hadoop-guide.mdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/database/apache-hive-guide.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/database/apache-spark-guide.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/database/aws-dynamodb-guide.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/database/azure-cosmosdb-guide.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/database/db2-guide.mdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/database/mongodb-guide.mdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/database/mysql-guide.mdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/database/neo4j-guide.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/database/oracle-guide.mdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/database/postgresql-guide.mdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/database/redis-guide.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/database/sqlite-guide.mdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/database/sqlserver-guide.mdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/linux/rhel-guide.mdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/linux/shell-guide.mdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/linux/ubuntu-guide.mdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/microsoft-365/excel-functions.mdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/microsoft-365/office-scripts.mdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/surveillance-camera/hikvision-ivms4200-guide.mdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/unix/freebsd-guide.mdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/windows/powershell-guide.mdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/windows/wsl-guide.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/src/components/CounterButton.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/src/components/Dropdown.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/docs/another/git.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/linux/git.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/docs/another/mdx-tutorial.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/another/mdx-tutorial.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/another/face-recognition.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/cloud/aws-lambda.md" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/cloud/aws-lambda.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/cloud/azure-cli.md" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/cloud/azure-cli.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/cloud/azure-functions.md" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/cloud/azure-functions.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/container/container-guide.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/container/container-guide.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/database/apache-cassandra-guide.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/database/apache-cassandra-guide.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/database/apache-hadoop-guide.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/database/apache-hadoop-guide.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/database/apache-hive-guide.md" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/database/apache-hive-guide.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/database/apache-spark-guide.md" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/database/apache-spark-guide.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/database/aws-dynamodb-guide.md" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/database/aws-dynamodb-guide.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/database/azure-cosmosdb-guide.md" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/database/azure-cosmosdb-guide.mdx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/manual-website/docs/database/database-guide.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/database/database-guide.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/docs/network/network-guide.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/network/network-guide.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/docs/printer/printer-setup-guide.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/printer/printer-setup-guide.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/docs/router/telnet-guide.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/router/telnet-guide.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/docs/server/alert.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/server/alert.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/docs/server/prometheus-container.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/server/prometheus-container.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/docs/server/ssh-guide.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/server/ssh-guide.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/docs/server/thanos.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/server/thanos.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/docs/surveillance-camera/intro.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/sidebars.ts" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/sidebars.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/database/mysql-guide.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/database/mysql-guide.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/database/neo4j-guide.md" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/database/neo4j-guide.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/database/postgresql-guide.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/database/postgresql-guide.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/database/redis-guide.md" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/database/redis-guide.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/database/sqlite-guide.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/database/sqlite-guide.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/windows/wsl-guide.md" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/windows/wsl-guide.mdx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,8 +167,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17890.1" />
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17890.1" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
       </set>
     </attachedChunks>
   </component>
@@ -223,6 +197,8 @@
       <workItem from="1718846777940" duration="245000" />
       <workItem from="1718852731334" duration="817000" />
       <workItem from="1718933939483" duration="23095000" />
+      <workItem from="1719186483605" duration="113000" />
+      <workItem from="1719192164204" duration="4684000" />
     </task>
     <servers />
   </component>

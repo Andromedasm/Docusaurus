@@ -9,50 +9,50 @@ title: Apache Cassandraマニュアル
 
 ## 目次
 1. [Apache Cassandraのインストール](#apache-cassandraのインストール)
-    - [Linuxでのインストール](#linuxでのインストール)
-    - [Windowsでのインストール](#windowsでのインストール)
-    - [macOSでのインストール](#macosでのインストール)
+ - [Linuxでのインストール](#linuxでのインストール)
+ - [Windowsでのインストール](#windowsでのインストール)
+ - [macOSでのインストール](#macosでのインストール)
 2. [基本設定](#基本設定)
-    - [初期設定とデータベースの作成](#初期設定とデータベースの作成)
-    - [設定ファイルの調整](#設定ファイルの調整)
+ - [初期設定とデータベースの作成](#初期設定とデータベースの作成)
+ - [設定ファイルの調整](#設定ファイルの調整)
 3. [遠隔アクセスの設定](#遠隔アクセスの設定)
 4. [ユーザーと権限の管理](#ユーザーと権限の管理)
-    - [ユーザーの作成](#ユーザーの作成)
-    - [権限の付与](#権限の付与)
+ - [ユーザーの作成](#ユーザーの作成)
+ - [権限の付与](#権限の付与)
 5. [基本的なクエリ](#基本的なクエリ)
-    - [データの挿入](#データの挿入)
-    - [データの取得](#データの取得)
-    - [データの更新](#データの更新)
-    - [データの削除](#データの削除)
+ - [データの挿入](#データの挿入)
+ - [データの取得](#データの取得)
+ - [データの更新](#データの更新)
+ - [データの削除](#データの削除)
 6. [高度なクエリ](#高度なクエリ)
-    - [ジョイン](#ジョイン)
-    - [サブクエリ](#サブクエリ)
-    - [トリガー](#トリガー)
+ - [ジョイン](#ジョイン)
+ - [サブクエリ](#サブクエリ)
+ - [トリガー](#トリガー)
 7. [高度な使用方法](#高度な使用方法)
-    - [トランザクション](#トランザクション)
-    - [バックアップと復元](#バックアップと復元)
-    - [パフォーマンスチューニング](#パフォーマンスチューニング)
+ - [トランザクション](#トランザクション)
+ - [バックアップと復元](#バックアップと復元)
+ - [パフォーマンスチューニング](#パフォーマンスチューニング)
 
 ## Apache Cassandraのインストール
 
 ### Linuxでのインストール
 
 1. Apache Cassandraの公式リポジトリを追加します（以下はUbuntuの場合）。
-    ```bash
-    echo "deb https://downloads.apache.org/cassandra/debian 311x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
-    wget -q -O - https://www.apache.org/dist/cassandra/KEYS | sudo apt-key add -
-    sudo apt-get update
+ ```bash
+ echo "deb https://downloads.apache.org/cassandra/debian 311x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
+ wget -q -O - https://www.apache.org/dist/cassandra/KEYS | sudo apt-key add -
+ sudo apt-get update
     ```
 
 2. Apache Cassandraをインストールします。
-    ```bash
-    sudo apt-get install cassandra
+ ```bash
+ sudo apt-get install cassandra
     ```
 
 3. Cassandraサービスを起動します。
-    ```bash
-    sudo systemctl start cassandra
-    sudo systemctl enable cassandra
+ ```bash
+ sudo systemctl start cassandra
+ sudo systemctl enable cassandra
     ```
 
 ### Windowsでのインストール
@@ -60,21 +60,21 @@ title: Apache Cassandraマニュアル
 1. Apache Cassandraの公式サイト（[https://cassandra.apache.org/download/](https://cassandra.apache.org/download/)）からバイナリをダウンロードします。
 2. ダウンロードしたZIPファイルを解凍し、適当なフォルダに配置します。
 3. コマンドプロンプトを開き、Cassandraを起動します。
-    ```bash
-    cd path\to\cassandra\bin
-    cassandra.bat
+ ```bash
+ cd path\to\cassandra\bin
+ cassandra.bat
     ```
 
 ### macOSでのインストール
 
 1. Homebrewを使用してApache Cassandraをインストールします。
-    ```bash
-    brew install cassandra
+ ```bash
+ brew install cassandra
     ```
 
 2. Cassandraサービスを起動します。
-    ```bash
-    brew services start cassandra
+ ```bash
+ brew services start cassandra
     ```
 
 ## 基本設定
