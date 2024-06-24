@@ -46,7 +46,6 @@ const sidebars: SidebarsConfig = {
             type: 'category',
             label: 'Database',
             items: [
-                'database/database-guide',
                 'database/postgresql-guide',
                 'database/mysql-guide',
                 'database/sqlserver-guide',

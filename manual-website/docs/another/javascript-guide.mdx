@@ -9,23 +9,23 @@ title: JavaScript使用マニュアル
 
 ## 目次
 1. [JavaScriptの基本説明](#javascriptの基本説明)
-    - [JavaScriptとは](#javascriptとは)
-    - [JavaScriptの基本構文](#javascriptの基本構文)
+ - [JavaScriptとは](#javascriptとは)
+ - [JavaScriptの基本構文](#javascriptの基本構文)
 2. [JavaScriptの基礎](#javascriptの基礎)
-    - [変数と定数](#変数と定数)
-    - [データ型](#データ型)
-    - [演算子](#演算子)
-    - [制御構文](#制御構文)
-    - [関数](#関数)
+ - [変数と定数](#変数と定数)
+ - [データ型](#データ型)
+ - [演算子](#演算子)
+ - [制御構文](#制御構文)
+ - [関数](#関数)
 3. [JavaScriptの応用](#javascriptの応用)
-    - [オブジェクト](#オブジェクト)
-    - [配列](#配列)
-    - [DOM操作](#dom操作)
-    - [イベントハンドリング](#イベントハンドリング)
+ - [オブジェクト](#オブジェクト)
+ - [配列](#配列)
+ - [DOM操作](#dom操作)
+ - [イベントハンドリング](#イベントハンドリング)
 4. [JavaScriptの高度な機能](#javascriptの高度な機能)
-    - [プロトタイプとクラス](#プロトタイプとクラス)
-    - [非同期プログラミング](#非同期プログラミング)
-    - [モジュール](#モジュール)
+ - [プロトタイプとクラス](#プロトタイプとクラス)
+ - [非同期プログラミング](#非同期プログラミング)
+ - [モジュール](#モジュール)
 5. [実際の例](#実際の例)
 
 ## JavaScriptの基本説明
@@ -93,9 +93,9 @@ let isLesser = a < b; // 小なり
 let number = 10;
 
 if (number > 0) {
-console.log('正の数です');
+    console.log('正の数です');
 } else {
-console.log('負の数です');
+    console.log('負の数です');
 }
 ```
 
@@ -104,24 +104,24 @@ console.log('負の数です');
 let color = '赤';
 
 switch (color) {
-case '赤':
-console.log('止まれ');
-break;
-case '黄':
-console.log('注意');
-break;
-case '青':
-console.log('進め');
-break;
-default:
-console.log('無効な色です');
+    case '赤':
+        console.log('止まれ');
+        break;
+        case '黄':
+            console.log('注意');
+            break;
+            case '青':
+                console.log('進め');
+                break;
+                default:
+                    console.log('無効な色です');
 }
 ```
 
 #### for文
 ```javascript
 for (let i = 0; i < 5; i++) {
-console.log(i);
+    console.log(i);
 }
 ```
 
@@ -130,8 +130,8 @@ console.log(i);
 let i = 0;
 
 while (i < 5) {
-console.log(i);
-i++;
+    console.log(i);
+    i++;
 }
 ```
 
@@ -140,7 +140,7 @@ i++;
 
 ```javascript
 function greet(name) {
-return `こんにちは、${name}さん！`;
+    return `こんにちは、${name}さん！`;
 }
 
 
@@ -153,11 +153,11 @@ console.log(greet('太郎'));
 
 ```javascript
 let person = {
-name: '太郎',
-age: 30,
-greet: function() {
-console.log(`こんにちは、私は${this.name}です`);
-}
+    name: '太郎',
+    age: 30,
+    greet: function() {
+        console.log(`こんにちは、私は${this.name}です`);
+    }
 };
 
 console.log(person.name); // プロパティにアクセス
@@ -233,12 +233,12 @@ JavaScriptでは、プロトタイプベースの継承とクラスベースの�
 #### プロトタイプ
 ```javascript
 function Person(name, age) {
-this.name = name;
-this.age = age;
+    this.name = name;
+    this.age = age;
 }
 
 Person.prototype.greet = function() {
-console.log(`こんにちは、私は${this.name}です`);
+    console.log(`こんにちは、私は${this.name}です`);
 };
 
 let taro = new Person('太郎', 30);
@@ -248,9 +248,9 @@ taro.greet();
 #### クラス
 ```javascript
 class Person {
-constructor(name, age) {
-this.name = name;
-this.age = age;
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
 }
 
     greet() {
@@ -268,44 +268,44 @@ taro.greet();
 #### コールバック
 ```javascript
 function fetchData(callback) {
-setTimeout(() => {
-callback('データが取得されました');
-}, 2000);
+    setTimeout(() => {
+        callback('データが取得されました');
+        }, 2000);
 }
 
 fetchData((data) => {
-console.log(data);
+    console.log(data);
 });
 ```
 
 #### プロミス
 ```javascript
 function fetchData() {
-return new Promise((resolve) => {
-setTimeout(() => {
-resolve('データが取得されました');
-}, 2000);
-});
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve('データが取得されました');
+            }, 2000);
+    });
 }
 
 fetchData().then((data) => {
-console.log(data);
+    console.log(data);
 });
 ```
 
 #### async/await
 ```javascript
 async function fetchData() {
-return new Promise((resolve) => {
-setTimeout(() => {
-resolve('データが取得されました');
-}, 2000);
-});
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve('データが取得されました');
+            }, 2000);
+    });
 }
 
 async function main() {
-const data = await fetchData();
-console.log(data);
+    const data = await fetchData();
+    console.log(data);
 }
 
 main();
@@ -318,7 +318,7 @@ main();
 ```javascript
 // module.js
 export function greet(name) {
-return `こんにちは、${name}さん！`;
+    return `こんにちは、${name}さん！`;
 }
 ```
 

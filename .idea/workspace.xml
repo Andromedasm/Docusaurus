@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99e448e3-76ac-4557-a624-0f2b3fd51d4e" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/another/css-guide.mdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/another/html-basic-guide.mdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/another/javascript-guide.mdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/another/modern-css-guid.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/another/html-basic-guide.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/another/html-basic-guide.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/another/javascript-guide.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/another/javascript-guide.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/database/apache-cassandra-guide.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/database/apache-cassandra-guide.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/database/database-guide.mdx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/manual-website/sidebars.ts" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/sidebars.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -187,6 +187,7 @@
       <workItem from="1719186483605" duration="113000" />
       <workItem from="1719192164204" duration="6038000" />
       <workItem from="1719205009000" duration="2136000" />
+      <workItem from="1719215628431" duration="944000" />
     </task>
     <servers />
   </component>

@@ -42,18 +42,18 @@ title: Apache Cassandraマニュアル
  echo "deb https://downloads.apache.org/cassandra/debian 311x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
  wget -q -O - https://www.apache.org/dist/cassandra/KEYS | sudo apt-key add -
  sudo apt-get update
-    ```
+ ```
 
 2. Apache Cassandraをインストールします。
  ```bash
  sudo apt-get install cassandra
-    ```
+ ```
 
 3. Cassandraサービスを起動します。
  ```bash
  sudo systemctl start cassandra
  sudo systemctl enable cassandra
-    ```
+ ```
 
 ### Windowsでのインストール
 
@@ -63,19 +63,19 @@ title: Apache Cassandraマニュアル
  ```bash
  cd path\to\cassandra\bin
  cassandra.bat
-    ```
+ ```
 
 ### macOSでのインストール
 
 1. Homebrewを使用してApache Cassandraをインストールします。
  ```bash
  brew install cassandra
-    ```
+```
 
 2. Cassandraサービスを起動します。
  ```bash
  brew services start cassandra
-    ```
+ ```
 
 ## 基本設定
 
