@@ -9,6 +9,10 @@ const sidebars: SidebarsConfig = {
                 'another/markdown-tutorial',
                 'another/mdx-tutorial',
                 'another/cool-effects',
+                'another/html-basic-guide',
+                'another/css-guide',
+                'another/javascript-guide',
+                'another/modern-css-guide',
             ],
         },
         {

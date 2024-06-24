@@ -1,0 +1,231 @@
+---
+id: html-basic-guide
+title: HTMLチュートリアル
+---
+
+# HTMLチュートリアル
+
+このガイドでは、HTML（HyperText Markup Language）の基本的な使用方法から応用的なテクニックまでを詳細に説明します。HTMLはウェブページを作成するための標準的なマークアップ言語であり、テキスト、画像、リンクなどを含むウェブコンテンツを構造化するために使用されます。
+
+## 目次
+1. [HTMLの基本構造](#htmlの基本構造)
+2. [基本的なタグ](#基本的なタグ)
+    - [見出しタグ](#見出しタグ)
+    - [段落タグ](#段落タグ)
+    - [リンクタグ](#リンクタグ)
+    - [画像タグ](#画像タグ)
+    - [リストタグ](#リストタグ)
+3. [フォーム](#フォーム)
+    - [入力フィールド](#入力フィールド)
+    - [ボタン](#ボタン)
+    - [ラジオボタンとチェックボックス](#ラジオボタンとチェックボックス)
+4. [テーブル](#テーブル)
+5. [HTMLのセマンティック要素](#htmlのセマンティック要素)
+6. [実際の例](#実際の例)
+
+## HTMLの基本構造
+
+HTMLドキュメントは以下の基本構造を持ちます。
+
+```html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基本的なHTMLページ</title>
+</head>
+<body>
+    <h1>こんにちは、世界！</h1>
+    <p>これは基本的なHTMLページの例です。</p>
+</body>
+</html>
+```
+
+## 基本的なタグ
+### 見出しタグ
+見出しタグは、文章の見出しを作成するために使用されます。`<h1>`から`<h6>`までのタグがあり、数字が小さいほど重要度が高く、大きな文字で表示されます。
+
+```html
+<h1>これは見出し1です</h1>
+<h2>これは見出し2です</h2>
+<h3>これは見出し3です</h3>
+<h4>これは見出し4です</h4>
+<h5>これは見出し5です</h5>
+<h6>これは見出し6です</h6>
+```
+
+### 段落タグ
+段落タグは、テキストの段落を作成するために使用されます。
+
+```html
+<p>これは段落です。</p>
+<p>もう一つの段落です。</p>
+```
+
+### リンクタグ
+リンクタグは、他のウェブページやリソースへのハイパーリンクを作成するために使用されます。
+
+```html
+<a href="https://www.example.com">これはリンクです</a>
+```
+
+### 画像タグ
+画像タグは、ウェブページに画像を埋め込むために使用されます。
+
+```html
+<img src="https://www.example.com/image.jpg" alt="説明文">
+```
+
+### リストタグ
+リストタグは、項目のリストを作成するために使用されます。順序付きリスト（番号付き）と順序なしリスト（箇条書き）があります。
+
+#### 順序付きリスト
+```html
+<ol>
+    <li>項目1</li>
+    <li>項目2</li>
+    <li>項目3</li>
+</ol>
+```
+
+#### 順序なしリスト
+```html
+<ul>
+    <li>項目1</li>
+    <li>項目2</li>
+    <li>項目3</li>
+</ul>
+```
+
+## フォーム
+フォームは、ユーザーからデータを収集するためのインターフェースを提供します。
+
+### 入力フィールド
+```html
+<form>
+    <label for="name">名前:</label>
+    <input type="text" id="name" name="name">
+</form>
+```
+
+### ボタン
+```html
+<form>
+    <button type="submit">送信</button>
+</form>
+```
+
+### ラジオボタンとチェックボックス
+```html
+<form>
+    <p>性別:</p>
+    <input type="radio" id="male" name="gender" value="male">
+    <label for="male">男性</label><br>
+    <input type="radio" id="female" name="gender" value="female">
+    <label for="female">女性</label><br>
+
+    <p>趣味:</p>
+    <input type="checkbox" id="sports" name="hobby" value="sports">
+    <label for="sports">スポーツ</label><br>
+    <input type="checkbox" id="reading" name="hobby" value="reading">
+    <label for="reading">読書</label>
+</form>
+```
+
+## テーブル
+テーブルは、データを表形式で表示するために使用されます。
+
+```html
+<table>
+    <tr>
+        <th>名前</th>
+        <th>年齢</th>
+        <th>職業</th>
+    </tr>
+    <tr>
+        <td>田中太郎</td>
+        <td>30</td>
+        <td>エンジニア</td>
+    </tr>
+    <tr>
+        <td>山田花子</td>
+        <td>25</td>
+        <td>デザイナー</td>
+    </tr>
+</table>
+```
+
+## HTMLのセマンティック要素
+セマンティック要素は、HTMLドキュメントの構造を明確にするために使用されます。
+
+```html
+<article>
+    <header>
+        <h2>記事のタイトル</h2>
+        <p>投稿日: 2023年6月24日</p>
+    </header>
+    <section>
+        <p>この記事の内容です...</p>
+    </section>
+    <footer>
+        <p>著者: 山田花子</p>
+    </footer>
+</article>
+```
+
+## 実際の例
+以下は、実際のHTMLページの例です。
+
+```html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>実際のHTMLページ</title>
+</head>
+<body>
+    <header>
+        <h1>私のウェブページ</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">ホーム</a></li>
+                <li><a href="#about">私について</a></li>
+                <li><a href="#contact">お問い合わせ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <h2>ホーム</h2>
+            <p>ようこそ私のウェブページへ！</p>
+        </section>
+        
+        <section id="about">
+            <h2>私について</h2>
+            <p>私はウェブ開発者です。</p>
+            <img src="https://www.example.com/myphoto.jpg" alt="私の写真">
+        </section>
+        
+        <section id="contact">
+            <h2>お問い合わせ</h2>
+            <form>
+                <label for="name">名前:</label>
+                <input type="text" id="name" name="name"><br>
+                <label for="email">メール:</label>
+                <input type="email" id="email" name="email"><br>
+                <button type="submit">送信</button>
+            </form>
+        </section>
+    </main>
+    
+    <footer>
+        <p>著作権 &copy; 2023 私のウェブページ. すべての権利を保有します。</p>
+    </footer>
+</body>
+</html>
+```
+
+以上で、HTMLの基本的な使用方法と実際の例についての説明を終わります。HTMLはウェブ開発の基礎であり、これを理解することで、より高度なウェブ開発スキルを習得するための基盤が築けます。
