@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99e448e3-76ac-4557-a624-0f2b3fd51d4e" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/manual-website/docs/another/html-basic-guide.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/another/html-basic-guide.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/docs/another/javascript-guide.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/another/javascript-guide.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/docs/database/apache-cassandra-guide.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/database/apache-cassandra-guide.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/docs/database/database-guide.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/sidebars.ts" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/sidebars.ts" afterDir="false" />
-    </list>
+    <list default="true" id="99e448e3-76ac-4557-a624-0f2b3fd51d4e" name="更改" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -79,6 +73,9 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\DS201906079\\Downloads\\Github\\Personal\\Docusaurus\\manual-website\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;stardust.markdown.MarkdownSplitEditorSuppressor:keyList&quot;: []
   }
 }</component>
   <component name="ReactDesignerToolWindowState">
@@ -187,7 +184,13 @@
       <workItem from="1719186483605" duration="113000" />
       <workItem from="1719192164204" duration="6038000" />
       <workItem from="1719205009000" duration="2136000" />
-      <workItem from="1719215628431" duration="944000" />
+      <workItem from="1719215628431" duration="1750000" />
+      <workItem from="1719217792196" duration="51000" />
+      <workItem from="1719217862830" duration="458000" />
+      <workItem from="1719283493755" duration="9000" />
+      <workItem from="1719382992266" duration="3019000" />
+      <workItem from="1719447151199" duration="14000" />
+      <workItem from="1719461218745" duration="3070000" />
     </task>
     <servers />
   </component>

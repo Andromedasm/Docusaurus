@@ -65,6 +65,13 @@ const sidebars: SidebarsConfig = {
         },
         {
             type: 'category',
+            label: "Docusaurus",
+            items: [
+                'docusaurus/docusaurus-guide',
+            ],
+        },
+        {
+            type: 'category',
             label: "desknet's NEO",
             items: [
                 'desknet-neo/config',
