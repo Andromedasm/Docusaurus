@@ -1,0 +1,107 @@
+---
+id: docusaurus-guide
+title: Docusaurusマニュアル
+---
+
+# Docusaurus 使用マニュアル
+
+このマニュアルでは、Docusaurusの基本的な使用方法から応用的な設定までを詳細に説明します。Docusaurusは、静的サイトジェネレーターで、主に技術文書の作成に使用されます。このガイドはTypeScriptを使用しています。
+
+## 目次
+1. [インストール](#インストール)
+2. [プロジェクトの作成と起動](#プロジェクトの作成と起動)
+3. [側面ナビゲーションの追加](#側面ナビゲーションの追加)
+4. [文書の保存位置](#文書の保存位置)
+5. [画像の保存位置](#画像の保存位置)
+6. [プラグインの導入](#プラグインの導入)
+
+## インストール
+
+まず、Docusaurusをインストールするために、Node.jsが必要です。Node.jsがインストールされていない場合は、[公式サイト](https://nodejs.org/)からインストールしてください。
+
+その後、以下のコマンドを実行してDocusaurusをインストールします。
+
+```bash
+npx create-docusaurus@latest my-website classic --typescript
+cd my-website
+```
+## プロジェクトの作成と起動
+Docusaurusプロジェクトを作成した後、以下のコマンドで開発サーバーを起動します。
+
+```bash
+npm start
+```
+
+ブラウザで`http://localhost:3000`にアクセスすると、Docusaurusのデフォルトサイトが表示されます。
+
+## 側面ナビゲーションの追加
+側面ナビゲーション（サイドバー）を追加するには、`sidebars.ts`ファイルを編集します。このファイルは、通常、ディレクトリの直下にあります。
+
+以下は、docsディレクトリにある文書のサイドバー設定の例です。
+
+```typescript
+module.exports = {
+  docs: [
+    {
+      type: 'category',
+      label: '入門',
+      items: ['intro', 'tutorial-basics/create-a-page', 'tutorial-basics/create-a-document'],
+    },
+  ],
+};
+```
+
+## 文書の保存位置
+デフォルトでは、文書は`docs`ディレクトリに保存されます。このディレクトリ内にMarkdownファイルを作成し、文書を記述します。
+
+例えば、docs/intro.mdというファイルを作成し、以下のように記述します。
+
+```markdown
+---
+id: intro
+title: はじめに
+---
+
+# Docusaurusの紹介
+
+Docusaurusは、静的サイトジェネレーターです。
+
+```
+
+## 画像の保存位置
+画像は通常、`static/img`ディレクトリに保存されます。このディレクトリ内に画像ファイルを保存し、Markdownファイル内で使用できます。
+
+例えば、`static/img/logo.png`という画像を使用する場合、Markdownファイル内で以下のように記述します。
+
+```markdown
+![ロゴ](../static/img/logo.png)
+```
+
+## プラグインの導入
+Docusaurusには、多くのプラグインが用意されています。プラグインを導入するには、`docusaurus.config.ts`ファイルを編集します。
+
+以下は、Google Analyticsプラグインを導入する例です。
+
+```typescript
+module.exports = {
+  // ...他の設定
+  plugins: [
+    [
+      '@docusaurus/plugin-google-analytics',
+      {
+        trackingID: 'UA-XXXXXX-X',
+        anonymizeIP: true,
+      },
+    ],
+  ],
+};
+```
+
+プラグインのインストールが必要な場合は、npmを使用してインストールします。
+
+```bash
+npm install @docusaurus/plugin-google-analytics
+```
+
+## まとめ
+以上で、Docusaurusの基本的な使用方法と設定についての説明を終わります。Docusaurusを使用すると、簡単に技術文書を作成し、公開することができます。さらに詳細な情報は、Docusaurus公式ドキュメントを参照してください。

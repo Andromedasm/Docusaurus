@@ -27,13 +27,19 @@ const config: Config = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.ts'),
-          editUrl:
-              'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          // Enable documentation versioning
+          lastVersion: 'current',
+          versions: {
+            current: {
+              label: 'Next',
+              path: 'next',
+            },
+          },
         },
         blog: {
           showReadingTime: true,
-          editUrl:
-              'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -64,6 +70,10 @@ const config: Config = {
         src: 'img/logo.svg',
       },
       items: [
+        {
+          type: 'docsVersionDropdown',
+          position: 'left', // 可选：指定版本下拉菜单在导航栏的位置
+        },
         {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',

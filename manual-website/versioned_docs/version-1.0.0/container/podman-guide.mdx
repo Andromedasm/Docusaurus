@@ -1,0 +1,272 @@
+---
+id: podman-guide
+title: Podmanマニュアル
+---
+
+# Podman 使用マニュアル
+
+このガイドでは、Podmanの基本的な使用方法から応用的なテクニックまでを詳細に説明します。Podmanは、Dockerと互換性のあるコンテナ管理ツールで、デーモンレスで動作するため、セキュリティと柔軟性に優れています。
+
+## 目次
+1. [Podmanの基本説明](#podmanの基本説明)
+    - [Podmanのインストール](#podmanのインストール)
+    - [Podmanの設定](#podmanの設定)
+2. [Podmanの基本機能](#podmanの基本機能)
+    - [イメージの取得と管理](#イメージの取得と管理)
+    - [コンテナの作成と管理](#コンテナの作成と管理)
+    - [Podmanfileの使用](#podmanfileの使用)
+    - [ボリュームとネットワーク](#ボリュームとネットワーク)
+3. [Podmanの高度な機能](#podmanの高度な機能)
+    - [Podman Composeを使用したマルチコンテナアプリケーション](#podman-composeを使用したマルチコンテナアプリケーション)
+    - [Podman Play Kubernetes](#podman-play-kubernetes)
+    - [パフォーマンスチューニングとセキュリティ](#パフォーマンスチューニングとセキュリティ)
+
+## Podmanの基本説明
+
+### Podmanのインストール
+
+Podmanは主要なLinuxディストリビューションで使用可能です。以下は各ディストリビューションでのインストール手順です。
+
+#### Fedora
+
+1. Podmanをインストールします。
+    ```bash
+    sudo dnf install -y podman
+    ```
+
+#### Ubuntu
+
+1. Podmanをインストールします。
+    ```bash
+    . /etc/os-release
+    sudo sh -c "echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/x${ID}_64 /' > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list"
+    wget -nv https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/x${ID}_64/Release.key -O Release.key
+    sudo apt-key add - < Release.key
+    sudo apt-get update -qq
+    sudo apt-get -qq -y install podman
+    ```
+
+### Podmanの設定
+
+1. インストールが完了したら、以下のコマンドでPodmanを初期化します。
+    ```bash
+    podman info
+    ```
+
+## Podmanの基本機能
+
+### イメージの取得と管理
+
+Podmanイメージは、コンテナのテンプレートとして機能します。
+
+#### イメージの取得
+
+1. Docker Hubからイメージを取得します。
+    ```bash
+    podman pull ubuntu
+    ```
+
+#### イメージの一覧表示
+
+1. ローカルに存在するイメージの一覧を表示します。
+    ```bash
+    podman images
+    ```
+
+#### イメージの削除
+
+1. 不要なイメージを削除します。
+    ```bash
+    podman rmi <image_id>
+    ```
+
+### コンテナの作成と管理
+
+Podmanコンテナは、イメージから作成される実行可能な単位です。
+
+#### コンテナの作成と起動
+
+1. 新しいコンテナを作成して起動します。
+    ```bash
+    podman run -d --name my-container ubuntu
+    ```
+
+#### コンテナの一覧表示
+
+1. 実行中のコンテナの一覧を表示します。
+    ```bash
+    podman ps
+    ```
+
+2. 全てのコンテナの一覧を表示します。
+    ```bash
+    podman ps -a
+    ```
+
+#### コンテナの停止と削除
+
+1. 実行中のコンテナを停止します。
+    ```bash
+    podman stop my-container
+    ```
+
+2. 停止されたコンテナを削除します。
+    ```bash
+    podman rm my-container
+    ```
+
+### Podmanfileの使用
+
+Podmanfileは、カスタムイメージを作成するためのレシピです。
+
+#### Podmanfileの作成
+
+1. `Podmanfile`を作成し、以下の内容を追加します。
+    ```Dockerfile
+    FROM ubuntu:latest
+    RUN apt-get update && apt-get install -y nginx
+    CMD ["nginx", "-g", "daemon off;"]
+    ```
+
+#### イメージのビルド
+
+1. Podmanfileからイメージをビルドします。
+    ```bash
+    podman build -t my-nginx-image .
+    ```
+
+#### イメージの実行
+
+1. ビルドしたイメージからコンテナを作成して起動します。
+    ```bash
+    podman run -d -p 80:80 my-nginx-image
+    ```
+
+### ボリュームとネットワーク
+
+ボリュームとネットワークを使用して、データの永続化やコンテナ間の通信を管理します。
+
+#### ボリュームの作成と使用
+
+1. 新しいボリュームを作成します。
+    ```bash
+    podman volume create my-volume
+    ```
+
+2. コンテナにボリュームをマウントします。
+    ```bash
+    podman run -d -v my-volume:/data ubuntu
+    ```
+
+#### ネットワークの作成と使用
+
+1. 新しいネットワークを作成します。
+    ```bash
+    podman network create my-network
+    ```
+
+2. コンテナをネットワークに接続します。
+    ```bash
+    podman run -d --network my-network --name container1 ubuntu
+    podman run -d --network my-network --name container2 ubuntu
+    ```
+
+## Podmanの高度な機能
+
+### Podman Composeを使用したマルチコンテナアプリケーション
+
+Podman Composeを使用して、マルチコンテナアプリケーションを定義し、管理します。
+
+#### `docker-compose.yml`の作成
+
+1. `docker-compose.yml`ファイルを作成し、以下の内容を追加します。
+    ```yaml
+    version: '3'
+    services:
+      web:
+        image: nginx
+        ports:
+          - "80:80"
+      db:
+        image: mysql
+        environment:
+          MYSQL_ROOT_PASSWORD: example
+    ```
+
+#### コンテナの起動
+
+1. Podman Composeを使用してコンテナを起動します。
+    ```bash
+    podman-compose up -d
+    ```
+
+#### コンテナの停止と削除
+
+1. Podman Composeを使用してコンテナを停止します。
+    ```bash
+    podman-compose down
+    ```
+
+### Podman Play Kubernetes
+
+Podman Play Kubernetesを使用して、Kubernetes YAMLファイルをPodmanで実行します。
+
+#### Kubernetes YAMLファイルの作成
+
+1. `pod.yaml`ファイルを作成し、以下の内容を追加します。
+    ```yaml
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: nginx-pod
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+    ```
+
+#### Podの起動
+
+1. Podmanを使用してPodを起動します。
+    ```bash
+    podman play kube pod.yaml
+    ```
+
+### パフォーマンスチューニングとセキュリティ
+
+Podmanコンテナのパフォーマンスを最適化し、セキュリティを強化します。
+
+#### パフォーマンスチューニング
+
+1. コンテナにリソース制限を設定します。
+    ```bash
+    podman run -d --name my-container --memory=512m --cpus=1 nginx
+    ```
+
+2. イメージを最適化します。Podmanfileにマルチステージビルドを使用します。
+    ```Dockerfile
+    FROM golang:alpine AS builder
+    WORKDIR /app
+    COPY . .
+    RUN go build -o main .
+
+    FROM alpine
+    COPY --from=builder /app/main /app/main
+    CMD ["/app/main"]
+    ```
+
+#### セキュリティの強化
+
+1. Podmanを非特権ユーザーとして実行します。
+    ```bash
+    podman unshare
+    ```
+
+2. SELinuxポリシーを適用して、コンテナのセキュリティを強化します。
+    ```bash
+    podman run -d --name my-container --security-opt label=type:container_runtime_t nginx
+    ```
+
+以上で、Podmanの基本的な使用方法と高度な操作についての説明を終わります。Podmanは強力で柔軟なコンテナ管理ツールであり、効率的に使用するためには各機能を理解し、適切に活用することが重要です。

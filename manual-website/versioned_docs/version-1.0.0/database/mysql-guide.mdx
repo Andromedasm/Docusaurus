@@ -1,0 +1,278 @@
+---
+id: mysql-guide
+title: MySQLマニュアル
+---
+
+# MySQL 使用マニュアル
+
+このガイドでは、MySQLの基本的な使用方法から応用的なテクニックまでを詳細に説明します。MySQLは、広く使用されているオープンソースのリレーショナルデータベース管理システム（RDBMS）であり、高いパフォーマンスと信頼性を提供します。
+
+## 目次
+1. [MySQLのインストール](#mysqlのインストール)
+ - [Linuxでのインストール](#linuxでのインストール)
+ - [Windowsでのインストール](#windowsでのインストール)
+ - [macOSでのインストール](#macosでのインストール)
+2. [基本設定](#基本設定)
+ - [初期設定とデータベースの作成](#初期設定とデータベースの作成)
+ - [設定ファイルの調整](#設定ファイルの調整)
+3. [遠隔アクセスの設定](#遠隔アクセスの設定)
+4. [ユーザーと権限の管理](#ユーザーと権限の管理)
+ - [ユーザーの作成](#ユーザーの作成)
+ - [権限の付与](#権限の付与)
+5. [基本的なクエリ](#基本的なクエリ)
+ - [データの挿入](#データの挿入)
+ - [データの取得](#データの取得)
+ - [データの更新](#データの更新)
+ - [データの削除](#データの削除)
+6. [高度なクエリ](#高度なクエリ)
+ - [ジョイン](#ジョイン)
+ - [サブクエリ](#サブクエリ)
+ - [トリガー](#トリガー)
+7. [高度な使用方法](#高度な使用方法)
+ - [トランザクション](#トランザクション)
+ - [ストアドプロシージャと関数](#ストアドプロシージャと関数)
+ - [レプリケーション](#レプリケーション)
+ - [パフォーマンスチューニング](#パフォーマンスチューニング)
+
+## MySQLのインストール
+
+### Linuxでのインストール
+
+MySQLは、多くのLinuxディストリビューションの公式リポジトリに含まれています。以下は、Ubuntuでのインストール手順です。
+
+```bash
+sudo apt update
+sudo apt install mysql-server
+```
+
+### Windowsでのインストール
+
+1. MySQLの公式サイト（https://dev.mysql.com）からMySQL Installerをダウンロードします。
+2. インストーラを実行し、画面の指示に従ってインストールを進めます。
+
+### macOSでのインストール
+MySQLは、Homebrewを使用して簡単にインストールできます。
+
+```bash
+brew install mysql
+```
+
+## 基本設定
+### 初期設定とデータベースの作成
+インストール後、MySQLサービスを起動し、初期設定を行います。
+
+- MySQLサービスの起動（Linux）
+
+```bash
+sudo systemctl start mysql
+sudo systemctl enable mysql
+```
+
+- デフォルトのrootユーザーでログインし、データベースを作成します。
+
+```bash
+sudo mysql -u root -p
+CREATE DATABASE mydb;
+CREATE USER 'myuser'@'localhost' IDENTIFIED BY 'mypassword';
+GRANT ALL PRIVILEGES ON mydb.* TO 'myuser'@'localhost';
+FLUSH PRIVILEGES;
+EXIT;
+```
+
+### 設定ファイルの調整
+MySQLの設定ファイルは通常、````/etc/mysql/my.cnf````（Linux）または
+````/usr/local/etc/my.cnf````（macOS）にあります。
+
+- ````my.cnf````で基本設定を調整します。
+```bash
+# nano /etc/mysql/my.cnf
+[mysqld]
+bind-address = 0.0.0.0
+```
+
+設定変更後、MySQLサービスを再起動します。
+
+```bash
+sudo systemctl restart mysql
+```
+
+### 遠隔アクセスの設定
+遠隔アクセスを許可するためには、````my.cnf````を設定し、ファイアウォールでポート3306を開放します。
+
+```bash
+# my.cnf
+[mysqld]
+bind-address = 0.0.0.0
+
+# ファイアウォールの設定（例：UFW）
+sudo ufw allow 3306/tcp
+```
+
+リモートユーザーの設定も行います。
+
+```sql
+CREATE USER 'myuser'@'%' IDENTIFIED BY 'mypassword';
+GRANT ALL PRIVILEGES ON mydb.* TO 'myuser'@'%';
+FLUSH PRIVILEGES;
+```
+
+## ユーザーと権限の管理
+### ユーザーの作成
+新しいユーザーを作成し、データベースへのアクセス権を設定します。
+
+```sql
+CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'newpassword';
+```
+
+### 権限の付与
+ユーザーにデータベースやテーブルへの権限を付与します。
+
+```sql
+GRANT ALL PRIVILEGES ON mydb.* TO 'newuser'@'localhost';
+FLUSH PRIVILEGES;
+```
+
+## 基本的なクエリ
+### データの挿入
+テーブルにデータを挿入します。
+
+```sql
+INSERT INTO mytable (column1, column2) VALUES ('value1', 'value2');
+```
+
+### データの取得
+テーブルからデータを取得します。
+
+```sql
+SELECT column1, column2 FROM mytable WHERE condition;
+```
+
+### データの更新
+テーブルのデータを更新します。
+
+```sql
+UPDATE mytable SET column1 = 'newvalue' WHERE condition;
+```
+
+### データの削除
+テーブルのデータを削除します。
+
+```sql
+DELETE FROM mytable WHERE condition;
+```
+
+
+## 高度なクエリ
+## ジョイン
+複数のテーブルを結合してデータを取得します。
+
+```sql
+SELECT a.column1, b.column2
+FROM table1 a
+JOIN table2 b ON a.common_column = b.common_column;
+```
+
+### サブクエリ
+サブクエリを使用して、複雑なクエリを作成します。
+
+```sql
+SELECT column1
+FROM mytable
+WHERE column2 IN (SELECT column2 FROM anothertable WHERE condition);
+```
+
+### トリガー
+トリガーを使用して、特定の操作が実行されたときに自動的に実行されるアクションを定義します。
+
+```sql
+CREATE TRIGGER mytrigger
+AFTER INSERT ON mytable
+FOR EACH ROW
+BEGIN
+-- トリガーが実行するSQL文
+END;
+```
+
+## 高度な使用方法
+### トランザクション
+トランザクションを使用して、一連の操作をアトミックに実行します。
+
+```sql
+START TRANSACTION;
+UPDATE account SET balance = balance - 100 WHERE account_id = 1;
+UPDATE account SET balance = balance + 100 WHERE account_id = 2;
+COMMIT;
+```
+
+### ストアドプロシージャと関数
+ストアドプロシージャと関数を使用して、再利用可能なコードを作成します。
+
+- ストアドプロシージャの作成
+
+```sql
+CREATE PROCEDURE increment_value(IN val INT)
+BEGIN
+UPDATE mytable SET column1 = column1 + val;
+END;
+```
+
+- ストアドプロシージャの呼び出し
+
+```sql
+CALL increment_value(5);
+```
+
+### レプリケーション
+レプリケーションを使用して、データの冗長性と可用性を向上させます。
+
+- マスターノードの設定
+
+```bash
+# my.cnf
+[mysqld]
+server-id = 1
+log_bin = /var/log/mysql/mysql-bin.log
+```
+
+- スレーブノードの設定
+
+```bash
+# my.cnf
+[mysqld]
+server-id = 2
+relay-log = /var/log/mysql/mysql-relay-bin.log
+```
+
+- レプリケーションの開始
+
+```sql
+CHANGE MASTER TO
+MASTER_HOST='master_host',
+MASTER_USER='replication_user',
+MASTER_PASSWORD='replication_password',
+MASTER_LOG_FILE='mysql-bin.000001',
+MASTER_LOG_POS=  107;
+START SLAVE;
+```
+
+### パフォーマンスチューニング
+パフォーマンスチューニングを行い、MySQLデータベースの効率を最大化します。
+
+#### クエリの最適化
+インデックスを使用してクエリを高速化します。
+
+```sql
+CREATE INDEX idx_column1 ON mytable(column1);
+```
+
+#### キャッシュの利用
+クエリキャッシュを使用して、頻繁に実行されるクエリの結果をキャッシュします。
+
+```ini
+# my.cnf
+[mysqld]
+query_cache_size = 16M
+query_cache_type = 1
+```
+
+以上で、MySQLの基本的な使用方法と高度な操作についての説明を終わります。MySQLは強力で柔軟なデータベース管理システムであり、効率的に使用するためには各機能を理解し、適切に活用することが重要です。

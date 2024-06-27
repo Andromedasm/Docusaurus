@@ -1,0 +1,413 @@
+---
+id: css-guide
+title: CSSマニュアル
+---
+
+# CSS 使用マニュアル
+
+このガイドでは、CSS（Cascading Style Sheets）の基本的な使用方法から応用的なテクニックまでを詳細に説明します。CSSは、HTML文書の見た目やレイアウトを制御するためのスタイルシート言語です。
+
+## 目次
+1. [CSSの基本説明](#cssの基本説明)
+    - [CSSとは](#cssとは)
+    - [CSSの構文](#cssの構文)
+2. [CSSの適用方法](#cssの適用方法)
+    - [インラインスタイル](#インラインスタイル)
+    - [内部スタイルシート](#内部スタイルシート)
+    - [外部スタイルシート](#外部スタイルシート)
+3. [CSSの基本的な機能](#cssの基本的な機能)
+    - [セレクタ](#セレクタ)
+    - [色と背景](#色と背景)
+    - [テキストのスタイル](#テキストのスタイル)
+    - [ボックスモデル](#ボックスモデル)
+    - [レイアウト](#レイアウト)
+4. [CSSの高度な機能](#cssの高度な機能)
+    - [フレックスボックス](#フレックスボックス)
+    - [グリッドレイアウト](#グリッドレイアウト)
+    - [アニメーションとトランジション](#アニメーションとトランジション)
+    - [メディアクエリ](#メディアクエリ)
+5. [実際の例](#実際の例)
+
+## CSSの基本説明
+
+### CSSとは
+
+CSSは、HTML文書のスタイルを定義するための言語です。CSSを使用することで、HTMLの構造からスタイル情報を分離し、柔軟にデザインを変更できます。
+
+### CSSの構文
+
+CSSの基本的な構文は、セレクタ、プロパティ、および値で構成されています。
+
+```css
+セレクタ {
+    プロパティ: 値;
+}
+```
+
+例：
+
+```css
+h1 {
+color: blue;
+font-size: 24px;
+}
+```
+
+## CSSの適用方法
+### インラインスタイル
+インラインスタイルは、HTML要素に直接スタイルを適用する方法です。
+
+```html
+<p style="color: red;">これは赤いテキストです。</p>
+```
+### 内部スタイルシート
+内部スタイルシートは、HTML文書の`<head>`セクションにスタイルを定義する方法です。
+
+```html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>内部スタイルシートの例</title>
+    <style>
+        p {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <p>これは緑のテキストです。</p>
+</body>
+</html>
+```
+
+### 外部スタイルシート
+外部スタイルシートは、別のCSSファイルにスタイルを定義し、HTML文書にリンクする方法です。
+
+```html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>外部スタイルシートの例</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <p>これは青いテキストです。</p>
+</body>
+</html>
+```
+
+````styles.css```` ファイル：
+
+```css
+p {
+color: blue;
+}
+```
+
+## CSSの基本的な機能
+### セレクタ
+セレクタは、スタイルを適用するHTML要素を選択するために使用します。
+
+#### タイプセレクタ
+```css
+p {
+color: blue;
+}
+```
+
+#### クラスセレクタ
+
+```css
+.intro {
+font-size: 20px;
+}
+```
+
+```html
+<p class="intro">これはイントロの段落です。</p>
+```
+
+#### IDセレクタ
+
+```css
+#header {
+    background-color: lightgray;
+}
+```
+
+```html
+<h1 id="header">これはヘッダーです。</h1>
+```
+
+### 色と背景
+#### 色の設定
+
+```css
+h1 {
+    color: red;
+}
+```
+
+#### 背景色の設定
+
+```css
+div {
+    background-color: yellow;
+}
+```
+
+#### 画像を背景に設定
+
+```css
+body {
+    background-image: url('background.jpg');
+}
+```
+
+### テキストのスタイル
+#### フォントの設定
+
+```css
+p {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+```
+
+#### テキストの配置
+
+```css
+h2 {
+    text-align: center;
+}
+```
+
+### ボックスモデル
+#### マージンとパディング
+
+```css
+div {
+    margin: 20px;
+    padding: 10px;
+}
+```
+
+#### ボーダー
+
+```css
+p {
+    border: 1px solid black;
+}
+```
+
+### レイアウト
+#### 浮動配置
+
+```css
+img {
+    float: left;
+    margin: 10px;
+}
+```
+
+#### クリアフィックス
+
+```css
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+```
+
+## CSSの高度な機能
+### フレックスボックス
+フレックスボックスを使用すると、レイアウトを簡単に制御できます。
+
+```css
+.container {
+display: flex;
+justify-content: space-between;
+}
+```
+
+```html
+<div class="container">
+    <div>アイテム1</div>
+    <div>アイテム2</div>
+    <div>アイテム3</div>
+</div>
+```
+
+### グリッドレイアウト
+グリッドレイアウトは、2次元のレイアウトを作成するために使用します。
+
+```css
+.grid-container {
+display: grid;
+grid-template-columns: auto auto auto;
+gap: 10px;
+}
+```
+
+```html
+<div class="grid-container">
+    <div>アイテム1</div>
+    <div>アイテム2</div>
+    <div>アイテム3</div>
+    <div>アイテム4</div>
+    <div>アイテム5</div>
+    <div>アイテム6</div>
+</div>
+```
+
+### アニメーションとトランジション
+#### トランジション
+
+```css
+button {
+    background-color: blue;
+    transition: background-color 0.5s;
+}
+
+button:hover {
+background-color: green;
+}
+```
+
+#### アニメーション
+
+```css
+@keyframes example {
+from {background-color: red;}
+to {background-color: yellow;}
+}
+
+div {
+width: 100px;
+height: 100px;
+background-color: red;
+animation-name: example;
+animation-duration: 4s;
+}
+```
+
+#### メディアクエリ
+メディアクエリを使用して、異なる画面サイズに応じたスタイルを適用できます。
+
+```css
+@media (max-width: 600px) {
+.responsive {
+font-size: 12px;
+}
+}
+```
+
+## 実際の例
+以下は、実際のHTMLとCSSを組み合わせた例です。
+
+```html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>実際のCSSページ</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <h1>私のウェブページ</h1>
+        <nav class="nav">
+            <ul>
+                <li><a href="#home">ホーム</a></li>
+                <li><a href="#about">私について</a></li>
+                <li><a href="#contact">お問い合わせ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <section id="home" class="section">
+            <h2>ホーム</h2>
+            <p>ようこそ私のウェブページへ！</p>
+        </section>
+        
+        <section id="about" class="section">
+            <h2>私について</h2>
+            <p>私はウェブ開発者です。</p>
+            <img src="https://www.example.com/myphoto.jpg" alt="私の写真" class="profile-img">
+        </section>
+        
+        <section id="contact" class="section">
+            <h2>お問い合わせ</h2>
+            <form class="contact-form">
+                <label for="name">名前:</label>
+                <input type="text" id="name" name="name"><br>
+                <label for="email">メール:</label>
+                <input type="email" id="email" name="email"><br>
+                <button type="submit">送信</button>
+            </form>
+        </section>
+    </main>
+    
+    <footer class="footer">
+        <p>著作権 &copy; 2023 私のウェブページ. すべての権利を保有します。</p>
+    </footer>
+</body>
+</html>
+```
+
+```css
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+background-color: #333;
+color: #fff;
+padding: 10px 0;
+}
+
+.nav ul {
+list-style-type: none;
+padding: 0;
+}
+
+.nav ul li {
+display: inline;
+margin-right: 10px;
+}
+
+.nav ul li a {
+color: #fff;
+text-decoration: none;
+}
+
+.main-content {
+padding: 20px;
+}
+
+.section {
+margin-bottom: 20px;
+}
+
+.profile-img {
+max-width: 100%;
+height: auto;
+}
+
+.footer {
+background-color: #333;
+color: #fff;
+text-align: center;
+padding: 10px 0;
+}
+```
+
+以上で、CSSの基本的な使用方法と実際の例についての説明を終わります。CSSを理解することで、ウェブページのデザインをより美しく、使いやすくすることができます。

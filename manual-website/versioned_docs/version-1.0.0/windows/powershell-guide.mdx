@@ -1,0 +1,292 @@
+---
+id: powershell-guide
+title: PowerShell使用説明書
+---
+
+# PowerShell 使用説明書
+
+このガイドでは、PowerShellの基本的な使い方から応用的なテクニックまでを詳細に説明します。PowerShellは、Windows環境でのシステム管理やスクリプト作成に広く使用されている強力なシェルおよびスクリプト言語です。
+
+## 目次
+1. [PowerShellの基本](#powershellの基本)
+    - [PowerShellの起動](#powershellの起動)
+    - [基本コマンド](#基本コマンド)
+2. [PowerShellの基本機能](#powershellの基本機能)
+    - [変数の使用](#変数の使用)
+    - [オブジェクトとパイプライン](#オブジェクトとパイプライン)
+    - [条件分岐とループ](#条件分岐とループ)
+    - [関数の定義](#関数の定義)
+3. [PowerShellの応用](#powershellの応用)
+    - [ファイル操作](#ファイル操作)
+    - [システム情報の取得](#システム情報の取得)
+    - [リモート管理](#リモート管理)
+4. [高度なPowerShellの操作](#高度なpowershellの操作)
+    - [エラーハンドリング](#エラーハンドリング)
+    - [モジュールの管理](#モジュールの管理)
+    - [カスタムオブジェクトの作成](#カスタムオブジェクトの作成)
+5. [スクリプトの実行とセキュリティ](#スクリプトの実行とセキュリティ)
+
+## PowerShellの基本
+
+### PowerShellの起動
+
+PowerShellを起動するには、以下の手順に従います。
+
+1. **スタートメニュー**を開きます。
+2. **Windows PowerShell**を検索し、クリックして起動します。
+
+PowerShell Coreを使用する場合は、`pwsh`を入力して起動します。
+
+```powershell
+pwsh
+```
+
+### 基本コマンド
+
+以下は、PowerShellで頻繁に使用される基本的なコマンドです。
+
+- `Get-Command`: 使用可能なコマンドのリストを表示します。
+  ```powershell
+  Get-Command
+  ```
+- `Get-Help`: コマンドのヘルプ情報を表示します。
+  ```powershell
+  Get-Help Get-Process
+  ```
+- `Get-Process`: 実行中のプロセスの一覧を表示します。
+  ```powershell
+  Get-Process
+  ```
+- `Set-Location`: ディレクトリを変更します（`cd`のエイリアス）。
+  ```powershell
+  Set-Location C:\Path\To\Directory
+  ```
+- `Get-ChildItem`: ディレクトリの内容を表示します（`ls`や`dir`のエイリアス）。
+  ```powershell
+  Get-ChildItem
+  ```
+
+## PowerShellの基本機能
+
+### 変数の使用
+
+PowerShellで変数を定義し、使用する方法を説明します。
+
+#### 変数の定義と使用
+
+```powershell
+$name = "Alice"
+Write-Output $name
+```
+
+#### 変数の型
+
+PowerShellは動的型付け言語ですが、明示的に型を指定することもできます。
+
+```powershell
+[int]$age = 30
+[string]$city = "Tokyo"
+```
+
+### オブジェクトとパイプライン
+
+PowerShellの強力な機能の一つは、オブジェクトをパイプラインで渡すことです。
+
+#### パイプラインの使用
+
+```powershell
+Get-Process | Where-Object { $_.CPU -gt 100 }
+```
+
+### 条件分岐とループ
+
+PowerShellで使用できる条件分岐とループの構文を説明します。
+
+#### if文
+
+```powershell
+if ($age -ge 18) {
+    Write-Output "Adult"
+} else {
+    Write-Output "Minor"
+}
+```
+
+#### forループ
+
+```powershell
+for ($i = 0; $i -lt 5; $i++) {
+    Write-Output "Iteration $i"
+}
+```
+
+#### foreachループ
+
+```powershell
+$names = @("Alice", "Bob", "Charlie")
+foreach ($name in $names) {
+    Write-Output "Hello, $name"
+}
+```
+
+#### whileループ
+
+```powershell
+$count = 1
+while ($count -le 5) {
+    Write-Output "Count: $count"
+    $count++
+}
+```
+
+### 関数の定義
+
+PowerShellで関数を定義し、使用する方法を説明します。
+
+```powershell
+function Greet-User {
+    param (
+        [string]$name
+    )
+    Write-Output "Hello, $name"
+}
+
+Greet-User -name "Alice"
+```
+
+## PowerShellの応用
+
+### ファイル操作
+
+PowerShellでファイルを操作する方法を説明します。
+
+#### ファイルの読み込み
+
+```powershell
+$content = Get-Content -Path "C:\path\to\file.txt"
+Write-Output $content
+```
+
+#### ファイルの書き込み
+
+```powershell
+"Hello, World!" | Out-File -FilePath "C:\path\to\file.txt"
+```
+
+#### ファイルのコピー、移動、削除
+
+```powershell
+Copy-Item -Path "C:\path\to\file.txt" -Destination "C:\path\to\newfile.txt"
+Move-Item -Path "C:\path\to\file.txt" -Destination "C:\path\to\newfile.txt"
+Remove-Item -Path "C:\path\to\file.txt"
+```
+
+### システム情報の取得
+
+PowerShellでシステム情報を取得する方法を説明します。
+
+#### ディスク情報の取得
+
+```powershell
+Get-PSDrive -PSProvider FileSystem
+```
+
+#### メモリ情報の取得
+
+```powershell
+Get-CimInstance -ClassName Win32_OperatingSystem | Select-Object TotalVisibleMemorySize, FreePhysicalMemory
+```
+
+#### ネットワーク情報の取得
+
+```powershell
+Get-NetIPAddress
+```
+
+### リモート管理
+
+PowerShellを使用してリモートシステムを管理する方法を説明します。
+
+#### リモートセッションの開始
+
+```powershell
+Enter-PSSession -ComputerName "remote-computer-name"
+```
+
+#### リモートコマンドの実行
+
+```powershell
+Invoke-Command -ComputerName "remote-computer-name" -ScriptBlock { Get-Process }
+```
+
+## 高度なPowerShellの操作
+
+### エラーハンドリング
+
+PowerShellでエラーハンドリングを行う方法を説明します。
+
+#### try-catchブロック
+
+```powershell
+try {
+    # 例外を発生させるコード
+    Get-Item "C:\nonexistentfile.txt"
+} catch {
+    Write-Output "An error occurred: $_"
+}
+```
+
+### モジュールの管理
+
+PowerShellでモジュールを管理する方法を説明します。
+
+#### モジュールのインストール
+
+```powershell
+Install-Module -Name "ModuleName"
+```
+
+#### モジュールのインポート
+
+```powershell
+Import-Module -Name "ModuleName"
+```
+
+#### モジュールの一覧表示
+
+```powershell
+Get-Module -ListAvailable
+```
+
+### カスタムオブジェクトの作成
+
+PowerShellでカスタムオブジェクトを作成する方法を説明します。
+
+```powershell
+$person = [PSCustomObject]@{
+    Name = "Alice"
+    Age = 30
+    City = "Tokyo"
+}
+Write-Output $person
+```
+
+## スクリプトの実行とセキュリティ
+
+PowerShellスクリプトの実行とセキュリティに関する注意点を説明します。
+
+### スクリプトの実行ポリシーの設定
+
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
+```
+
+### スクリプトの署名
+
+スクリプトを署名することで、セキュリティを強化します。
+
+```powershell
+Set-AuthenticodeSignature -FilePath "C:\path\to\script.ps1" -Certificate "cert"
+```
+
+以上で、PowerShellの基本的な使用方法と高度な操作についての説明を終わります。PowerShellは強力で柔軟なツールですが、効率的に使用するためには各機能を理解し、適切に活用することが重要です。

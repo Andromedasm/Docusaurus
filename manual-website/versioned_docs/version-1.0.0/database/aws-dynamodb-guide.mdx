@@ -1,0 +1,225 @@
+---
+id: aws-dynamodb-guide
+title: AWS DynamoDBマニュアル
+---
+
+# AWS DynamoDB 使用マニュアル
+
+このガイドでは、AWS DynamoDBの基本的な使用方法から応用的なテクニックまでを詳細に説明します。DynamoDBは、フルマネージドのNoSQLデータベースサービスであり、低レイテンシとスケーラビリティを提供します。
+
+## 目次
+1. [AWS DynamoDBの作成](#aws-dynamodbの作成)
+2. [基本設定](#基本設定)
+    - [テーブルの作成](#テーブルの作成)
+    - [設定ファイルの調整](#設定ファイルの調整)
+3. [遠隔アクセスの設定](#遠隔アクセスの設定)
+4. [ユーザーと権限の管理](#ユーザーと権限の管理)
+5. [基本的なクエリ](#基本的なクエリ)
+    - [データの追加](#データの追加)
+    - [データの取得](#データの取得)
+    - [データの更新](#データの更新)
+    - [データの削除](#データの削除)
+6. [高度なクエリ](#高度なクエリ)
+    - [フィルタリングとソート](#フィルタリングとソート)
+    - [集計](#集計)
+7. [高度な使用方法](#高度な使用方法)
+    - [パーティションとスケーリング](#パーティションとスケーリング)
+    - [トランザクション](#トランザクション)
+    - [パフォーマンスチューニング](#パフォーマンスチューニング)
+    - [レプリケーションと高可用性](#レプリケーションと高可用性)
+
+## AWS DynamoDBの作成
+
+### 1. AWSマネジメントコンソールでのDynamoDBテーブルの作成
+
+1. AWSマネジメントコンソールにサインインします。
+2. 「DynamoDB」を検索し、サービスを選択します。
+3. 「テーブルを作成」をクリックします。
+4. テーブル名とプライマリキーを設定し、必要に応じて他の設定（スループット、インデックスなど）を行います。
+5. 「テーブルを作成」をクリックし、デプロイが完了するまで待ちます。
+
+## 基本設定
+
+### テーブルの作成
+
+AWS CLIまたはSDKを使用してテーブルを作成します。以下はAWS CLIの例です。
+
+```bash
+aws dynamodb create-table \
+    --table-name Music \
+    --attribute-definitions AttributeName=Artist,AttributeType=S AttributeName=SongTitle,AttributeType=S \
+    --key-schema AttributeName=Artist,KeyType=HASH AttributeName=SongTitle,KeyType=RANGE \
+    --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5
+```
+
+### 設定ファイルの調整
+DynamoDBはマネージドサービスであり、特定の設定ファイルは必要ありません。ただし、SDKや接続文字列の設定が必要です。
+
+## 遠隔アクセスの設定
+DynamoDBはインターネット経由でアクセスできます。AWSマネジメントコンソールでネットワーク設定を確認し、必要に応じてアクセス制御を行います。
+
+1. DynamoDBテーブルに移動します。
+2. 「アクセスコントロール（IAM）」で、必要なアクセス権を設定します。
+
+## ユーザーと権限の管理
+### ユーザーの作成
+IAMを使用して新しいユーザーを作成し、適切な権限を設定します。
+
+1. AWSマネジメントコンソールで「IAM」を検索し、サービスを選択します。
+2. 「ユーザー」を選択し、「ユーザーを追加」をクリックします。
+3. ユーザー名を入力し、「次のステップ: アクセス権限」をクリックします。
+4. ユーザーに適切なポリシー（例：AmazonDynamoDBFullAccess）をアタッチします。
+5. 「次のステップ: 確認」をクリックし、「ユーザーの作成」をクリックします。
+
+### 権限の付与
+IAMポリシーを使用してDynamoDBへのアクセス権を付与します。
+
+```json
+{
+"Version": "2012-10-17",
+"Statement": [
+{
+"Effect": "Allow",
+"Action": "dynamodb:*",
+"Resource": "arn:aws:dynamodb:us-west-2:123456789012:table/Music"
+}
+]
+}
+```
+
+## 基本的なクエリ
+### データの追加
+データをテーブルに追加します。
+
+```bash
+aws dynamodb put-item \
+--table-name Music \
+--item '{"Artist": {"S": "No One You Know"}, "SongTitle": {"S": "Call Me Today"}, "AlbumTitle": {"S": "Somewhat Famous"}}'
+```
+
+### データの取得
+テーブルからデータを取得します。
+
+```bash
+aws dynamodb get-item \
+--table-name Music \
+--key '{"Artist": {"S": "No One You Know"}, "SongTitle": {"S": "Call Me Today"}}'
+```
+
+### データの更新
+データを更新します。
+
+```bash
+aws dynamodb update-item \
+--table-name Music \
+--key '{"Artist": {"S": "No One You Know"}, "SongTitle": {"S": "Call Me Today"}}' \
+--update-expression "SET AlbumTitle = :val1" \
+--expression-attribute-values '{":val1": {"S": "Updated Album"}}'
+```
+
+### データの削除
+データを削除します。
+
+```bash
+aws dynamodb delete-item \
+--table-name Music \
+--key '{"Artist": {"S": "No One You Know"}, "SongTitle": {"S": "Call Me Today"}}'
+```
+
+## 高度なクエリ
+### フィルタリングとソート
+SQLライクなクエリを使用してデータをフィルタリングおよびソートします。
+
+```bash
+aws dynamodb query \
+--table-name Music \
+--key-condition-expression "Artist = :artist" \
+--expression-attribute-values '{":artist": {"S": "No One You Know"}}' \
+--scan-index-forward false
+```
+
+### 集計
+集計クエリを実行します。
+
+```bash
+aws dynamodb scan \
+--table-name Music \
+--select "COUNT"
+```
+
+## 高度な使用方法
+### パーティションとスケーリング
+データをパーティション化してスケーラビリティを向上させます。テーブル作成時にパーティションキーとソートキーを設定します。
+
+```bash
+aws dynamodb create-table \
+--table-name Music \
+--attribute-definitions AttributeName=Artist,AttributeType=S AttributeName=SongTitle,AttributeType=S \
+--key-schema AttributeName=Artist,KeyType=HASH AttributeName=SongTitle,KeyType=RANGE \
+--provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5
+```
+
+### トランザクション
+DynamoDBトランザクションを使用して複数の操作をアトミックに実行します。
+
+```bash
+aws dynamodb transact-write-items \
+--transact-items file://transaction-items.json
+```
+
+````transaction-items.json```` の例：
+
+```json
+{
+   "TransactItems": [
+      {
+         "Put": {
+            "TableName": "Music",
+            "Item": {
+               "Artist": {
+                  "S": "No One You Know"
+               },
+               "SongTitle": {
+                  "S": "My Song"
+               },
+               "AlbumTitle": {
+                  "S": "My Album"
+               }
+            }
+         }
+      },
+      {
+         "Update": {
+            "TableName": "Music",
+            "Key": {
+               "Artist": {
+                  "S": "No One You Know"
+               },
+               "SongTitle": {
+                  "S": "Call Me Today"
+               }
+            },
+            "UpdateExpression": "SET AlbumTitle = :val1",
+            "ExpressionAttributeValues": {
+               ":val1": {
+                  "S": "Updated Album"
+               }
+            }
+         }
+      }
+   ]
+}
+```
+
+### パフォーマンスチューニング
+- プロビジョニングスループットの設定: 適切なRead/Writeキャパシティを設定してパフォーマンスを最適化します。
+- インデックスの使用: グローバルセカンダリインデックス（GSI）やローカルセカンダリインデックス（LSI）を使用してクエリパフォーマンスを向上させます。
+- バッチ操作: バッチ書き込みやバッチ取得を使用してネットワーク往復を削減します。
+
+### レプリケーションと高可用性
+DynamoDBグローバルテーブルを使用してデータを複数のAWSリージョンにレプリケートします。
+
+1. DynamoDBテーブルに移動し、「グローバルテーブル」を選択します。
+2. リージョンを追加し、「テーブルの作成」をクリックします。
+
+以上で、AWS DynamoDBの基本的な使用方法と高度な操作についての説明を終わります。DynamoDBは強力でスケーラブルなNoSQLデータベースサービスであり、効率的に使用するためには各機能を理解し、適切に活用することが重要です。

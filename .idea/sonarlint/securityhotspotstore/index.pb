@@ -163,7 +163,7 @@ Y
 )manual-website/docs/windows/wsl-guide.mdx,7\e\7ea41353e97d45174f5047e2b0c6420664c824d0
 i
 9manual-website/docs/tutorial-basics/create-a-blog-post.md,e\f\ef114a5ec2a78b1894ebc666968c84866299a3ad
-_
-/manual-website/docs/docusaurus/docusaurus-guide,f\0\f0dd698322d37800e2e98fc3255c77ce25710174
-b
-2manual-website/docs/docusaurus/docusaurus-guide.md,7\4\7477b1f56e55962fa79e7f31c6716c35a6cc7bc4
+L
+manual-website/versions.json,7\b\7b7394091e73582ee2d0feffef50a4e9d69bb380
+m
+=manual-website/versioned_sidebars/version-1.0.0-sidebars.json,d\0\d0c5dee0108fc90c01c1b793314825fbcd0c82fd

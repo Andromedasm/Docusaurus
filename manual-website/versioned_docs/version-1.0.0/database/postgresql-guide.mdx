@@ -1,0 +1,249 @@
+---
+id: postgresql-guide
+title: PostgreSQLマニュアル
+---
+
+# PostgreSQL 使用マニュアル
+
+このガイドでは、PostgreSQLの基本的な使用方法から応用的なテクニックまでを詳細に説明します。PostgreSQLは、オープンソースの強力なリレーショナルデータベース管理システム（RDBMS）であり、高い拡張性と信頼性を提供します。
+
+## 目次
+1. [PostgreSQLのインストール](#postgresqlのインストール)
+ - [Linuxでのインストール](#linuxでのインストール)
+ - [Windowsでのインストール](#windowsでのインストール)
+ - [macOSでのインストール](#macosでのインストール)
+2. [基本設定](#基本設定)
+ - [初期設定とデータベースの作成](#初期設定とデータベースの作成)
+ - [設定ファイルの調整](#設定ファイルの調整)
+3. [遠隔アクセスの設定](#遠隔アクセスの設定)
+4. [ユーザーと権限の管理](#ユーザーと権限の管理)
+ - [ユーザーの作成](#ユーザーの作成)
+ - [権限の付与](#権限の付与)
+5. [基本的なクエリ](#基本的なクエリ)
+ - [データの挿入](#データの挿入)
+ - [データの取得](#データの取得)
+ - [データの更新](#データの更新)
+ - [データの削除](#データの削除)
+6. [高度なクエリ](#高度なクエリ)
+ - [ジョイン](#ジョイン)
+ - [サブクエリ](#サブクエリ)
+ - [ウィンドウ関数](#ウィンドウ関数)
+7. [高度な使用方法](#高度な使用方法)
+ - [トランザクション](#トランザクション)
+ - [ストアドプロシージャと関数](#ストアドプロシージャと関数)
+ - [パフォーマンスチューニング](#パフォーマンスチューニング)
+
+## PostgreSQLのインストール
+
+### Linuxでのインストール
+
+PostgreSQLは、多くのLinuxディストリビューションの公式リポジトリに含まれています。以下は、Ubuntuでのインストール手順です。
+
+```bash
+sudo apt update
+sudo apt install postgresql postgresql-contrib
+```
+
+## Windowsでのインストール
+1. PostgreSQLの公式サイト（https://www.postgresql.org）からインストーラをダウンロードします。
+2. インストーラを実行し、画面の指示に従ってインストールを進めます。
+
+## macOSでのインストール
+PostgreSQLは、Homebrewを使用して簡単にインストールできます。
+
+```bash
+brew install postgresql
+```
+
+## 基本設定
+### 初期設定とデータベースの作成
+インストール後、PostgreSQLサービスを起動し、初期設定を行います。
+
+- PostgreSQLサービスの起動（Linux）
+
+```bash
+sudo systemctl start postgresql
+sudo systemctl enable postgresql
+````
+
+- デフォルトのpostgresユーザーでログインし、データベースを作成します。
+
+```bash
+sudo -i -u postgres
+psql
+CREATE DATABASE mydb;
+CREATE USER myuser WITH ENCRYPTED PASSWORD 'mypassword';
+GRANT ALL PRIVILEGES ON DATABASE mydb TO myuser;
+\q
+```
+
+### 設定ファイルの調整
+PostgreSQLの設定ファイルは通常、
+````/etc/postgresql/<version>/main/````（Linux）または
+````/usr/local/var/postgres/````（ macOS）にあります。
+
+- postgresql.confで基本設定を調整します。
+
+```bash
+# nano /etc/postgresql/<version>/main/postgresql.conf
+listen_addresses = '*'
+```
+
+- ````pg_hba.conf````で接続ホストを設定します。
+
+```bash
+# nano /etc/postgresql/<version>/main/pg_hba.conf
+host    all             all             0.0.0.0/0               md5
+```
+設定変更後、PostgreSQLサービスを再起動します。
+
+```bash
+sudo systemctl restart postgresql
+```
+
+## 遠隔アクセスの設定
+遠隔アクセスを許可するためには、````postgresql.conf````と````pg_hba.conf````を設定し、ファイアウォールでポート5432を開放します。
+
+```bash
+# postgresql.conf
+listen_addresses = '*'
+
+# pg_hba.conf
+host    all             all             0.0.0.0/0               md5
+
+# ファイアウォールの設定（例：UFW）
+sudo ufw allow 5432/tcp
+```
+
+## ユーザーと権限の管理
+### ユーザーの作成
+新しいユーザーを作成し、データベースへのアクセス権を設定します。
+
+```sql
+CREATE USER newuser WITH ENCRYPTED PASSWORD 'newpassword';
+```
+
+### 権限の付与
+ユーザーにデータベースやテーブルへの権限を付与します。
+
+```sql
+GRANT ALL PRIVILEGES ON DATABASE mydb TO newuser;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO newuser;
+```
+
+## 基本的なクエリ
+### データの挿入
+テーブルにデータを挿入します。
+
+```sql
+INSERT INTO mytable (column1, column2) VALUES ('value1', 'value2');
+```
+
+### データの取得
+テーブルからデータを取得します。
+
+```sql
+SELECT column1, column2 FROM mytable WHERE condition;
+```
+
+### データの更新
+テーブルのデータを更新します。
+
+```sql
+UPDATE mytable SET column1 = 'newvalue' WHERE condition;
+```
+
+### データの削除
+テーブルのデータを削除します。
+
+```sql
+DELETE FROM mytable WHERE condition;
+```
+
+## 高度なクエリ
+### ジョイン
+複数のテーブルを結合してデータを取得します。
+
+```sql
+SELECT a.column1, b.column2
+FROM table1 a
+JOIN table2 b ON a.common_column = b.common_column;
+```
+
+### サブクエリ
+サブクエリを使用して、複雑なクエリを作成します。
+
+```sql
+SELECT column1
+FROM mytable
+WHERE column2 IN (SELECT column2 FROM anothertable WHERE condition);
+```
+
+### ウィンドウ関数
+ウィンドウ関数を使用して、集計結果を計算します。
+
+```sql
+SELECT column1,
+SUM(column2) OVER (PARTITION BY column3) AS sum_column2
+FROM mytable;
+```
+
+## 高度な使用方法
+### トランザクション
+トランザクションを使用して、一連の操作をアトミックに実行します。
+
+```sql
+BEGIN;
+UPDATE account SET balance = balance - 100 WHERE account_id = 1;
+UPDATE account SET balance = balance + 100 WHERE account_id = 2;
+COMMIT;
+```
+
+### ストアドプロシージャと関数
+ストアドプロシージャと関数を使用して、再利用可能なコードを作成します。
+
+- ストアドプロシージャの作成
+
+```sql
+CREATE OR REPLACE FUNCTION increment_value(val integer) RETURNS integer AS $$
+BEGIN
+RETURN val + 1;
+END;
+$$ LANGUAGE plpgsql;
+```
+
+- ストアドプロシージャの呼び出し
+
+```sql
+SELECT increment_value(5);
+```
+
+### パフォーマンスチューニング
+PostgreSQLのパフォーマンスを向上させるための設定と最適化を行います。
+
+- ````shared_buffers````の設定
+
+```bash
+# postgresql.conf
+shared_buffers = 1GB
+```
+
+- ````work_mem````の設定
+
+```bash
+# postgresql.conf
+work_mem = 64MB
+```
+
+- インデックスの作成
+
+```sql
+CREATE INDEX myindex ON mytable (mycolumn);
+```
+
+- ````EXPLAIN````を使用してクエリプランを確認
+
+```sql
+EXPLAIN ANALYZE SELECT * FROM mytable WHERE mycolumn = 'value';
+```
+以上で、PostgreSQLの基本的な使用方法と高度な操作についての説明を終わります。PostgreSQLは強力で柔軟なデータベース管理システムですが、効率的に使用するためには各機能を理解し、適切に活用することが重要です。

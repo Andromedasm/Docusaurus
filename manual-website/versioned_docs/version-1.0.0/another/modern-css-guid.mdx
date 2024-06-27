@@ -1,0 +1,366 @@
+---
+id: modern-css-guide
+title: モダンCSS使用マニュアル
+---
+
+# モダンCSS 使用マニュアル
+
+このガイドでは、現代のCSS技術について詳細に説明します。基本的なCSSから始め、Sass、SCSS、Less、およびTailwind CSSなどの高度なツールとフレームワークの使用方法を紹介します。
+
+## 目次
+1. [基本的なCSS](#基本的なcss)
+    - [CSSの基本](#cssの基本)
+    - [CSSの適用方法](#cssの適用方法)
+2. [SassとSCSS](#sassとscss)
+    - [Sassのインストール](#sassのインストール)
+    - [基本的な構文](#基本的な構文)
+    - [ネスト](#ネスト)
+    - [変数](#変数)
+    - [ミックスイン](#ミックスイン)
+3. [Less](#less)
+    - [Lessのインストール](#lessのインストール)
+    - [基本的な構文](#基本的な構文)
+    - [ネスト](#ネスト-1)
+    - [変数](#変数-1)
+    - [ミックスイン](#ミックスイン-1)
+4. [Tailwind CSS](#tailwind-css)
+    - [Tailwind CSSのインストール](#tailwind-cssのインストール)
+    - [ユーティリティクラス](#ユーティリティクラス)
+    - [カスタマイズ](#カスタマイズ)
+    - [レスポンシブデザイン](#レスポンシブデザイン)
+5. [実際の例](#実際の例)
+
+## 基本的なCSS
+
+### CSSの基本
+
+CSS（Cascading Style Sheets）は、HTML文書の見た目を制御するためのスタイルシート言語です。
+
+```css
+h1 {
+    color: blue;
+    font-size: 24px;
+}
+```
+
+### CSSの適用方法
+#### インラインスタイル
+```html
+<p style="color: red;">これは赤いテキストです。</p>
+```
+
+#### 内部スタイルシート
+```html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>内部スタイルシートの例</title>
+    <style>
+        p {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <p>これは緑のテキストです。</p>
+</body>
+</html>
+```
+
+#### 外部スタイルシート
+```html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>外部スタイルシートの例</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <p>これは青いテキストです。</p>
+</body>
+</html>
+```
+
+````styles.css```` ファイル：
+
+```css
+p {
+color: blue;
+}
+```
+
+## SassとSCSS
+Sass（Syntactically Awesome Stylesheets）は、CSSの拡張言語で、より強力で柔軟なスタイルシートの作成を可能にします。SCSSはSassの一種で、CSSと互換性のある構文を持ちます。
+
+### Sassのインストール
+Sassをインストールするには、以下のコマンドを使用します。
+
+```bash
+npm install -g sass
+```
+### 基本的な構文
+#### Sass
+```sass
+$primary-color: blue
+
+body
+font-family: sans-serif
+
+h1
+color: $primary-color
+```
+
+#### SCSS
+```scss
+$primary-color: blue;
+
+body {
+font-family: sans-serif;
+}
+
+h1 {
+color: $primary-color;
+}
+```
+
+### ネスト
+ネストを使用して、階層構造を持つスタイルを簡潔に記述できます。
+
+```scss
+nav {
+ul {
+margin: 0;
+padding: 0;
+list-style: none;
+}
+
+li { display: inline-block; }
+
+a {
+display: block;
+padding: 6px 12px;
+text-decoration: none;
+}
+}
+```
+
+### 変数
+変数を使用して、スタイルシート全体で再利用可能な値を定義できます。
+
+```scss
+$font-stack: Helvetica, sans-serif;
+$primary-color: #333;
+
+body {
+font: 100% $font-stack;
+color: $primary-color;
+}
+```
+
+### ミックスイン
+ミックスインを使用して、スタイルのブロックを再利用できます。
+
+```scss
+@mixin border-radius($radius) {
+-webkit-border-radius: $radius;
+-moz-border-radius: $radius;
+-ms-border-radius: $radius;
+border-radius: $radius;
+}
+
+.box { @include border-radius(10px); }
+```
+
+## Less
+Lessは、CSSの前処理ツールで、変数、ネスト、ミックスインなどの機能を提供します。
+
+### Lessのインストール
+Lessをインストールするには、以下のコマンドを使用します。
+
+```bash
+npm install -g less
+```
+
+### 基本的な構文
+```less
+@primary-color: blue;
+
+body {
+font-family: sans-serif;
+}
+
+h1 {
+color: @primary-color;
+}
+```
+
+### ネスト
+Lessでもネストを使用して階層構造を記述できます。
+
+```less
+nav {
+ul {
+margin: 0;
+padding: 0;
+list-style: none;
+}
+
+li { display: inline-block; }
+
+a {
+display: block;
+padding: 6px 12px;
+text-decoration: none;
+}
+}
+```
+
+### 変数
+Lessで変数を使用する例です。
+
+```less
+@font-stack: Helvetica, sans-serif;
+@primary-color: #333;
+
+body {
+font: 100% @font-stack;
+color: @primary-color;
+}
+```
+
+### ミックスイン
+Lessでミックスインを使用する例です。
+
+```less
+.border-radius(@radius) {
+-webkit-border-radius: @radius;
+-moz-border-radius: @radius;
+-ms-border-radius: @radius;
+border-radius: @radius;
+}
+
+.box { .border-radius(10px); }
+```
+
+## Tailwind CSS
+Tailwind CSSは、ユーティリティファーストのCSSフレームワークで、カスタマイズ可能なユーティリティクラスを提供します。
+
+### Tailwind CSSのインストール
+Tailwind CSSをインストールするには、以下のコマンドを使用します。
+
+```bash
+npm install -D tailwindcss
+npx tailwindcss init
+```
+
+### ユーティリティクラス
+Tailwind CSSのユーティリティクラスを使用して、簡単にスタイルを適用できます。
+
+```html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Tailwind CSSの例</title>
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-center">
+    <h1 class="text-4xl text-blue-500">こんにちは、世界！</h1>
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        ボタン
+    </button>
+</body>
+</html>
+```
+
+````styles.css```` ファイル：
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+### カスタマイズ
+````tailwind.config.js```` ファイルを編集してTailwind CSSをカスタマイズできます。
+
+```javascript
+module.exports = {
+theme: {
+extend: {
+colors: {
+'custom-blue': '#1c3d5a',
+},
+},
+},
+}
+```
+
+### レスポンシブデザイン
+Tailwind CSSのレスポンシブユーティリティを使用して、異なる画面サイズに対応できます。
+
+```html
+<div class="bg-white p-4 md:bg-gray-200 lg:bg-gray-400 xl:bg-gray-600">
+    レスポンシブデザインの例
+</div>
+```
+
+## 実際の例
+以下は、Sass、Less、Tailwind CSSを組み合わせた実際の例です。
+
+### Sassの例
+```scss
+$primary-color: blue;
+
+body {
+font-family: sans-serif;
+}
+
+h1 {
+color: $primary-color;
+}
+```
+
+### Lessの例
+```less
+@primary-color: blue;
+
+body {
+font-family: sans-serif;
+}
+
+h1 {
+color: @primary-color;
+}
+```
+
+### Tailwind CSSの例
+```html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Tailwind CSSの例</title>
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-center">
+    <h1 class="text-4xl text-blue-500">こんにちは、世界！</h1>
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        ボタン
+    </button>
+</body>
+</html>
+```
+
+
+````styles.css```` ファイル：
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+以上で、Sass、SCSS、Less、Tailwind CSSの基本的な使用方法と実際の例についての説明を終わります。これらのツールを理解することで、より効率的で柔軟なスタイルシートを作成することができます。

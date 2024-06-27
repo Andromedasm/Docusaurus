@@ -1,0 +1,195 @@
+---
+id: container-guide
+title: コンテナ概念と入門マニュアル
+---
+
+# コンテナ概念と入門マニュアル
+
+このガイドでは、コンテナの基本概念から入門的な技術までを詳細に説明します。コンテナは、ソフトウェアを一貫した環境で実行するための軽量な仮想化技術です。コンテナを使用することで、アプリケーションのデプロイ、スケーリング、および管理が容易になります。
+
+## 目次
+1. [コンテナの基本概念](#コンテナの基本概念)
+ - [コンテナとは](#コンテナとは)
+ - [コンテナと仮想マシンの違い](#コンテナと仮想マシンの違い)
+2. [コンテナの主要技術](#コンテナの主要技術)
+ - [Docker](#docker)
+ - [Kubernetes](#kubernetes)
+3. [Dockerの基本操作](#dockerの基本操作)
+ - [Dockerのインストール](#dockerのインストール)
+ - [コンテナの作成と実行](#コンテナの作成と実行)
+ - [イメージの管理](#イメージの管理)
+ - [コンテナのネットワーク](#コンテナのネットワーク)
+4. [Kubernetesの基本操作](#kubernetesの基本操作)
+ - [Kubernetesのインストール](#kubernetesのインストール)
+ - [Podの作成と管理](#podの作成と管理)
+ - [サービスの作成](#サービスの作成)
+ - [デプロイメントの管理](#デプロイメントの管理)
+5. [セキュリティに関する注意点](#セキュリティに関する注意点)
+6. [トラブルシューティング](#トラブルシューティング)
+
+## コンテナの基本概念
+
+### コンテナとは
+
+コンテナは、アプリケーションとその依存関係を一緒にパッケージ化し、どこでも一貫して実行できるようにする技術です。コンテナは、ホストOSのカーネルを共有し、リソースの効率的な利用を可能にします。
+
+### コンテナと仮想マシンの違い
+
+コンテナと仮想マシン（VM）の主な違いは、仮想化の方法です。VMはハイパーバイザーを使用して物理ハードウェアを仮想化しますが、コンテナはホストOSのカーネルを共有し、軽量で高速です。
+
+## コンテナの主要技術
+
+### Docker
+
+Dockerは、最も広く使用されているコンテナプラットフォームです。Dockerを使用することで、アプリケーションの開発、デプロイ、および運用が簡素化されます。
+
+### Kubernetes
+
+Kubernetesは、コンテナ化されたアプリケーションのオーケストレーションツールです。Kubernetesを使用することで、コンテナのデプロイ、スケーリング、および管理を自動化できます。
+
+## Dockerの基本操作
+
+### Dockerのインストール
+
+Dockerをインストールするには、公式ウェブサイトからインストーラーをダウンロードし、インストール手順に従います。Linux、macOS、およびWindowsで利用可能です。
+
+### コンテナの作成と実行
+
+新しいコンテナを作成して実行するには、`docker run`コマンドを使用します。
+
+```bash
+docker run -d --name my_container nginx
+```
+
+このコマンドは、nginxイメージを使用して新しいコンテナをバックグラウンドで実行します。
+
+### イメージの管理
+
+Dockerイメージを管理するには、`docker pull`、`docker push`、および`docker images`コマンドを使用します。
+
+```bash
+docker pull nginx
+docker images
+docker push my_repository/my_image:tag
+```
+
+### コンテナのネットワーク
+
+コンテナ間の通信を確立するために、Dockerネットワークを設定できます。
+
+```bash
+docker network create my_network
+docker run -d --name container1 --network my_network nginx
+docker run -d --name container2 --network my_network busybox
+```
+
+## Kubernetesの基本操作
+
+### Kubernetesのインストール
+
+Kubernetesをインストールするには、MinikubeやKubeadmなどのツールを使用します。Minikubeは、ローカルでKubernetesクラスターを実行するためのツールです。
+
+### Podの作成と管理
+
+Podは、Kubernetesの最小デプロイメント単位です。Podを作成するには、以下のようなYAMLファイルを作成します。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  containers:
+  - name: my-container
+    image: nginx
+```
+
+そして、`kubectl`コマンドを使用してPodを作成します。
+
+```bash
+kubectl apply -f my-pod.yaml
+```
+
+### サービスの作成
+
+サービスは、Podの集合に対するネットワークアクセスを定義します。以下は、サービスのYAMLファイルの例です。
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  selector:
+    app: my-app
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+```
+
+このサービスを作成するには、次のコマンドを使用します。
+
+```bash
+kubectl apply -f my-service.yaml
+```
+
+### デプロイメントの管理
+
+デプロイメントは、Podのスケーリングと更新を管理します。以下は、デプロイメントのYAMLファイルの例です。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-container
+        image: nginx
+```
+
+このデプロイメントを作成するには、次のコマンドを使用します。
+
+```bash
+kubectl apply -f my-deployment.yaml
+```
+
+## セキュリティに関する注意点
+
+コンテナのセキュリティを確保するためには、以下の点に注意してください：
+
+1. **最小限の特権**でコンテナを実行し、不要な権限を削除します。
+2. **セキュアなイメージ**を使用し、信頼できるソースから取得します。
+3. **脆弱性のスキャン**を定期的に行い、最新のパッチを適用します。
+4. **ネットワークポリシー**を設定し、アクセス制御を強化します。
+
+## トラブルシューティング
+
+### コンテナが起動しない場合
+
+1. **ログ**を確認し、エラーメッセージを特定します。
+
+```bash
+docker logs my_container
+```
+
+2. **リソースの不足**（CPU、メモリなど）がないか確認します。
+3. **依存関係**が正しく設定されているか確認します。
+
+### ネットワークの問題
+
+1. **ネットワーク設定**を確認し、正しく構成されているか確認します。
+2. **コンテナ間の通信**が許可されているか確認します。
+3. **ファイアウォール**の設定を確認し、必要なポートが開いているか確認します。
+
+以上で、コンテナの基本概念と入門的な技術についての説明を終わります。コンテナ技術は、アプリケーションの開発、デプロイ、および管理を大幅に簡素化し、効率化するための強力なツールです。

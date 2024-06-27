@@ -1,0 +1,232 @@
+---
+id: oracle-guide
+title: Oracleデータベースマニュアル
+---
+
+# Oracleデータベース 使用マニュアル
+
+このガイドでは、Oracleデータベースの基本的な使用方法から応用的なテクニックまでを詳細に説明します。Oracle Databaseは、高いパフォーマンスと信頼性を提供するリレーショナルデータベース管理システム（RDBMS）です。
+
+## 目次
+1. [Oracleデータベースのインストール](#oracleデータベースのインストール)
+    - [Linuxでのインストール](#linuxでのインストール)
+    - [Windowsでのインストール](#windowsでのインストール)
+2. [基本設定](#基本設定)
+    - [初期設定とデータベースの作成](#初期設定とデータベースの作成)
+    - [設定ファイルの調整](#設定ファイルの調整)
+3. [遠隔アクセスの設定](#遠隔アクセスの設定)
+4. [ユーザーと権限の管理](#ユーザーと権限の管理)
+    - [ユーザーの作成](#ユーザーの作成)
+    - [権限の付与](#権限の付与)
+5. [基本的なクエリ](#基本的なクエリ)
+    - [データの挿入](#データの挿入)
+    - [データの取得](#データの取得)
+    - [データの更新](#データの更新)
+    - [データの削除](#データの削除)
+6. [高度なクエリ](#高度なクエリ)
+    - [ジョイン](#ジョイン)
+    - [サブクエリ](#サブクエリ)
+    - [トリガー](#トリガー)
+7. [高度な使用方法](#高度な使用方法)
+    - [トランザクション](#トランザクション)
+    - [ストアドプロシージャと関数](#ストアドプロシージャと関数)
+    - [パフォーマンスチューニング](#パフォーマンスチューニング)
+
+## Oracleデータベースのインストール
+
+### Linuxでのインストール
+
+1. Oracleの公式サイト（[https://www.oracle.com/database/technologies/](https://www.oracle.com/database/technologies/)）からOracle Databaseのインストーラをダウンロードします。
+2. 必要なパッケージをインストールします。
+    ```bash
+    sudo yum install -y oracle-database-preinstall-19c
+    ```
+3. ダウンロードしたインストーラを解凍し、インストールを開始します。
+    ```bash
+    unzip linuxx64_193000_db_home.zip -d /u01/app/oracle/product/19.3.0/dbhome_1
+    cd /u01/app/oracle/product/19.3.0/dbhome_1
+    ./runInstaller
+    ```
+
+### Windowsでのインストール
+
+1. Oracleの公式サイト（[https://www.oracle.com/database/technologies/](https://www.oracle.com/database/technologies/)）からOracle Databaseのインストーラをダウンロードします。
+2. ダウンロードしたインストーラを実行し、画面の指示に従ってインストールを進めます。
+
+## 基本設定
+
+### 初期設定とデータベースの作成
+
+インストール後、データベースの作成と初期設定を行います。
+
+- Oracle Database Configuration Assistant（DBCA）を使用してデータベースを作成します。
+    ```bash
+    dbca
+    ```
+
+- DBCAの画面に従い、データベース名、パスワード、ストレージ設定などを指定してデータベースを作成します。
+
+### 設定ファイルの調整
+
+Oracleデータベースの設定ファイルは通常、`$ORACLE_HOME/dbs/`にあります。
+
+- `init.ora`または`spfile.ora`で基本設定を調整します。
+    ```bash
+    # init.oraの例
+    db_name='ORCL'
+    memory_target=1G
+    processes=150
+    ```
+
+設定変更後、Oracleデータベースを再起動します。
+
+```bash
+sqlplus / as sysdba
+shutdown immediate;
+startup;
+```
+
+### 遠隔アクセスの設定
+遠隔アクセスを許可するためには、Oracle Net Listenerの設定を調整し、ファイアウォールでポート1521を開放します。
+
+```bash
+# listener.oraの設定（例）
+LISTENER =
+(DESCRIPTION_LIST =
+(DESCRIPTION =
+(ADDRESS = (PROTOCOL = TCP)(HOST = 0.0.0.0)(PORT = 1521))
+)
+)
+```
+
+リスナーを再起動します。
+```bash
+lsnrctl stop
+lsnrctl start
+```
+ファイアウォールの設定も行います。
+
+```bash
+# ファイアウォールの設定（例：UFW）
+sudo ufw allow 1521/tcp
+```
+
+## ユーザーと権限の管理
+### ユーザーの作成
+新しいユーザーを作成し、データベースへのアクセス権を設定します。
+
+```sql
+CREATE USER newuser IDENTIFIED BY newpassword;
+```
+### 権限の付与
+ユーザーにデータベースやテーブルへの権限を付与します。
+
+```sql
+GRANT CONNECT, RESOURCE TO newuser;
+```
+
+## 基本的なクエリ
+### データの挿入
+テーブルにデータを挿入します。
+
+```sql
+INSERT INTO mytable (column1, column2) VALUES ('value1', 'value2');
+```
+### データの取得
+テーブルからデータを取得します。
+```sql
+SELECT column1, column2 FROM mytable WHERE condition;
+```
+### データの更新
+テーブルのデータを更新します。
+
+```sql
+UPDATE mytable SET column1 = 'newvalue' WHERE condition;
+```
+### データの削除
+テーブルのデータを削除します。
+
+```sql
+DELETE FROM mytable WHERE condition;
+```
+
+## 高度なクエリ
+### ジョイン
+複数のテーブルを結合してデータを取得します。
+
+```sql
+SELECT a.column1, b.column2
+FROM table1 a
+JOIN table2 b ON a.common_column = b.common_column;
+```
+### サブクエリ
+サブクエリを使用して、複雑なクエリを作成します。
+
+```sql
+SELECT column1
+FROM mytable
+WHERE column2 IN (SELECT column2 FROM anothertable WHERE condition);
+```
+### トリガー
+トリガーを使用して、特定の操作が実行されたときに自動的に実行されるアクションを定義します。
+
+```sql
+CREATE TRIGGER mytrigger
+AFTER INSERT ON mytable
+FOR EACH ROW
+BEGIN
+-- トリガーが実行するSQL文
+END;
+```
+
+## 高度な使用方法
+### トランザクション
+トランザクションを使用して、一連の操作をアトミックに実行します。
+
+```sql
+BEGIN;
+UPDATE account SET balance = balance - 100 WHERE account_id = 1;
+UPDATE account SET balance = balance + 100 WHERE account_id = 2;
+COMMIT;
+```
+### ストアドプロシージャと関数
+ストアドプロシージャと関数を使用して、再利用可能なコードを作成します。
+
+- ストアドプロシージャの作成
+
+```sql
+CREATE OR REPLACE PROCEDURE increment_value(val IN NUMBER) IS
+BEGIN
+UPDATE mytable SET column1 = column1 + val;
+END;
+```
+
+- ストアドプロシージャの呼び出し
+
+```sql
+EXEC increment_value(5);
+```
+
+### パフォーマンスチューニング
+Oracleデータベースのパフォーマンスを向上させるための設定と最適化を行います。
+
+- インデックスの作成
+
+```sql
+CREATE INDEX myindex ON mytable (mycolumn);
+```
+
+- クエリプランの確認
+
+```sql
+EXPLAIN PLAN FOR
+SELECT * FROM mytable WHERE mycolumn = 'value';
+SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY);
+```
+
+- データベースのメンテナンス
+
+```sql
+EXEC DBMS_STATS.GATHER_SCHEMA_STATS('schema_name');
+```
+以上で、Oracleデータベースの基本的な使用方法と高度な操作についての説明を終わります。Oracleデータベースは強力で柔軟なデータベース管理システムですが、効率的に使用するためには各機能を理解し、適切に活用することが重要です。
