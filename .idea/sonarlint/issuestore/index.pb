@@ -167,3 +167,7 @@ L
 manual-website/versions.json,7\b\7b7394091e73582ee2d0feffef50a4e9d69bb380
 m
 =manual-website/versioned_sidebars/version-1.0.0-sidebars.json,d\0\d0c5dee0108fc90c01c1b793314825fbcd0c82fd
+Q
+!manual-website/src/pages/Home.tsx,8\9\89f397f33dbc2217e0a809fbdc15a34438f53187
+S
+#manual-website/src/pages/clock.scss,a\a\aa4f7ae9408a47d42f20be74627a63f3ddb32a73
