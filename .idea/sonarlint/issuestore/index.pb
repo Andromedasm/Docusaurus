@@ -171,3 +171,5 @@ Q
 !manual-website/src/pages/Home.tsx,8\9\89f397f33dbc2217e0a809fbdc15a34438f53187
 S
 #manual-website/src/pages/clock.scss,a\a\aa4f7ae9408a47d42f20be74627a63f3ddb32a73
+d
+4manual-website/versioned_docs/version-1.0.0/intro.md,0\a\0ac84311c474ee08ff603a7a395f690a6e121c25

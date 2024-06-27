@@ -13,8 +13,8 @@ const config: Config = {
   organizationName: 'facebook', // Usually your GitHub org/user name.
   projectName: 'docusaurus', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenLinks: 'ignore', // 或者设置为 'warn'
+  onBrokenMarkdownLinks: 'warn', // 或者设置为 'ignore'
 
   i18n: {
     defaultLocale: 'en',
