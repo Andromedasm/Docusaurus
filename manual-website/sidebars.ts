@@ -26,7 +26,6 @@ const sidebars: SidebarsConfig = {
             type: 'category',
             label: 'Cloud',
             items: [
-                'cloud/cloud-guide',
                 'cloud/azure-cli',
                 'cloud/azure-functions',
                 'cloud/aws-lambda',
@@ -56,7 +55,6 @@ const sidebars: SidebarsConfig = {
                 'database/redis-guide',
                 'database/apache-cassandra-guide',
                 'database/apache-hadoop-guide',
-                'database/apache-hive-guide',
                 'database/neo4j-guide',
                 'database/azure-cosmosdb-guide',
                 'database/aws-dynamodb-guide',
@@ -130,6 +128,7 @@ const sidebars: SidebarsConfig = {
             label: 'Printer',
             items: [
                 'printer/printer-setup-guide',
+                'printer/printer-setsuzoku'
             ],
         },
         {

@@ -9,31 +9,31 @@ title: Apache Hiveマニュアル
 
 ## 目次
 1. [Apache Hiveのインストール](#apache-hiveのインストール)
-    - [前提条件](#前提条件)
-    - [Linuxでのインストール](#linuxでのインストール)
-    - [Windowsでのインストール](#windowsでのインストール)
-    - [macOSでのインストール](#macosでのインストール)
+ - [前提条件](#前提条件)
+ - [Linuxでのインストール](#linuxでのインストール)
+ - [Windowsでのインストール](#windowsでのインストール)
+ - [macOSでのインストール](#macosでのインストール)
 2. [基本設定](#基本設定)
-    - [初期設定とHiveサービスの起動](#初期設定とhiveサービスの起動)
-    - [設定ファイルの調整](#設定ファイルの調整)
+ - [初期設定とHiveサービスの起動](#初期設定とhiveサービスの起動)
+ - [設定ファイルの調整](#設定ファイルの調整)
 3. [遠隔アクセスの設定](#遠隔アクセスの設定)
 4. [ユーザーと権限の管理](#ユーザーと権限の管理)
-    - [ユーザーの作成](#ユーザーの作成)
-    - [権限の付与](#権限の付与)
+ - [ユーザーの作成](#ユーザーの作成)
+ - [権限の付与](#権限の付与)
 5. [基本的なクエリ](#基本的なクエリ)
-    - [データベースとテーブルの作成](#データベースとテーブルの作成)
-    - [データの挿入](#データの挿入)
-    - [データの取得](#データの取得)
-    - [データの更新](#データの更新)
-    - [データの削除](#データの削除)
+ - [データベースとテーブルの作成](#データベースとテーブルの作成)
+ - [データの挿入](#データの挿入)
+ - [データの取得](#データの取得)
+ - [データの更新](#データの更新)
+ - [データの削除](#データの削除)
 6. [高度なクエリ](#高度なクエリ)
-    - [ジョイン](#ジョイン)
-    - [集計](#集計)
-    - [サブクエリ](#サブクエリ)
+ - [ジョイン](#ジョイン)
+ - [集計](#集計)
+ - [サブクエリ](#サブクエリ)
 7. [高度な使用方法](#高度な使用方法)
-    - [パーティションとバケット](#パーティションとバケット)
-    - [ユーザー定義関数（UDF）](#ユーザー定義関数udf)
-    - [パフォーマンスチューニング](#パフォーマンスチューニング)
+ - [パーティションとバケット](#パーティションとバケット)
+ - [ユーザー定義関数（UDF）](#ユーザー定義関数udf)
+ - [パフォーマンスチューニング](#パフォーマンスチューニング)
 
 ## Apache Hiveのインストール
 
@@ -44,23 +44,23 @@ Apache Hiveを使用する前に、Hadoopがインストールされている必
 ### Linuxでのインストール
 
 1. Javaのインストール（HiveはJavaが必要です）。
-    ```bash
-    sudo apt-get update
-    sudo apt-get install default-jdk
+ ```bash
+ sudo apt-get update
+ sudo apt-get install default-jdk
     ```
 
 2. Hiveのダウンロードと解凍。
-    ```bash
-    wget https://downloads.apache.org/hive/hive-3.1.2/apache-hive-3.1.2-bin.tar.gz
-    tar -xzvf apache-hive-3.1.2-bin.tar.gz
-    sudo mv apache-hive-3.1.2-bin /usr/local/hive
+ ```bash
+ wget https://downloads.apache.org/hive/hive-3.1.2/apache-hive-3.1.2-bin.tar.gz
+ tar -xzvf apache-hive-3.1.2-bin.tar.gz
+ sudo mv apache-hive-3.1.2-bin /usr/local/hive
     ```
 
 3. 環境変数の設定。
-    ```bash
-    echo "export HIVE_HOME=/usr/local/hive" >> ~/.bashrc
-    echo "export PATH=\$PATH:\$HIVE_HOME/bin" >> ~/.bashrc
-    source ~/.bashrc
+ ```bash
+ echo "export HIVE_HOME=/usr/local/hive" >> ~/.bashrc
+ echo "export PATH=\$PATH:\$HIVE_HOME/bin" >> ~/.bashrc
+ source ~/.bashrc
     ```
 
 ### Windowsでのインストール
@@ -72,15 +72,15 @@ Apache Hiveを使用する前に、Hadoopがインストールされている必
 ### macOSでのインストール
 
 1. Homebrewを使用してHiveをインストールします。
-    ```bash
-    brew install hive
+ ```bash
+ brew install hive
     ```
 
 2. 環境変数の設定。
-    ```bash
-    echo "export HIVE_HOME=/usr/local/Cellar/hive/3.1.2" >> ~/.bash_profile
-    echo "export PATH=\$PATH:\$HIVE_HOME/bin" >> ~/.bash_profile
-    source ~/.bash_profile
+ ```bash
+ echo "export HIVE_HOME=/usr/local/Cellar/hive/3.1.2" >> ~/.bash_profile
+ echo "export PATH=\$PATH:\$HIVE_HOME/bin" >> ~/.bash_profile
+ source ~/.bash_profile
     ```
 
 ## 基本設定
@@ -88,13 +88,13 @@ Apache Hiveを使用する前に、Hadoopがインストールされている必
 ### 初期設定とHiveサービスの起動
 
 1. Metastoreデータベースの設定。
-    ```bash
-    schematool -initSchema -dbType derby
+ ```bash
+ schematool -initSchema -dbType derby
     ```
 
 2. Hiveシェルの起動。
-    ```bash
-    hive
+ ```bash
+ hive
     ```
 
 ### 設定ファイルの調整
@@ -102,17 +102,17 @@ Apache Hiveを使用する前に、Hadoopがインストールされている必
 Hiveの設定ファイルは通常、`$HIVE_HOME/conf/hive-site.xml`にあります。
 
 - 設定ファイルの編集
-    ```xml
-    <configuration>
-        <property>
-            <name>javax.jdo.option.ConnectionURL</name>
-            <value>jdbc:derby:;databaseName=metastore_db;create=true</value>
-        </property>
-        <property>
-            <name>javax.jdo.option.ConnectionDriverName</name>
-            <value>org.apache.derby.jdbc.EmbeddedDriver</value>
-        </property>
-    </configuration>
+  ```xml
+  <configuration>
+      <property>
+          <name>javax.jdo.option.ConnectionURL</name>
+          <value>jdbc:derby:;databaseName=metastore_db;create=true</value>
+      </property>
+      <property>
+          <name>javax.jdo.option.ConnectionDriverName</name>
+          <value>org.apache.derby.jdbc.EmbeddedDriver</value>
+      </property>
+  </configuration>
     ```
 
 設定変更後、Hiveサービスを再起動します。

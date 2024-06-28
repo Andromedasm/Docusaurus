@@ -4,7 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99e448e3-76ac-4557-a624-0f2b3fd51d4e" name="更改" comment="" />
+    <list default="true" id="99e448e3-76ac-4557-a624-0f2b3fd51d4e" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/printer/setsuzoku.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/printer/GUID-low.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/printer/step2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/printer/step3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/printer/step4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/printer/step5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/printer/step6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/cloud/cloud-guide.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/cloud/cloud-guide.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/database/apache-hive-guide.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/database/apache-hive-guide.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/mobile-device/ios-exchange.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/mobile-device/ios-exchange.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/sidebars.ts" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/sidebars.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/versioned_docs/version-1.0.0/cloud/cloud-guide.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/versioned_docs/version-1.0.0/cloud/cloud-guide.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/versioned_docs/version-1.0.0/database/apache-hive-guide.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/versioned_docs/version-1.0.0/database/apache-hive-guide.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/versioned_sidebars/version-1.0.0-sidebars.json" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/versioned_sidebars/version-1.0.0-sidebars.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,6 +33,7 @@
       <list>
         <option value="CSS File" />
         <option value="TypeScript JSX File" />
+        <option value="SCSS File" />
       </list>
     </option>
   </component>
@@ -63,14 +79,14 @@
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/DS201906079/Downloads/Github/Personal/Docusaurus/manual-website/docs/printer",
-    "list.type.of.created.stylesheet": "CSS",
+    "list.type.of.created.stylesheet": "SCSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "npm.start.executor": "Run",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.new.ui",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "ts.external.directory.path": "C:\\Users\\DS201906079\\Downloads\\Github\\Personal\\Docusaurus\\manual-website\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   },
@@ -194,6 +210,9 @@
       <workItem from="1719465881664" duration="4706000" />
       <workItem from="1719472742710" duration="29000" />
       <workItem from="1719474270266" duration="1086000" />
+      <workItem from="1719475478350" duration="2685000" />
+      <workItem from="1719531713667" duration="11000" />
+      <workItem from="1719536178479" duration="4752000" />
     </task>
     <servers />
   </component>
