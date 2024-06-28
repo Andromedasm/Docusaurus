@@ -177,3 +177,9 @@ a
 1manual-website/docs/mobile-device/ios-exchange.md,7\a\7ae80c0f24985175ad9ba40cdaa1bc4076e74d62
 X
 (manual-website/docs/printer/setsuzoku.md,4\1\41db0c292d114e523390201fa004fa2dd485bf51
+X
+(manual-website/docs/attendance/joumon.md,a\8\a8167d4b731bc1d1bf7dbab710150a49178c9948
+[
++manual-website/docs/attendance/kinkonkan.md,c\a\ca1b412461a1a6e43d5ebf0566215b3b59cd1294
+\
+,manual-website/docs/attendance/kinkonkan.mdx,6\e\6ead938d492e4af10dbcf9d368cb0e67d149c9f9
