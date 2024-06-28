@@ -4,48 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99e448e3-76ac-4557-a624-0f2b3fd51d4e" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/attendance/kinkonkan.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/attendance/change.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/attendance/main_menu.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/attendance/mitsukarimashita.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/attendance/ninsho_test.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/attendance/shinseishokai.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/attendance/shoukai.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/attendance/shukin.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/attendance/shutaikin.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/attendance/step6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/attendance/step7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/attendance/taikin.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/kinkonkan/jyouken.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/kinkonkan/kanzen.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/kinkonkan/kasutamu.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/kinkonkan/new_sousa.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/kinkonkan/new_sousaxx.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/kinkonkan/new_toriga.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/kinkonkan/new_toriga2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/kinkonkan/settei.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/kinkonkan/shell_startup.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/kinkonkan/shozoku.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/kinkonkan/sousa.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/kinkonkan/step1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/kinkonkan/step2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/kinkonkan/step3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/kinkonkan/step4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/kinkonkan/step4x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/kinkonkan/step5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/kinkonkan/synchroniz.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/kinkonkan/task_sakusei.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/kinkonkan/task_sakusei2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/kinkonkan/toriga.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/kinkonkan/tsugihe.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/docs/attendance/joumon.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/attendance/joumon.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/docs/mobile-device/ios-exchange.md" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/mobile-device/ios-exchange.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/sidebars.ts" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/sidebars.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/static/img/attendance/shain_master1.png" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/static/img/attendance/shain_master1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/static/img/attendance/shain_reregister1.png" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/static/img/attendance/shain_reregister1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/static/img/attendance/shain_search1.png" beforeDir="false" />
-    </list>
+    <list default="true" id="99e448e3-76ac-4557-a624-0f2b3fd51d4e" name="更改" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -238,7 +197,7 @@
       <workItem from="1719474270266" duration="1086000" />
       <workItem from="1719475478350" duration="2685000" />
       <workItem from="1719531713667" duration="11000" />
-      <workItem from="1719536178479" duration="14296000" />
+      <workItem from="1719536178479" duration="14637000" />
     </task>
     <servers />
   </component>

@@ -20,7 +20,7 @@ const sidebars: SidebarsConfig = {
             label: '勤怠',
             items: [
                 'attendance/joumon',
-                'attendance/kinkonkan'
+                'attendance/kinkonkan',
             ],
         },
         {
