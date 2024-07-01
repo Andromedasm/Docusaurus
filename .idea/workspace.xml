@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99e448e3-76ac-4557-a624-0f2b3fd51d4e" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/docusaurus/installation.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/docs/docusaurus/docusaurus-guide.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/docusaurus/docusaurus-guide.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/docusaurus/docusaurus-guide.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/docusaurus/docusaurus-guide.mdx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,7 +207,7 @@
       <workItem from="1719806890523" duration="19000" />
       <workItem from="1719809912637" duration="1625000" />
       <workItem from="1719815616552" duration="8000" />
-      <workItem from="1719815971430" duration="628000" />
+      <workItem from="1719815971430" duration="1943000" />
     </task>
     <servers />
   </component>

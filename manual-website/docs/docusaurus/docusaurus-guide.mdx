@@ -52,8 +52,23 @@ module.exports = {
 };
 ```
 
+### `sidebars.ts`とMarkdownファイルの関係
+`sidebars.ts`ファイルの設定は、`docs`ディレクトリ内のMarkdownファイルの構造に基づいています。各Markdownファイルのフロントマター（例：`id`, `title`）は、サイドバーで表示される順序やカテゴリーを決定します。
+
+例えば、docs/intro.mdファイルのフロントマター：
+
+```md
+---
+id: intro
+title: はじめに
+---
+```
+このフロントマターに基づいて、introというIDでサイドバーに表示されます。
+
 ## 文書の保存場所
 デフォルトでは、文書は`docs`ディレクトリに保存されます。このディレクトリ内にMarkdownファイルを作成し、文書を記述します。
+
+文書ファイル名には特定の規則はありませんが、ファイル名と`id`は一貫性を持たせると管理が楽になります。
 
 例えば、`docs/intro.md`というファイルを作成し、以下のように記述します。
 
@@ -75,6 +90,13 @@ Docusaurusは、静的サイトジェネレーターです。
 
 ```md
 ![ロゴ](../static/img/logo.png)
+```
+
+### 画像の引用とサイズ変更の例
+画像を引用する際にサイズを変更することも可能です。以下にいくつかの例を示します。
+
+```md
+<img src="/img/logo.png" alt="ロゴ" width="200" height="200" />
 ```
 
 ## 検索プラグインの導入
@@ -109,6 +131,19 @@ module.exports = {
 ```bash
 npm install @docusaurus/theme-search-algolia
 ```
+
+## Algoliaの登録方法とAPIキーの取得
+### Algoliaの登録方法
+1. Algoliaの公式サイト`https://www.algolia.com`にアクセスし、アカウントを作成します。
+2. アカウント作成後、ダッシュボードにログインします。
+
+### APIキー、インデックス名、アプリIDの取得方法
+1. ダッシュボードの左側のメニューから「API Keys」を選択します。
+2. 「API Key」セクションで、「Search-Only API Key」をコピーします。これがapiKeyになります。
+3. 「Indices」セクションで、インデックスを作成します。作成したインデックスの名前をindexNameとして使用します。
+4. 「Applications」セクションで、アプリケーションの詳細を確認します。「Application ID」をコピーして、appIdとして使用します。
+
+これで、Docusaurusの設定に必要なAlgoliaの情報がすべて揃いました。先ほどの`docusaurus.config.ts`ファイルにこれらの情報を追加して設定を完了します。
 
 ## まとめ
 以上で、Docusaurusの基本的な使用方法と設定についての説明を終わります。Docusaurusを使用すると、簡単に技術文書を作成し、公開することができます。さらに詳細な情報は、Docusaurus公式ドキュメントを参照してください。
