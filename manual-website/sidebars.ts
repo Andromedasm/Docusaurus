@@ -122,6 +122,7 @@ const sidebars: SidebarsConfig = {
             items: [
                 'pc/bios',
                 'pc/powershell-kitting',
+                'pc/pc-kitting',
             ],
         },
         {

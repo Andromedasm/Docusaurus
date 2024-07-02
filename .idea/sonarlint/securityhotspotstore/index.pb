@@ -179,7 +179,7 @@ Y
 )manual-website/docs/printer/setsuzoku.mdx,4\e\4e1aaf0572ffa5743316b0ec256579cb8aa4b6fb
 c
 3manual-website/docs/docusaurus/docusaurus-guide.mdx,a\8\a8581a672303422ecedf5904d1700001998a1215
-^
-.manual-website/docs/docusaurus/installation.md,2\0\206c5a3e1221c3c7d3a6f950de2b2a4f575ea974
-b
-2manual-website/docs/docusaurus/docusaurus-guide.md,7\4\7477b1f56e55962fa79e7f31c6716c35a6cc7bc4
+T
+$manual-website/docs/pc/pc-kitting.md,1\9\19718c817c9efaee3fb840a9ba01429ad9dbb9af
+U
+%manual-website/docs/pc/pc-kitting.mdx,5\7\5760bedfbea75f6dccaec6bd3a449a51dc53c0e2

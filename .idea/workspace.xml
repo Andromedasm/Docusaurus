@@ -5,7 +5,74 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99e448e3-76ac-4557-a624-0f2b3fd51d4e" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/manual-website/docs/docusaurus/docusaurus-guide.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/docusaurus/docusaurus-guide.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/pc/pc-kitting.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows10/A01.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows10/A02.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows10/A03.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows10/A04.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows10/A04H.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows10/A07.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows10/A08.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows10/A09.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows10/A10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows10/A11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows10/A13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows10/A14.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows10/A15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows10/A16.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows10/A17.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows10/A18.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows10/A19.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows10/A20.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows10/A21.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows10/A22.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows10/A23.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows10/A24.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows10/A25.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows10/A26.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows10/A27.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows10/A28.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows10/A29.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows10/a30.jfif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows10/a31.jfif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows10/a32.jfif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows10/a33.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows11/step1.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows11/step10.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows11/step11.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows11/step12.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows11/step13.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows11/step14.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows11/step15.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows11/step16.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows11/step17.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows11/step18.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows11/step19.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows11/step2.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows11/step20.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows11/step21.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows11/step22.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows11/step23.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows11/step24.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows11/step25.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows11/step26.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows11/step28.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows11/step3.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows11/step30.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows11/step31.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows11/step32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows11/step33.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows11/step34.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows11/step35.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows11/step4.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows11/step5.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows11/step6.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows11/step7.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows11/step8.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/pc/Windows11/step9.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/sidebars.ts" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/sidebars.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,7 +274,8 @@
       <workItem from="1719806890523" duration="19000" />
       <workItem from="1719809912637" duration="1625000" />
       <workItem from="1719815616552" duration="8000" />
-      <workItem from="1719815971430" duration="1943000" />
+      <workItem from="1719815971430" duration="7028000" />
+      <workItem from="1719881504058" duration="15212000" />
     </task>
     <servers />
   </component>
