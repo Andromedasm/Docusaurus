@@ -181,3 +181,9 @@ c
 3manual-website/docs/docusaurus/docusaurus-guide.mdx,a\8\a8581a672303422ecedf5904d1700001998a1215
 U
 %manual-website/docs/pc/pc-kitting.mdx,5\7\5760bedfbea75f6dccaec6bd3a449a51dc53c0e2
+T
+$manual-website/docs/pc/pc-kitting.md,1\9\19718c817c9efaee3fb840a9ba01429ad9dbb9af
+_
+/manual-website/docs/mobile-device/microsoft-mfa,3\7\3735dfbf324ab4309b6d46cd9a6be2c662624c72
+b
+2manual-website/docs/mobile-device/microsoft-mfa.md,3\3\33478142d8651e604fb8f3dadb007a9a0114b2c9

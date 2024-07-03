@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99e448e3-76ac-4557-a624-0f2b3fd51d4e" name="更改" comment="" />
+    <list default="true" id="99e448e3-76ac-4557-a624-0f2b3fd51d4e" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/mobile-device/microsoft-mfa.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/pc/pc-kitting.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/pc/pc-kitting.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -208,6 +211,8 @@
       <workItem from="1719815971430" duration="7028000" />
       <workItem from="1719881504058" duration="15616000" />
       <workItem from="1719900810829" duration="17000" />
+      <workItem from="1719902085692" duration="134000" />
+      <workItem from="1719964972602" duration="9054000" />
     </task>
     <servers />
   </component>
