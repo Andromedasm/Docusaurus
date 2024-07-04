@@ -21,6 +21,7 @@ title: Dell PC BIOS 設定マニュアル
 4. **BIOS Setupを選択**
 - キーボードの `↓` （下矢印）キーを押して「BIOS Setup」オプションを選択します。
 - `Enter` キーを押して選択します。
+<img src="/img/bios/step1.jpg" />
 
 5. **Boot Sequenceにアクセス**
 - 左側のサイドバーで、**General** カテゴリの下にある `Boot Sequence` を選択します。
@@ -28,6 +29,7 @@ title: Dell PC BIOS 設定マニュアル
 6. **Boot Sequenceを変更**
 - `→` （右矢印）キーを使用してオプションを移動します。
 - `WD SN570` を含むオプションがリストの一番上に来るように設定します。
+<img src="/img/bios/step2.jpg" />
 
 7. **変更を適用**
 - 画面の右下にある `Apply` ボタンをクリックします。
