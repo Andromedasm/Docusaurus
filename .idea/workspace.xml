@@ -4,7 +4,39 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99e448e3-76ac-4557-a624-0f2b3fd51d4e" name="更改" comment="" />
+    <list default="true" id="99e448e3-76ac-4557-a624-0f2b3fd51d4e" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/surveillance-camera/ivms-4200.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ivms/YMuJT2yfci.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ivms/adddevice.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ivms/addgroup.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ivms/adminmanager.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ivms/devicemanager.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ivms/group.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ivms/import.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ivms/server.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ivms/step1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ivms/step10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ivms/step11.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ivms/step12.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ivms/step13.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ivms/step14.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ivms/step15.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ivms/step16.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ivms/step17.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ivms/step2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ivms/step3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ivms/step4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ivms/step5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ivms/step6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ivms/step7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ivms/step8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ivms/step9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ivms/stepxxxx.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ivms/user.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/ivms/useredit.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/pc/bios.md" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/pc/bios.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/sidebars.ts" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/sidebars.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -213,6 +245,13 @@
       <workItem from="1719985044619" duration="2769000" />
       <workItem from="1719994894197" duration="754000" />
       <workItem from="1720059659497" duration="129000" />
+      <workItem from="1720080542705" duration="2045000" />
+      <workItem from="1720153863292" duration="289000" />
+      <workItem from="1720154177753" duration="6292000" />
+      <workItem from="1720397225292" duration="39000" />
+      <workItem from="1720407184070" duration="27000" />
+      <workItem from="1720411743811" duration="7000" />
+      <workItem from="1720413896683" duration="4693000" />
     </task>
     <servers />
   </component>

@@ -200,6 +200,7 @@ const sidebars: SidebarsConfig = {
             label: '防犯カメラ',
             items: [
                 'surveillance-camera/hikvision-ivms4200-guide',
+                'surveillance-camera/ivms-4200',
             ],
         },
     ],
