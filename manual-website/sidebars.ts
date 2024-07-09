@@ -201,6 +201,7 @@ const sidebars: SidebarsConfig = {
             items: [
                 'surveillance-camera/hikvision-ivms4200-guide',
                 'surveillance-camera/ivms-4200',
+                'surveillance-camera/video-encode',
             ],
         },
     ],
