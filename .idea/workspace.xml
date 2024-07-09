@@ -5,19 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99e448e3-76ac-4557-a624-0f2b3fd51d4e" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/surveillance-camera/video-encode.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/video-encode/date.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/video-encode/download.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/video-encode/download1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/video-encode/file.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/video-encode/handbrake.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/video-encode/handbrake2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/video-encode/handbrake3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/video-encode/preset.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/video-encode/qsv.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/video-encode/saveas.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/static/img/video-encode/startencode.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/sidebars.ts" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/sidebars.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/video-encode/win10dvd01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/video-encode/win10dvd04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/video-encode/win10dvd06.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/video-encode/win10dvd09.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/video-encode/win10dvd10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/video-encode/win10dvd13.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/static/img/video-encode/win10dvd14.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/surveillance-camera/video-encode.md" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/surveillance-camera/video-encode.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -234,7 +229,7 @@
       <workItem from="1720407184070" duration="27000" />
       <workItem from="1720411743811" duration="7000" />
       <workItem from="1720413896683" duration="6234000" />
-      <workItem from="1720486171569" duration="2090000" />
+      <workItem from="1720486171569" duration="4263000" />
     </task>
     <servers />
   </component>
