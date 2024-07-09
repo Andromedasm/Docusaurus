@@ -13,6 +13,9 @@ const sidebars: SidebarsConfig = {
                 'another/css-guide',
                 'another/javascript-guide',
                 'another/modern-css-guide',
+                'another/electron-manual',
+                'another/pyqt-manual',
+                'another/tkinter-manual',
             ],
         },
         {
