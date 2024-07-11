@@ -4,7 +4,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Manual Website',
-  tagline: 'システム部マニュアル',
+  tagline: 'My Manual Website',
   favicon: 'img/favicon.ico',
 
   url: 'https://your-docusaurus-site.example.com',
