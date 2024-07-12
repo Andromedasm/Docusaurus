@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99e448e3-76ac-4557-a624-0f2b3fd51d4e" name="更改" comment="" />
+    <list default="true" id="99e448e3-76ac-4557-a624-0f2b3fd51d4e" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/manual-website/docusaurus.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docusaurus.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/src/theme/SearchBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/src/theme/SearchBar.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -221,6 +224,9 @@
       <workItem from="1720411743811" duration="7000" />
       <workItem from="1720413896683" duration="6234000" />
       <workItem from="1720486171569" duration="7335000" />
+      <workItem from="1720657536095" duration="1988000" />
+      <workItem from="1720680185970" duration="251000" />
+      <workItem from="1720758393791" duration="295000" />
     </task>
     <servers />
   </component>

@@ -7,7 +7,7 @@ const config: Config = {
   tagline: 'My Manual Website',
   favicon: 'img/favicon.ico',
 
-  url: 'https://your-docusaurus-site.example.com',
+  url: 'https://yellow-sky-0099e7600.5.azurestaticapps.net',
   baseUrl: '/',
 
   organizationName: 'facebook', // Usually your GitHub org/user name.
@@ -28,7 +28,6 @@ const config: Config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.ts'),
           editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          // Enable documentation versioning
           lastVersion: 'current',
           versions: {
             current: {
@@ -53,9 +52,9 @@ const config: Config = {
       '@docusaurus/plugin-ideal-image',
       {
         quality: 100,
-        max: 640, // max resized image's size.
-        min: 480, // min resized image's size. if original is lower, use that size.
-        steps: 2, // the max number of images generated between min and max (inclusive)
+        max: 640,
+        min: 480,
+        steps: 2,
         disableInDev: false,
       },
     ],
@@ -72,7 +71,7 @@ const config: Config = {
       items: [
         {
           type: 'docsVersionDropdown',
-          position: 'left', // 可选：指定版本下拉菜单在导航栏的位置
+          position: 'left',
         },
         {
           type: 'docSidebar',
@@ -84,6 +83,10 @@ const config: Config = {
         {
           href: 'https://github.com/facebook/docusaurus',
           label: 'GitHub',
+          position: 'right',
+        },
+        {
+          type: 'search', // 使用 search 类型
           position: 'right',
         },
       ],
@@ -120,10 +123,7 @@ const config: Config = {
         {
           title: 'More',
           items: [
-            {
-              label: 'Blog',
-              to: '/blog',
-            },
+            { label: 'Blog', to: '/blog' },
             {
               label: 'GitHub',
               href: 'https://github.com/facebook/docusaurus',
@@ -136,6 +136,12 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+    },
+    algolia: {
+      appId: '5CH7S8QVUG',
+      apiKey: '75b290e5307253c6b13731d75c2b2418',
+      indexName: 'yellow-sky-0099e7600-5-azurestaticapps',
+      contextualSearch: true,
     },
   } satisfies Preset.ThemeConfig,
 };
