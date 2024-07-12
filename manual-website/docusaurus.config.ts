@@ -63,7 +63,7 @@ const config: Config = {
   themeConfig: {
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'Manual Website',
+      title: 'Docusaurus',
       logo: {
         alt: 'My Site Logo',
         src: 'img/logo.svg',
