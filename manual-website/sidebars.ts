@@ -20,14 +20,6 @@ const sidebars: SidebarsConfig = {
         },
         {
             type: 'category',
-            label: '勤怠',
-            items: [
-                'attendance/joumon',
-                'attendance/kinkonkan',
-            ],
-        },
-        {
-            type: 'category',
             label: 'Cloud',
             items: [
                 'cloud/azure-cli',
@@ -74,13 +66,6 @@ const sidebars: SidebarsConfig = {
         },
         {
             type: 'category',
-            label: "desknet's NEO",
-            items: [
-                'desknet-neo/config',
-            ],
-        },
-        {
-            type: 'category',
             label: 'Domain',
             items: [
                 'domain/domain-guide',
@@ -121,33 +106,9 @@ const sidebars: SidebarsConfig = {
         },
         {
             type: 'category',
-            label: 'PC',
-            items: [
-                'pc/bios',
-                'pc/powershell-kitting',
-                'pc/pc-kitting',
-            ],
-        },
-        {
-            type: 'category',
-            label: 'Printer',
-            items: [
-                'printer/printer-setup-guide',
-                'printer/printer-setsuzoku'
-            ],
-        },
-        {
-            type: 'category',
             label: 'Router',
             items: [
                 'router/telnet-guide'
-            ],
-        },
-        {
-            type: 'category',
-            label: 'Security',
-            items: [
-                'security/intro',
             ],
         },
         {
@@ -164,13 +125,6 @@ const sidebars: SidebarsConfig = {
         },
         {
             type: 'category',
-            label: 'Trouble Shooting',
-            items: [
-                'trouble-shooting/intro',
-            ],
-        },
-        {
-            type: 'category',
             label: 'Unix',
             items: [
                 'unix/freebsd-guide',
@@ -182,29 +136,6 @@ const sidebars: SidebarsConfig = {
             items: [
                 'windows/powershell-guide',
                 'windows/wsl-guide'
-            ],
-        },
-        {
-            type: 'category',
-            label: '売上原価PRO',
-            items: [
-                'ijs/intro'
-            ],
-        },
-        {
-            type: 'category',
-            label: '雷検知',
-            items: [
-                'thunder/intro',
-            ],
-        },
-        {
-            type: 'category',
-            label: '防犯カメラ',
-            items: [
-                'surveillance-camera/hikvision-ivms4200-guide',
-                'surveillance-camera/ivms-4200',
-                'surveillance-camera/video-encode',
             ],
         },
     ],
