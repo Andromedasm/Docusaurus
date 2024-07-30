@@ -5,6 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99e448e3-76ac-4557-a624-0f2b3fd51d4e" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/docusaurus/create-document.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/docusaurus/docusaurus-heading.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/docusaurus/docusaurus-links.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/docusaurus/docusaurus-mermaid.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/docusaurus/docusaurus-tabs.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/docusaurus/docusaurus-warning.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/docusaurus/install.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/docusaurus/setting.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/docusaurus/typescript-support.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/docusaurus/docusaurus-guide.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/docusaurus/docusaurus-guide.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/manual-website/sidebars.ts" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/sidebars.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -234,7 +246,20 @@
       <workItem from="1721198319952" duration="33000" />
       <workItem from="1721198677901" duration="1817000" />
       <workItem from="1721202009887" duration="3347000" />
-      <workItem from="1721270954545" duration="4069000" />
+      <workItem from="1721270954545" duration="4644000" />
+      <workItem from="1721286296359" duration="9000" />
+      <workItem from="1721349518443" duration="117000" />
+      <workItem from="1721349653672" duration="138000" />
+      <workItem from="1721716446478" duration="164000" />
+      <workItem from="1721716634629" duration="124000" />
+      <workItem from="1721716771476" duration="304000" />
+      <workItem from="1721873392165" duration="188000" />
+      <workItem from="1721874840891" duration="193000" />
+      <workItem from="1721953791636" duration="625000" />
+      <workItem from="1721954829945" duration="2776000" />
+      <workItem from="1721966772829" duration="32000" />
+      <workItem from="1721979165118" duration="2823000" />
+      <workItem from="1722300726671" duration="2937000" />
     </task>
     <servers />
   </component>

@@ -62,6 +62,15 @@ const sidebars: SidebarsConfig = {
             label: "Docusaurus",
             items: [
                 'docusaurus/docusaurus-guide',
+                'docusaurus/docusaurus-install',
+                'docusaurus/docusaurus-setting',
+                'docusaurus/docusaurus-typescript',
+                'docusaurus/docusaurus-create-document',
+                'docusaurus/docusaurus-warning',
+                'docusaurus/docusaurus-tabs',
+                'docusaurus/docusaurus-heading',
+                'docusaurus/docusaurus-links',
+                'docusaurus/docusaurus-mermaid',
             ],
         },
         {
