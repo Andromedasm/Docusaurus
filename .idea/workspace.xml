@@ -5,16 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99e448e3-76ac-4557-a624-0f2b3fd51d4e" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/docusaurus/create-document.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/docusaurus/docusaurus-heading.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/docusaurus/docusaurus-links.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/docusaurus/docusaurus-mermaid.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/docusaurus/docusaurus-tabs.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/docusaurus/docusaurus-warning.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/docusaurus/install.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/docusaurus/setting.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/docusaurus/typescript-support.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/docs/docusaurus/docusaurus-guide.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/docusaurus/docusaurus-guide.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/interview/questions.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/mobile-device/ios-seed.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/cloud/cloud-guide.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/cloud/cloud-guide.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual-website/docs/surveillance-camera/ivms-4200.md" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/surveillance-camera/ivms-4200.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/manual-website/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/manual-website/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/manual-website/sidebars.ts" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/sidebars.ts" afterDir="false" />
@@ -166,8 +160,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
+        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
       </set>
     </attachedChunks>
   </component>
@@ -259,7 +253,33 @@
       <workItem from="1721954829945" duration="2776000" />
       <workItem from="1721966772829" duration="32000" />
       <workItem from="1721979165118" duration="2823000" />
-      <workItem from="1722300726671" duration="2937000" />
+      <workItem from="1722300726671" duration="4273000" />
+      <workItem from="1722309187272" duration="141000" />
+      <workItem from="1722309513632" duration="661000" />
+      <workItem from="1722386703575" duration="1234000" />
+      <workItem from="1722415118115" duration="43000" />
+      <workItem from="1722469875157" duration="1876000" />
+      <workItem from="1722494993954" duration="6898000" />
+      <workItem from="1722580381149" duration="6293000" />
+      <workItem from="1722840403002" duration="4253000" />
+      <workItem from="1722989732391" duration="901000" />
+      <workItem from="1724304746651" duration="1814000" />
+      <workItem from="1724313988075" duration="1067000" />
+      <workItem from="1724382247961" duration="435000" />
+      <workItem from="1724645618061" duration="22000" />
+      <workItem from="1724717512612" duration="31000" />
+      <workItem from="1724891070756" duration="30000" />
+      <workItem from="1724904478663" duration="397000" />
+      <workItem from="1724918241669" duration="485000" />
+      <workItem from="1725322315253" duration="90000" />
+      <workItem from="1725412331454" duration="281000" />
+      <workItem from="1725412634548" duration="1602000" />
+      <workItem from="1725414461919" duration="2362000" />
+      <workItem from="1725437190239" duration="571000" />
+      <workItem from="1725494924574" duration="1483000" />
+      <workItem from="1725496619422" duration="8246000" />
+      <workItem from="1725518036022" duration="1405000" />
+      <workItem from="1725522471446" duration="14000" />
     </task>
     <servers />
   </component>

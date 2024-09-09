@@ -82,6 +82,13 @@ const sidebars: SidebarsConfig = {
         },
         {
             type: 'category',
+            label: 'Interview',
+            items: [
+                'interview/questions',
+            ],
+        },
+        {
+            type: 'category',
             label: 'Microsoft 365',
             items: [
                 'microsoft-365/teams-cache',
