@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99e448e3-76ac-4557-a624-0f2b3fd51d4e" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/interview/questions.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manual-website/docs/mobile-device/ios-seed.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/docs/cloud/cloud-guide.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/cloud/cloud-guide.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/docs/surveillance-camera/ivms-4200.md" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/docs/surveillance-camera/ivms-4200.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manual-website/sidebars.ts" beforeDir="false" afterPath="$PROJECT_DIR$/manual-website/sidebars.ts" afterDir="false" />
-    </list>
+    <list default="true" id="99e448e3-76ac-4557-a624-0f2b3fd51d4e" name="更改" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -280,6 +272,8 @@
       <workItem from="1725496619422" duration="8246000" />
       <workItem from="1725518036022" duration="1405000" />
       <workItem from="1725522471446" duration="14000" />
+      <workItem from="1725861889785" duration="480000" />
+      <workItem from="1725927380457" duration="75000" />
     </task>
     <servers />
   </component>

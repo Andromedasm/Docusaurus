@@ -4,6 +4,13 @@ const sidebars: SidebarsConfig = {
     tutorialSidebar: [
         {
             type: 'category',
+            label: 'AI',
+            items: [
+                'ai/azure-ai-studio',
+            ],
+        },
+        {
+            type: 'category',
             label: 'Another',
             items: [
                 'another/markdown-tutorial',
