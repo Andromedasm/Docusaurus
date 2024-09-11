@@ -111,6 +111,7 @@ const sidebars: SidebarsConfig = {
                 'linux/git',
                 'linux/ubuntu-guide',
                 'linux/rhel-guide',
+                'linux/azure-fsck',
             ],
         },
         {
