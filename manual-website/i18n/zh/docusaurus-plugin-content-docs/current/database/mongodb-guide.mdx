@@ -1,0 +1,252 @@
+---
+id: mongodb-guide
+title: MongoDBマニュアル
+---
+
+# MongoDB 使用マニュアル
+
+このガイドでは、MongoDBの基本的な使用方法から応用的なテクニックまでを詳細に説明します。MongoDBは、スケーラビリティと柔軟性を備えたドキュメント指向のNoSQLデータベースです。
+
+## 目次
+1. [MongoDBのインストール](#mongodbのインストール)
+    - [Linuxでのインストール](#linuxでのインストール)
+    - [Windowsでのインストール](#windowsでのインストール)
+    - [macOSでのインストール](#macosでのインストール)
+2. [基本設定](#基本設定)
+    - [初期設定とデータベースの作成](#初期設定とデータベースの作成)
+    - [設定ファイルの調整](#設定ファイルの調整)
+3. [遠隔アクセスの設定](#遠隔アクセスの設定)
+4. [ユーザーと権限の管理](#ユーザーと権限の管理)
+    - [ユーザーの作成](#ユーザーの作成)
+    - [権限の付与](#権限の付与)
+5. [基本的なクエリ](#基本的なクエリ)
+    - [データの挿入](#データの挿入)
+    - [データの取得](#データの取得)
+    - [データの更新](#データの更新)
+    - [データの削除](#データの削除)
+6. [高度なクエリ](#高度なクエリ)
+    - [集計](#集計)
+    - [インデックス](#インデックス)
+    - [レプリケーションとシャーディング](#レプリケーションとシャーディング)
+7. [高度な使用方法](#高度な使用方法)
+    - [トランザクション](#トランザクション)
+    - [バックアップと復元](#バックアップと復元)
+    - [パフォーマンスチューニング](#パフォーマンスチューニング)
+
+## MongoDBのインストール
+
+### Linuxでのインストール
+
+1. MongoDBの公式リポジトリを追加します（以下はUbuntuの場合）。
+    ```bash
+    wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+    echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+    sudo apt-get update
+    ```
+
+2. MongoDBをインストールします。
+    ```bash
+    sudo apt-get install -y mongodb-org
+    ```
+
+3. MongoDBサービスを起動します。
+    ```bash
+    sudo systemctl start mongod
+    sudo systemctl enable mongod
+    ```
+
+### Windowsでのインストール
+
+1. MongoDBの公式サイト（[https://www.mongodb.com/try/download/community](https://www.mongodb.com/try/download/community)）からインストーラをダウンロードします。
+2. インストーラを実行し、画面の指示に従ってインストールを進めます。
+
+### macOSでのインストール
+
+1. Homebrewを使用してMongoDBをインストールします。
+    ```bash
+    brew tap mongodb/brew
+    brew install mongodb-community@4.4
+    ```
+
+2. MongoDBサービスを起動します。
+    ```bash
+    brew services start mongodb/brew/mongodb-community
+    ```
+
+## 基本設定
+
+### 初期設定とデータベースの作成
+
+MongoDBに接続して、初期設定とデータベースを作成します。
+
+```bash
+mongo
+use mydb
+```
+
+### 設定ファイルの調整
+MongoDBの設定ファイルは通常、````/etc/mongod.conf````（Linux）または
+````/usr/local/etc/mongod.conf````（macOS）にあります。
+
+- 設定ファイルの編集
+```yaml
+# mongod.confの例
+storage:
+dbPath: /var/lib/mongo
+net:
+bindIp: 0.0.0.0
+port: 27017
+```
+設定変更後、MongoDBサービスを再起動します。
+
+```bash
+sudo systemctl restart mongod
+```
+
+### 遠隔アクセスの設定
+遠隔アクセスを許可するためには、MongoDBの設定を調整し、ファイアウォールでポート27017を開放します。
+
+```bash
+# ファイアウォールの設定（例：UFW）
+sudo ufw allow 27017/tcp
+```
+リモートユーザーの設定も行います。
+
+```bash
+use admin
+db.createUser({
+user: "myUserAdmin",
+pwd: "abc123",
+roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]
+})
+```
+
+## ユーザーと権限の管理
+### ユーザーの作成
+新しいユーザーを作成し、データベースへのアクセス権を設定します。
+
+```bash
+use mydb
+db.createUser({
+user: "newuser",
+pwd: "newpassword",
+roles: [ { role: "readWrite", db: "mydb" } ]
+})
+```
+
+### 権限の付与
+ユーザーにデータベースやコレクションへの権限を付与します。
+
+```bash
+db.grantRolesToUser("newuser", [ { role: "read", db: "mydb" } ])
+```
+
+## 基本的なクエリ
+### データの挿入
+コレクションにデータを挿入します。
+
+```bash
+db.mycollection.insertOne({ name: "John", age: 30, city: "New York" })
+```
+### データの取得
+コレクションからデータを取得します。
+
+```bash
+db.mycollection.find({ name: "John" })
+```
+
+### データの更新
+コレクションのデータを更新します。
+
+```bash
+db.mycollection.updateOne({ name: "John" }, { $set: { age: 31 } })
+```
+
+### データの削除
+コレクションのデータを削除します。
+
+```bash
+db.mycollection.deleteOne({ name: "John" })
+```
+
+## 高度なクエリ
+### 集計
+MongoDBの集計パイプラインを使用して、データを集計します。
+
+```bash
+db.orders.aggregate([
+{ $match: { status: "A" } },
+{ $group: { _id: "$cust_id", total: { $sum: "$amount" } } }
+])
+```
+
+### インデックス
+コレクションにインデックスを作成して、クエリパフォーマンスを向上させます。
+
+```bash
+db.mycollection.createIndex({ name: 1 })
+```
+
+### レプリケーションとシャーディング
+レプリケーションとシャーディングを使用して、高可用性とスケーラビリティを実現します。
+
+- レプリカセットの設定
+
+```bash
+rs.initiate()
+```
+
+- シャードの設定
+
+```bash
+sh.addShard("rs1/mongodb0.example.net:27017")
+```
+
+## 高度な使用方法
+### トランザクション
+トランザクションを使用して、一連の操作をアトミックに実行します。
+
+```bash
+session = db.getMongo().startSession()
+session.startTransaction()
+try {
+session.getDatabase("mydb").mycollection.insertOne({ name: "John", age: 30, city: "New York" })
+session.getDatabase("mydb").mycollection.updateOne({ name: "John" }, { $set: { age: 31 } })
+session.commitTransaction()
+} catch (error) {
+session.abortTransaction()
+throw error
+} finally {
+session.endSession()
+}
+```
+
+### バックアップと復元
+MongoDBデータベースのバックアップと復元を行います。
+
+- バックアップ
+
+```bash
+mongodump --db mydb --out /backup/mydb
+```
+
+- 復元
+
+```bash
+mongorestore --db mydb /backup/mydb
+```
+
+### パフォーマンスチューニング
+MongoDBのパフォーマンスを向上させるための設定と最適化を行います。
+
+- クエリプランの確認
+```bash
+db.mycollection.find({ name: "John" }).explain("executionStats")
+```
+
+- インデックスの再構築
+
+```bash
+db.collection.reIndex()
+```
+以上で、MongoDBの基本的な使用方法と高度な操作についての説明を終わります。MongoDBは柔軟でスケーラブルなNoSQLデータベースですが、効率的に使用するためには各機能を理解し、適切に活用することが重要です。

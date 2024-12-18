@@ -1,0 +1,248 @@
+---
+id: thanos
+title: thanosによるメトリック長期保存
+---
+
+## Thanos設定マニュアル
+
+このマニュアルでは、Thanosを使用してPrometheusのデータをAzure Storage Accountに保存し、Grafanaでこれらのデータを視覚化する方法について詳しく説明します。
+
+## 前提条件
+
+この設定を開始する前に、以下の条件が満たされていることを確認してください：
+
+- Prometheusが設定され、稼働しています。
+- Azure Storage Accountが作成され、アクセスキーを含むすべての認証情報を取得しています。
+- Grafanaが設定され、アクセス可能です。
+
+## 1. Thanosコンポーネントの設定
+
+ThanosはPrometheusのスケーラビリティと可用性を向上させるコンポーネント群です。ここでは、Thanos Sidecar、Store、Compactor、Queryの設定方法を説明します。
+
+### 1.1 Thanos Sidecarの設定
+
+PrometheusにThanos Sidecarを追加して、データを外部ストレージに転送します。
+
+```yaml
+- name: thanos-sidecar
+  image: thanosio/thanos:v0.23.1
+  args:
+    - sidecar
+    - --prometheus.url=http://localhost:9090
+    - --tsdb.path=/path/to/prometheus/data/dir
+    - --objstore.config-file=/path/to/azure-bucket-config.yaml
+```
+
+### 1.2 Azure Storage Accountの設定
+
+Azure Storage Accountの詳細を含む`azure-bucket-config.yaml`ファイルを作成します。
+
+```yaml
+type: AZURE
+config:
+  storage_account: "<your-storage-account-name>"
+  storage_account_key: "<your-storage-account-key>"
+  container: "<your-container-name>"
+  endpoint: "blob.core.windows.net"
+```
+
+### 1.3 Thanos Storeの設定
+
+Thanos Storeは長期データのクエリを処理します。
+
+```yaml
+- name: thanos-store
+  image: thanosio/thanos:v0.23.1
+  args:
+    - store
+    - --data-dir=/path/to/store/data/dir
+    - --objstore.config-file=/path/to/azure-bucket-config.yaml
+```
+
+### 1.4 Thanos Queryの設定
+
+Thanos Queryは、複数のThanos SidecarとThanos Storeからのデータを統合します。
+
+```yaml
+- name: thanos-query
+  image: thanosio/thanos:v0.23.1
+  args:
+    - query
+    - --http-address=0.0.0.0:9090
+    - --query.replica-label=replica
+```
+
+## 2. Grafanaデータソースの設定
+
+GrafanaでThanos Queryをデータソースとして設定し、Prometheusのデータを視覚化します。
+
+1. Grafanaにログインします。
+2. 「データソース」を選択し、「データソースを追加」をクリックします。
+3. 「Prometheus」を選択します。
+4. 「URL」にThanos Queryコンポーネントのアドレス（例：your-thanos-query-address:9090）を入力します。
+5. 「保存 & テスト」をクリックして、設定を保存します。
+
+これで、ThanosとAzure Storage Accountを使用した設定が完了し、GrafanaでPrometheusのデータを視覚化する準備が整いました。\
+
+### 3. MinIOを使用したストレージの設定
+
+MinIOは、オブジェクトストレージのオープンソース実装であり、AWS S3の互換性を持っています。ThanosとMinIOを組み合わせて使用することで、安価で効率的な長期データ保管ソリューションを構築することができます。以下は、MinIOを使用してThanosのデータを保存するための基本的な手順です。
+
+#### 3.1: MinIOのインストール
+
+MinIOをセットアップするには、公式のインストールガイドに従ってください。MinIOは、バイナリダウンロード、Docker、Kubernetes（MinIO Operatorを使用）など、さまざまな方法でインストールすることができます。
+
+#### 3.2 MinIOバケットの作成
+
+MinIOにログインし、Thanos用の新しいバケットを作成します。バケット名は、わかりやすい名前（例：`thanos-data`）を選択してください。
+
+#### 3.3 Thanos用のMinIO設定ファイルの作成
+
+Thanosコンポーネント（Sidecar、Store、Compactorなど）がMinIOバケットにアクセスするための設定ファイルを作成します。以下は設定ファイルの例です。
+
+```yaml
+type: S3
+config:
+  bucket: "<バケット名>"
+  endpoint: "<MinIOのエンドポイント>"
+  access_key: "<アクセスキー>"
+  secret_key: "<シークレットキー>"
+  insecure: true
+  signature_version2: false
+```
+
+このファイルを適切な場所（例：`/etc/thanos/minio-config.yaml`）に保存してください。
+
+#### 3.4 Thanosコンポーネントの設定
+
+Thanosコンポーネントの起動時に、上記で作成した設定ファイルを指定します。例として、Thanos Sidecarの起動オプションは以下のようになります。
+
+```bash
+thanos sidecar \
+  --tsdb.path=/var/lib/prometheus \
+  --objstore.config-file=/etc/thanos/minio-config.yaml
+```
+
+#### 3.5 Grafanaでのデータソース設定
+
+GrafanaにThanos Query Frontendをデータソースとして設定し、MinIOに保存されているメトリクスデータを視覚化します。Thanos Query Frontendのエンドポイントを指定して、データソースを追加してください。
+
+これで、MinIOを使用してThanosのデータを保存するための基本的な設定は完了です。運用環境では、パフォーマンス、セキュリティ、バックアップなどの追加的な検討が必要になる場合があります。
+
+## 4. よくある質問と解決方法
+
+### Q1: Thanos コンポーネントが起動しない
+
+- **A1:**
+- **原因:** 設定ファイルの誤り、リソース不足、または依存関係の問題が考えられます。
+- **解決策:**
+1. ログを確認し、エラーメッセージを特定します。
+2. Kubernetes のリソース制限（メモリや CPU）に達していないか確認してください。
+3. 設定ファイルが正しいフォーマットであるか、またすべての必須フィールドが適切に設定されているかを再確認してください。
+
+### Q2: Azure Storage にデータが保存されない
+
+- **A2:**
+- **原因:** 認証情報の誤り、権限不足、またはネットワークの問題が考えられます。
+- **解決策:**
+1. Azure Storage Account の名前、キー、コンテナ名が正確であることを確認してください。
+2. Azure Storage Account に対するアクセス権限が Thanos サービスに与えられていることを確認してください。
+3. ネットワークの設定やファイアウォールが Azure Storage への接続をブロックしていないか確認してください。
+
+### Q3: Thanos Query がデータを返さない
+
+- **A3:**
+- **原因:** Thanos Store コンポーネントの設定問題、データ同期の遅延、またはクエリの誤りが考えられます。
+- **解決策:**
+1. Thanos Store が正しく設定されており、オブジェクトストレージ（Azure Storage Account）と通信できていることを確認してください。
+2. Thanos Compactor が定期的にコンパクションとダウンサンプリングを行っているか確認してください。
+3. 実行しているクエリが正しいかどうかを確認し、PromQL の文法に誤りがないかチェックしてください。
+
+### Q4: Grafana から Thanos データソースに接続できない
+
+- **A4:**
+- **原因:** ネットワーク設定の問題、認証情報の誤り、または Grafana と Thanos Query Frontend 間の不整合が考えられます。
+- **解決策:**
+1. Grafana から Thanos Query Frontend へのネットワーク接続が可能であることを確認してください。
+2. Grafana データソース設定で正しい URL を使用していることを確認してください。
+3. Thanos Query Frontend のログを確認し、エラーがないか調べてください。
+
+### Q5: Thanos Sidecar から Azure Storage へのデータ同期が行われない
+
+- **A5:**
+- **原因:** Thanos Sidecar の設定誤り、Azure Storage の権限不足、またはネットワーク問題が考えられます。
+- **解決策:**
+
+1. Thanos Sidecar の設定で正しいオブジェクトストレージ設定が使用されていることを確認してください。
+2. Azure Storage へのアクセス権限が ThanosSidecar に適切に付与されていることを確認してください。
+3. ネットワーク設定を確認し、外部ストレージへの接続が可能であることを確認してください。
+4. Thanos Sidecar のログを確認し、データ同期時にエラーが発生していないかを確認してください。
+
+### Q6: Prometheus のデータが Thanos に正しく転送されない
+
+- **A6:**
+- **原因:** Prometheus と Thanos Sidecar 間の設定ミスやネットワーク問題が考えられます。
+- **解決策:**
+1. Prometheus の設定で `--storage.tsdb.path` が正しく Thanos Sidecar が監視するパスに設定されていることを確認してください。
+2. Thanos Sidecar が Prometheus のデータディレクトリにアクセスできることを確認してください。
+3. ネットワーク設定を確認し、Prometheus から Thanos Sidecar への接続が可能であることを確認してください。
+
+### Q7: Grafana で Thanos ソースのデータが表示されない
+
+- **A7:**
+- **原因:** Grafana のデータソース設定の誤りや Thanos Query コンポーネントの設定問題が考えられます。
+- **解決策:**
+1. Grafana の Thanos データソース設定で正しい URL（Thanos Query Frontend のアドレス）を指定していることを確認してください。
+2. Thanos Query コンポーネントが正常に稼働していること、および適切に設定されていることを確認してください。
+3. Grafana と Thanos Query Frontend 間のネットワーク接続が正常であることを確認してください。
+
+### Q8: コンテナ化された Thanos 環境でのパフォーマンス問題
+
+- **A8:**
+- **原因:** リソース制限、ストレージのパフォーマンス問題、またはネットワークの遅延が考えられます。
+- **解決策:**
+1. Kubernetes のリソース制限（CPU、メモリ）を見直し、必要に応じて調整してください。
+2. ストレージのパフォーマンス（IOPS、スループット）を確認し、必要に応じて高速なストレージオプションに切り替えてください。
+3. ネットワーク遅延を減らすために、コンポーネント間での接続を最適化してください。
+
+### Q9: Thanos Sidecarのハードリンクエラーに関するトラブルシューティング
+
+- **A9:**
+- **原因:** この問題は、Thanos SidecarがPrometheusデータをオブジェクトストレージにアップロードする過程でハードリンクを作成しようとした際に発生します。通常、以下のような状況でこのエラーが発生します：
+- **解決策:**
+1. **ファイルシステムの権限**: Prometheusが実行されているユーザー（通常は`nobody`や`node_exporter`など）とThanos Sidecarの実行ユーザーが異なり、ファイルシステムレベルでの適切な書き込み権限またはハードリンクの作成権限がない場合。
+2. **SELinuxポリシー**: SELinuxが有効なシステムで、適切なコンテキストやポリシーが設定されていない場合、権限エラーが発生することがあります。
+
+
+以下の手順に従って、Thanos SidecarとPrometheusが同一のファイルシステムリソースに対して適切なアクセス権を持つように設定します。
+
+#### ステップ 1: ユーザーとグループの整合性を確認
+
+ThanosとPrometheusが同じユーザーやグループで実行されていることを確認します。例えば、両方を`prometheus`ユーザーとグループで実行するように設定します。
+
+```bash
+sudo chown -R prometheus:prometheus /var/lib/prometheus/data/`
+```
+
+#### ステップ 2: ディレクトリとファイルの権限設定
+
+Thanos Sidecarがデータを読み書きできるように、適切な権限を設定します。
+
+```bash
+sudo chmod -R 775 /var/lib/prometheus/data/`
+```
+
+#### ステップ 3: SELinuxの設定
+
+SELinuxが有効な場合は、SELinuxポリシーを調整して、Thanos SidecarがPrometheusデータディレクトリにアクセスできるようにします。
+
+```bash
+semanage fcontext -a -t prometheus_var_lib_t "/var/lib/prometheus/data(/.*)?"
+restorecon -Rv /var/lib/prometheus/data`
+```
+
+#### ステップ 4: ハードリンクの代わりにコピーを使用
+
+Thanos Sidecarの設定で、ハードリンクの代わりにファイルのコピーを使用するように設定することも一つの方法です。これはThanosの設定オプションで直接サポートされていないため、デプロイメント環境やスクリプトを調整する必要があります。
+
+これらは一般的な問題と解決策ですが、特定の状況によっては、より詳細な調査とカスタマイズされたアプローチが必要になる場合があります。問題が解決しない場合は、公式ドキュメントやコミュニティフォーラムを参照することをお勧めします。

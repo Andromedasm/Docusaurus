@@ -18,7 +18,7 @@ const config: Config = {
 
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'zh'],
   },
 
   presets: [
@@ -83,6 +83,10 @@ const config: Config = {
         {
           href: 'https://github.com/facebook/docusaurus',
           label: 'GitHub',
+          position: 'right',
+        },
+        {
+          type: 'localeDropdown', // 添加语言切换选项
           position: 'right',
         },
         {

@@ -1,0 +1,313 @@
+---
+id: docker-guide
+title: Dockerマニュアル
+---
+
+# Docker 使用マニュアル
+
+このガイドでは、Dockerの基本的な使用方法から応用的なテクニックまでを詳細に説明します。Dockerは、コンテナ技術を利用してアプリケーションをパッケージ化、配布、実行するためのツールです。
+
+## 目次
+1. [Dockerの基本説明](#dockerの基本説明)
+    - [Dockerのインストール](#dockerのインストール)
+    - [Dockerの設定](#dockerの設定)
+2. [Dockerの基本機能](#dockerの基本機能)
+    - [イメージの取得と管理](#イメージの取得と管理)
+    - [コンテナの作成と管理](#コンテナの作成と管理)
+    - [Dockerfileの使用](#dockerfileの使用)
+    - [ボリュームとネットワーク](#ボリュームとネットワーク)
+3. [Dockerの高度な機能](#dockerの高度な機能)
+    - [Composeを使用したマルチコンテナアプリケーション](#composeを使用したマルチコンテナアプリケーション)
+    - [Docker Swarmによるオーケストレーション](#docker-swarmによるオーケストレーション)
+    - [KubernetesとDockerの統合](#kubernetesとdockerの統合)
+    - [パフォーマンスチューニングとセキュリティ](#パフォーマンスチューニングとセキュリティ)
+
+## Dockerの基本説明
+
+### Dockerのインストール
+
+Dockerは主要なOSで使用可能です。以下は各OSでのインストール手順です。
+
+#### Windows
+
+1. [Docker Desktop for Windows](https://www.docker.com/products/docker-desktop)をダウンロードしてインストールします。
+2. インストール後、Docker Desktopを起動し、設定を行います。
+
+#### macOS
+
+1. [Docker Desktop for Mac](https://www.docker.com/products/docker-desktop)をダウンロードしてインストールします。
+2. インストール後、Docker Desktopを起動し、設定を行います。
+
+#### Linux
+
+1. パッケージマネージャを使用してDockerをインストールします（Ubuntuの例）。
+    ```bash
+    sudo apt-get update
+    sudo apt-get install docker-ce docker-ce-cli containerd.io
+    ```
+
+### Dockerの設定
+
+1. インストールが完了したら、以下のコマンドでDockerを起動します（Linuxの場合）。
+    ```bash
+    sudo systemctl start docker
+    ```
+
+2. Dockerが正しくインストールされていることを確認します。
+    ```bash
+    docker --version
+    ```
+
+## Dockerの基本機能
+
+### イメージの取得と管理
+
+Dockerイメージは、コンテナのテンプレートとして機能します。
+
+#### イメージの取得
+
+1. Docker Hubからイメージを取得します。
+    ```bash
+    docker pull ubuntu
+    ```
+
+#### イメージの一覧表示
+
+1. ローカルに存在するイメージの一覧を表示します。
+    ```bash
+    docker images
+    ```
+
+#### イメージの削除
+
+1. 不要なイメージを削除します。
+    ```bash
+    docker rmi <image_id>
+    ```
+
+### コンテナの作成と管理
+
+Dockerコンテナは、イメージから作成される実行可能な単位です。
+
+#### コンテナの作成と起動
+
+1. 新しいコンテナを作成して起動します。
+    ```bash
+    docker run -d --name my-container ubuntu
+    ```
+
+#### コンテナの一覧表示
+
+1. 実行中のコンテナの一覧を表示します。
+    ```bash
+    docker ps
+    ```
+
+2. 全てのコンテナの一覧を表示します。
+    ```bash
+    docker ps -a
+    ```
+
+#### コンテナの停止と削除
+
+1. 実行中のコンテナを停止します。
+    ```bash
+    docker stop my-container
+    ```
+
+2. 停止されたコンテナを削除します。
+    ```bash
+    docker rm my-container
+    ```
+
+### Dockerfileの使用
+
+Dockerfileは、カスタムイメージを作成するためのレシピです。
+
+#### Dockerfileの作成
+
+1. `Dockerfile`を作成し、以下の内容を追加します。
+    ```Dockerfile
+    FROM ubuntu:latest
+    RUN apt-get update && apt-get install -y nginx
+    CMD ["nginx", "-g", "daemon off;"]
+    ```
+
+#### イメージのビルド
+
+1. Dockerfileからイメージをビルドします。
+    ```bash
+    docker build -t my-nginx-image .
+    ```
+
+#### イメージの実行
+
+1. ビルドしたイメージからコンテナを作成して起動します。
+    ```bash
+    docker run -d -p 80:80 my-nginx-image
+    ```
+
+### ボリュームとネットワーク
+
+ボリュームとネットワークを使用して、データの永続化やコンテナ間の通信を管理します。
+
+#### ボリュームの作成と使用
+
+1. 新しいボリュームを作成します。
+    ```bash
+    docker volume create my-volume
+    ```
+
+2. コンテナにボリュームをマウントします。
+    ```bash
+    docker run -d -v my-volume:/data ubuntu
+    ```
+
+#### ネットワークの作成と使用
+
+1. 新しいネットワークを作成します。
+    ```bash
+    docker network create my-network
+    ```
+
+2. コンテナをネットワークに接続します。
+    ```bash
+    docker run -d --network my-network --name container1 ubuntu
+    docker run -d --network my-network --name container2 ubuntu
+    ```
+
+## Dockerの高度な機能
+
+### Composeを使用したマルチコンテナアプリケーション
+
+Docker Composeを使用して、マルチコンテナアプリケーションを定義し、管理します。
+
+#### `docker-compose.yml`の作成
+
+1. `docker-compose.yml`ファイルを作成し、以下の内容を追加します。
+    ```yaml
+    version: '3'
+    services:
+      web:
+        image: nginx
+        ports:
+          - "80:80"
+      db:
+        image: mysql
+        environment:
+          MYSQL_ROOT_PASSWORD: example
+    ```
+
+#### コンテナの起動
+
+1. Docker Composeを使用してコンテナを起動します。
+    ```bash
+    docker-compose up -d
+    ```
+
+#### コンテナの停止と削除
+
+1. Docker Composeを使用してコンテナを停止します。
+    ```bash
+    docker-compose down
+    ```
+
+### Docker Swarmによるオーケストレーション
+
+Docker Swarmを使用して、コンテナのオーケストレーションを行います。
+
+#### Swarmの初期化
+
+1. Docker Swarmを初期化します。
+    ```bash
+    docker swarm init
+    ```
+
+#### サービスの作成
+
+1. 新しいサービスを作成します。
+    ```bash
+    docker service create --name my-service -p 80:80 nginx
+    ```
+
+#### サービスの管理
+
+1. サービスの一覧を表示します。
+    ```bash
+    docker service ls
+    ```
+
+2. サービスをスケールアウトします。
+    ```bash
+    docker service scale my-service=3
+    ```
+
+### KubernetesとDockerの統合
+
+Kubernetesを使用してDockerコンテナを管理します。
+
+#### Minikubeのインストール
+
+1. Minikubeをインストールします。
+    ```bash
+    curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+    sudo install minikube-linux-amd64 /usr/local/bin/minikube
+    ```
+
+#### Kubernetesクラスターの起動
+
+1. Minikubeを使用してKubernetesクラスターを起動します。
+    ```bash
+    minikube start
+    ```
+
+#### デプロイメントの作成
+
+1. Nginxデプロイメントを作成します。
+    ```bash
+    kubectl create deployment nginx --image=nginx
+    ```
+
+2. サービスを作成します。
+    ```bash
+    kubectl expose deployment nginx --port=80 --type=NodePort
+    ```
+
+### パフォーマンスチューニングとセキュリティ
+
+Dockerコンテナのパフォーマンスを最適化し、セキュリティを強化します。
+
+#### パフォーマンスチューニング
+
+1. コンテナにリソース制限を設定します。
+    ```bash
+    docker run -d --name my-container --memory=512m --cpus=1 nginx
+    ```
+
+2. イメージを最適化します。Dockerfileにマルチステージビルドを使用します。
+    ```Dockerfile
+    FROM golang:alpine AS builder
+    WORKDIR /app
+    COPY . .
+    RUN go build -o main .
+
+    FROM alpine
+    COPY --from=builder /app/main /app/main
+    CMD ["/app/main"]
+    ```
+
+#### セキュリティの強化
+
+1. Docker Bench for Securityを使用してセキュリティベストプラクティスを検証します。
+    ```bash
+    docker run -it --net host --pid host --cap-add audit_control \
+      --label docker_bench_security \
+      docker/docker-bench-security
+    ```
+
+2. Docker Content Trustを有効にして、信頼できるイメージのみを使用します。
+    ```bash
+    export DOCKER_CONTENT_TRUST=1
+    ```
+
+以上で、Dockerの基本的な使用方法と高度な操作についての説明を終わります。Dockerは強力で柔軟なコンテナ管理ツールであり、効率的に使用するためには各機能を理解し、適切に活用することが重要です。

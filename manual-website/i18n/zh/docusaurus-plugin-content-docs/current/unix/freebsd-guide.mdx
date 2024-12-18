@@ -1,0 +1,276 @@
+---
+id: freebsd-guide
+title: FreeBSD使用説明書
+---
+
+# FreeBSD 使用説明書
+
+このガイドでは、FreeBSDの基本的な使い方から応用的なテクニックまでを詳細に説明します。FreeBSDは、安定性とセキュリティに優れたUNIX系のオペレーティングシステムであり、サーバー環境や開発環境で広く使用されています。
+
+## 目次
+1. [FreeBSDのインストール](#freebsdのインストール)
+    - [ダウンロードとインストール](#ダウンロードとインストール)
+    - [初期設定](#初期設定)
+2. [基本的な使用方法](#基本的な使用方法)
+    - [シェルの使用](#シェルの使用)
+    - [基本的なコマンド](#基本的なコマンド)
+3. [パッケージ管理](#パッケージ管理)
+    - [pkgの使用](#pkgの使用)
+    - [portsの使用](#portsの使用)
+4. [システム管理](#システム管理)
+    - [ユーザーとグループの管理](#ユーザーとグループの管理)
+    - [ファイルシステムの管理](#ファイルシステムの管理)
+    - [サービスの管理](#サービスの管理)
+5. [ネットワーク設定](#ネットワーク設定)
+    - [ネットワークの確認と設定](#ネットワークの確認と設定)
+    - [SSHの設定と使用](#sshの設定と使用)
+6. [セキュリティ](#セキュリティ)
+    - [ファイアウォールの設定](#ファイアウォールの設定)
+    - [セキュリティアップデートの管理](#セキュリティアップデートの管理)
+7. [高度な操作](#高度な操作)
+    - [カーネルのコンパイル](#カーネルのコンパイル)
+    - [自動化スクリプトの作成](#自動化スクリプトの作成)
+
+## FreeBSDのインストール
+
+### ダウンロードとインストール
+
+1. FreeBSDの公式サイト（[https://www.freebsd.org](https://www.freebsd.org)）からISOイメージをダウンロードします。
+2. ダウンロードしたISOイメージをUSBメモリに書き込みます（例：Rufusなどのツールを使用）。
+3. コンピュータをUSBメモリから起動し、インストーラーの指示に従ってインストールを進めます。
+
+### 初期設定
+
+1. 初回起動時に言語、タイムゾーン、キーボードレイアウトなどを設定します。
+2. 必要なソフトウェアをインストールし、システムを最新の状態に更新します。
+    ```bash
+    freebsd-update fetch install
+    ```
+
+## 基本的な使用方法
+
+### シェルの使用
+
+FreeBSDは、デフォルトのシェルとして`tcsh`を使用しますが、`bash`や`zsh`もインストールして使用できます。
+
+- `bash`のインストールと設定
+    ```bash
+    pkg install bash
+    chsh -s /usr/local/bin/bash
+    ```
+- `zsh`のインストールと設定
+    ```bash
+    pkg install zsh
+    chsh -s /usr/local/bin/zsh
+    ```
+
+### 基本的なコマンド
+
+FreeBSDで使用する基本的なコマンドは以下の通りです。
+
+- ディレクトリの内容を表示
+    ```bash
+    ls
+    ```
+- ディレクトリを変更
+    ```bash
+    cd /path/to/directory
+    ```
+- 現在のディレクトリを表示
+    ```bash
+    pwd
+    ```
+- ファイルをコピー
+    ```bash
+    cp source_file destination_file
+    ```
+- ファイルを移動
+    ```bash
+    mv source_file destination_file
+    ```
+- ファイルを削除
+    ```bash
+    rm file_name
+    ```
+
+## パッケージ管理
+
+### pkgの使用
+
+`pkg`は、FreeBSDのバイナリパッケージ管理ツールです。
+
+- パッケージのインストール
+    ```bash
+    pkg install package_name
+    ```
+- パッケージの削除
+    ```bash
+    pkg delete package_name
+    ```
+- システムの更新
+    ```bash
+    pkg update
+    pkg upgrade
+    ```
+
+### portsの使用
+
+FreeBSDのPortsコレクションは、ソースコードからソフトウェアをインストールするためのシステムです。
+
+- Portsツリーの更新
+    ```bash
+    portsnap fetch update
+    ```
+- ソフトウェアのインストール
+    ```bash
+    cd /usr/ports/category/port_name
+    make install clean
+    ```
+
+## システム管理
+
+### ユーザーとグループの管理
+
+新しいユーザーを追加したり、既存のユーザーを管理します。
+
+- ユーザーの追加
+    ```bash
+    adduser
+    ```
+- ユーザーの削除
+    ```bash
+    pw userdel username
+    ```
+- グループの追加
+    ```bash
+    pw groupadd new_group
+    ```
+- ユーザーをグループに追加
+    ```bash
+    pw groupmod group_name -m username
+    ```
+
+### ファイルシステムの管理
+
+ディスクの状態を確認し、ファイルシステムを管理します。
+
+- ディスクの使用状況を確認
+    ```bash
+    df -h
+    ```
+- 特定のディレクトリのディスク使用量を確認
+    ```bash
+    du -sh /path/to/directory
+    ```
+
+### サービスの管理
+
+FreeBSDのサービス管理には、`service`コマンドを使用します。
+
+- サービスの状態を確認
+    ```bash
+    service service_name status
+    ```
+- サービスを開始
+    ```bash
+    service service_name start
+    ```
+- サービスを停止
+    ```bash
+    service service_name stop
+    ```
+- サービスを有効化（ブート時に自動起動）
+    ```bash
+    sysrc service_name_enable="YES"
+    service service_name start
+    ```
+
+## ネットワーク設定
+
+### ネットワークの確認と設定
+
+ネットワークの状態を確認し、設定を行います。
+
+- IPアドレスを確認
+    ```bash
+    ifconfig
+    ```
+- ネットワークインターフェースを再起動
+    ```bash
+    service netif restart
+    ```
+
+### SSHの設定と使用
+
+SSHを使用してリモートシステムにアクセスします。
+
+- SSHサーバーのインストール
+    ```bash
+    pkg install openssh-portable
+    ```
+- SSHサービスの開始
+    ```bash
+    service sshd start
+    ```
+- リモートシステムに接続
+    ```bash
+    ssh username@remote_host
+    ```
+
+## セキュリティ
+
+### ファイアウォールの設定
+
+FreeBSDでは、`ipfw`や`pf`を使用してファイアウォールを設定できます。
+
+- `ipfw`の基本設定
+    ```bash
+    sysrc firewall_enable="YES"
+    sysrc firewall_type="workstation"
+    service ipfw start
+    ```
+- `pf`の基本設定
+    ```bash
+    sysrc pf_enable="YES"
+    service pf start
+    ```
+
+### セキュリティアップデートの管理
+
+セキュリティアップデートを定期的に確認し、インストールします。
+
+- セキュリティアップデートの適用
+    ```bash
+    freebsd-update fetch install
+    ```
+
+## 高度な操作
+
+### カーネルのコンパイル
+
+最新のカーネルをコンパイルし、システムのパフォーマンスとセキュリティを向上させます。
+
+- カーネルソースの取得
+    ```bash
+    cd /usr/src
+    ```
+- カーネルのコンパイルとインストール
+    ```bash
+    make buildkernel KERNCONF=YOUR_KERNEL_CONFIG
+    make installkernel KERNCONF=YOUR_KERNEL_CONFIG
+    ```
+
+### 自動化スクリプトの作成
+
+シェルスクリプトを作成してタスクを自動化します。
+
+```bash
+#!/bin/sh
+# このスクリプトはディレクトリをバックアップします
+
+SOURCE="/path/to/source"
+DEST="/path/to/destination"
+DATE=$(date +%Y-%m-%d)
+
+tar -czf $DEST/backup-$DATE.tar.gz $SOURCE
+```

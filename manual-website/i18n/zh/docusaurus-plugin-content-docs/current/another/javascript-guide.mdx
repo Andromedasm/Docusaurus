@@ -1,0 +1,361 @@
+---
+id: javascript-guide
+title: JavaScript使用マニュアル
+---
+
+# JavaScript 使用マニュアル
+
+このガイドでは、JavaScriptの基本的な使用方法から応用的なテクニックまでを詳細に説明します。JavaScriptは、ウェブ開発においてクライアントサイドのスクリプト言語として広く使用されており、インタラクティブなウェブページを作成するために不可欠です。
+
+## 目次
+1. [JavaScriptの基本説明](#javascriptの基本説明)
+ - [JavaScriptとは](#javascriptとは)
+ - [JavaScriptの基本構文](#javascriptの基本構文)
+2. [JavaScriptの基礎](#javascriptの基礎)
+ - [変数と定数](#変数と定数)
+ - [データ型](#データ型)
+ - [演算子](#演算子)
+ - [制御構文](#制御構文)
+ - [関数](#関数)
+3. [JavaScriptの応用](#javascriptの応用)
+ - [オブジェクト](#オブジェクト)
+ - [配列](#配列)
+ - [DOM操作](#dom操作)
+ - [イベントハンドリング](#イベントハンドリング)
+4. [JavaScriptの高度な機能](#javascriptの高度な機能)
+ - [プロトタイプとクラス](#プロトタイプとクラス)
+ - [非同期プログラミング](#非同期プログラミング)
+ - [モジュール](#モジュール)
+5. [実際の例](#実際の例)
+
+## JavaScriptの基本説明
+
+### JavaScriptとは
+
+JavaScriptは、ウェブページに動的な機能を追加するためのスクリプト言語です。HTMLとCSSとともに、ウェブ技術の基本要素の一つです。JavaScriptを使用すると、ユーザーの操作に応じてウェブページの内容を変更したり、データを検証したり、アニメーションを作成したりできます。
+
+### JavaScriptの基本構文
+
+JavaScriptの基本的な構文は以下の通りです。
+
+```javascript
+// これはコメントです
+let message = 'こんにちは、世界！'; // 変数の宣言
+console.log(message); // コンソールにメッセージを表示
+```
+
+## JavaScriptの基礎
+### 変数と定数
+JavaScriptでは、変数をletやconstを使って宣言します。
+
+```javascript
+let variable = 'これは変数です';
+const constant = 'これは定数です';
+```
+
+### データ型
+JavaScriptには、いくつかの基本的なデータ型があります。
+
+```javascript
+let number = 42; // 数値
+let string = 'こんにちは'; // 文字列
+let boolean = true; // ブール値
+let array = [1, 2, 3]; // 配列
+let object = {name: '太郎', age: 30}; // オブジェクト
+let nullValue = null; // null
+let undefinedValue; // undefined
+```
+
+### 演算子
+JavaScriptでは、さまざまな演算子を使用して値を操作します。
+
+```javascript
+let a = 10;
+let b = 5;
+
+let sum = a + b; // 加算
+let difference = a - b; // 減算
+let product = a * b; // 乗算
+let quotient = a / b; // 除算
+let remainder = a % b; // 剰余
+
+let isEqual = a === b; // 厳密な等価
+let isNotEqual = a !== b; // 厳密な不等価
+let isGreater = a > b; // 大なり
+let isLesser = a < b; // 小なり
+```
+
+### 制御構文
+制御構文を使用して、コードの実行フローを制御します。
+
+#### if文
+```javascript
+let number = 10;
+
+if (number > 0) {
+    console.log('正の数です');
+} else {
+    console.log('負の数です');
+}
+```
+
+#### switch文
+```javascript
+let color = '赤';
+
+switch (color) {
+    case '赤':
+        console.log('止まれ');
+        break;
+        case '黄':
+            console.log('注意');
+            break;
+            case '青':
+                console.log('進め');
+                break;
+                default:
+                    console.log('無効な色です');
+}
+```
+
+#### for文
+```javascript
+for (let i = 0; i < 5; i++) {
+    console.log(i);
+}
+```
+
+#### while文
+```javascript
+let i = 0;
+
+while (i < 5) {
+    console.log(i);
+    i++;
+}
+```
+
+### 関数
+関数を使用して、再利用可能なコードのブロックを定義します。
+
+```javascript
+function greet(name) {
+    return `こんにちは、${name}さん！`;
+}
+
+
+console.log(greet('太郎'));
+```
+
+## JavaScriptの応用
+### オブジェクト
+オブジェクトは、プロパティとメソッドを持つデータ構造です。
+
+```javascript
+let person = {
+    name: '太郎',
+    age: 30,
+    greet: function() {
+        console.log(`こんにちは、私は${this.name}です`);
+    }
+};
+
+console.log(person.name); // プロパティにアクセス
+person.greet(); // メソッドを呼び出す
+```
+
+### 配列
+配列は、複数の値を格納するためのデータ構造です。
+
+```javascript
+let fruits = ['りんご', 'みかん', 'ぶどう'];
+
+console.log(fruits[0]); // 'りんご'を表示
+fruits.push('バナナ'); // 配列に要素を追加
+console.log(fruits.length); // 配列の長さを表示
+```
+
+### DOM操作
+DOM（Document Object Model）を操作することで、ウェブページの内容を動的に変更できます。
+
+```html
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM操作の例</title>
+</head>
+<body>
+    <h1 id="title">こんにちは、世界！</h1>
+    <button id="changeTextButton">テキストを変更</button>
+
+    <script>
+        const titleElement = document.getElementById('title');
+        const buttonElement = document.getElementById('changeTextButton');
+
+        buttonElement.addEventListener('click', () => {
+            titleElement.textContent = 'こんにちは、JavaScript！';
+        });
+    </script>
+</body>
+</html>
+```
+
+### イベントハンドリング
+イベントハンドリングを使用して、ユーザーの操作に応じてアクションを実行できます。
+
+```html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>イベントハンドリングの例</title>
+</head>
+<body>
+    <button id="alertButton">クリックしてメッセージを表示</button>
+
+    <script>
+        const button = document.getElementById('alertButton');
+
+        button.addEventListener('click', () => {
+            alert('ボタンがクリックされました！');
+        });
+    </script>
+</body>
+</html>
+```
+
+## JavaScriptの高度な機能
+### プロトタイプとクラス
+JavaScriptでは、プロトタイプベースの継承とクラスベースの継承の両方を使用できます。
+
+#### プロトタイプ
+```javascript
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+Person.prototype.greet = function() {
+    console.log(`こんにちは、私は${this.name}です`);
+};
+
+let taro = new Person('太郎', 30);
+taro.greet();
+```
+
+#### クラス
+```javascript
+class Person {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+}
+
+    greet() {
+        console.log(`こんにちは、私は${this.name}です`);
+    }
+}
+
+let taro = new Person('太郎', 30);
+taro.greet();
+```
+
+### 非同期プログラミング
+非同期プログラミングを使用すると、時間のかかる操作を効率的に処理できます。
+
+#### コールバック
+```javascript
+function fetchData(callback) {
+    setTimeout(() => {
+        callback('データが取得されました');
+        }, 2000);
+}
+
+fetchData((data) => {
+    console.log(data);
+});
+```
+
+#### プロミス
+```javascript
+function fetchData() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve('データが取得されました');
+            }, 2000);
+    });
+}
+
+fetchData().then((data) => {
+    console.log(data);
+});
+```
+
+#### async/await
+```javascript
+async function fetchData() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve('データが取得されました');
+            }, 2000);
+    });
+}
+
+async function main() {
+    const data = await fetchData();
+    console.log(data);
+}
+
+main();
+```
+
+### モジュール
+モジュールを使用すると、コードを分割して管理しやすくすることができます。
+
+#### エクスポート
+```javascript
+// module.js
+export function greet(name) {
+    return `こんにちは、${name}さん！`;
+}
+```
+
+#### インポート
+```javascript
+// main.js
+import { greet } from './module.js';
+
+console.log(greet('太郎'));
+```
+
+## 実際の例
+以下は、実際のJavaScriptコードを含むHTMLページの例です。
+
+```html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>実際のJavaScriptページ</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const button = document.getElementById('changeColorButton');
+            const box = document.getElementById('colorBox');
+
+            button.addEventListener('click', () => {
+                box.style.backgroundColor = 'blue';
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>JavaScriptの例</h1>
+    <button id="changeColorButton">色を変更</button>
+    <div id="colorBox" style="width: 100px; height: 100px; background-color: red;"></div>
+</body>
+</html>
+```
+
+以上で、JavaScriptの基本的な使用方法と実際の例についての説明を終わります。JavaScriptは強力で柔軟なスクリプト言語であり、これを理解することで、よりインタラクティブでダイナミックなウェブページを作成することができます。

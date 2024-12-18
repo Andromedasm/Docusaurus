@@ -1,0 +1,30 @@
+---
+id: powershell-kitting
+title: PowerShell 設定マニュアル
+---
+
+# PowerShell 設定マニュアル
+
+このガイドは、PowerShellを使用していくつかの設定を行う手順を説明します。以下のスクリプトをPowerShellで実行してください。
+
+## スクリプト内容
+
+### 現在のユーザー名を取得し、変数$UserNameに代入する
+
+```powershell
+$UserName = $env:UserName
+```
+
+### 現在のユーザーのパスワードの有効期限を永久に設定する
+
+```powershell
+Set-LocalUser -Name $UserName -PasswordNeverExpires $true
+```
+
+### ランサムウェア対策として、コントロールパネルのフォルダーアクセスを有効にする
+
+```powershell
+Set-MpPreference -EnableControlledFolderAccess Enabled
+```
+
+上記のコマンドを実行することで、ユーザーのパスワードの有効期限が永久に設定され、コントロールパネルのフォルダーアクセスが有効になります。

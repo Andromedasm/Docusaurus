@@ -1,0 +1,168 @@
+---
+id: mdx-tutorial
+title: MDX チュートリアル
+---
+
+import React, { useState } from 'react';
+import HelloWorld from '@site/src/components/HelloWorld';
+import CounterButton from '@site/src/components/CounterButton';
+import Dropdown from '@site/src/components/Dropdown';
+import AnimatedBox from '@site/src/components/AnimatedBox';
+
+# MDX チュートリアル
+
+MDX (Markdown + JSX) は、Markdown ファイル内で JSX コードを埋め込むことができるフォーマットです。これにより、ドキュメント内で React コンポーネントを簡単に使用できます。
+
+## MDXとは？
+
+MDX は、Markdown の簡潔さと JSX の柔軟性を兼ね備えています。通常の Markdown 記法を使用してドキュメントを作成しながら、React コンポーネントを埋め込むことができます。
+
+例えば、次のように簡単な MDX ドキュメントを書くことができます：
+
+# これは見出しです
+
+これは段落で、**太字**や*斜体*のテキストを含むことができます。
+
+- これはリスト項目
+- これは別のリスト項目
+
+### MDXの使い方
+Docusaurus で MDX を使うのは非常に簡単です。docs ディレクトリに .mdx ファイルを作成し、その中にコンテンツを書くだけです。
+
+### 例: カスタム React コンポーネントの導入
+まず、簡単な React コンポーネントを作成します。例えば src/components/HelloWorld.tsx というファイルを作成します：
+
+```tsx
+import React from 'react';
+
+const HelloWorld = () => {
+  return <div>Hello, world!</div>;
+};
+
+export default HelloWorld;
+```
+
+次に、このコンポーネントを MDX ファイル内で使用します：
+
+```mdx
+import HelloWorld from '@site/src/components/HelloWorld';
+
+# カスタムコンポーネントの使用
+
+ここではカスタムの React コンポーネントを導入し、使用します：
+
+<HelloWorld />
+```
+
+<HelloWorld />
+
+### ボタンの追加
+ここにボタンを追加します：
+
+```tsx
+import React, { useState } from 'react';
+
+const CounterButton = () => {
+  const [count, setCount] = useState(0);
+
+  return (
+    <button onClick={() => setCount(count + 1)}>
+      カウント: {count}
+    </button>
+  );
+};
+
+export default CounterButton;
+```
+
+次に、このコンポーネントを MDX ファイル内で使用します：
+
+```mdx
+import CounterButton from '@site/src/components/CounterButton';
+
+# ボタンの例
+
+<CounterButton />
+```
+
+<CounterButton />
+
+### ドロップダウンメニューの追加
+ドロップダウンメニューを追加します：
+
+```tsx
+import React, { useState } from 'react';
+
+const Dropdown = () => {
+  const [selected, setSelected] = useState('選択してください');
+
+  return (
+    <div>
+      <select onChange={(e) => setSelected(e.target.value)} value={selected}>
+        <option value="選択してください">選択してください</option>
+        <option value="オプション1">オプション1</option>
+        <option value="オプション2">オプション2</option>
+        <option value="オプション3">オプション3</option>
+      </select>
+      <p>選択された項目: {selected}</p>
+    </div>
+  );
+};
+
+export default Dropdown;
+```
+
+次に、このコンポーネントを MDX ファイル内で使用します：
+
+```mdx
+import Dropdown from '@site/src/components/Dropdown';
+
+# ドロップダウンメニューの例
+
+<Dropdown />
+```
+
+<Dropdown />
+
+### アニメーションの追加
+簡単なアニメーションを追加するために、react-spring ライブラリを使用します。
+
+まず、ライブラリをインストールします：
+
+```bash
+npm install @react-spring/web
+```
+
+次に、アニメーションコンポーネントを作成します。例えば src/components/AnimatedBox.tsx：
+
+```tsx
+import React from 'react';
+import { useSpring, animated } from '@react-spring/web';
+
+const AnimatedBox: React.FC = () => {
+  const styles = useSpring({
+    loop: true,
+    to: [{ opacity: 1, color: '#ffaaee' }, { opacity: 0, color: 'rgb(14,26,19)' }],
+    from: { opacity: 0, color: 'red' },
+  });
+
+  return <animated.div style={styles}>私はアニメーションです！</animated.div>;
+};
+
+export default AnimatedBox;
+```
+
+これを MDX ファイルで使用します：
+
+```mdx
+import AnimatedBox from '@site/src/components/AnimatedBox';
+
+# アニメーションの例
+
+<AnimatedBox />
+```
+
+<AnimatedBox />
+
+### まとめ
+MDX を使うと、ドキュメント内で React コンポーネントを簡単に使用できます。Markdown の簡潔さと JSX の柔軟性を組み合わせることで、リッチでインタラクティブなドキュメントを作成することができます。

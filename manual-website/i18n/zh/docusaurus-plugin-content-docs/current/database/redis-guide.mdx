@@ -1,0 +1,249 @@
+---
+id: redis-guide
+title: Redisマニュアル
+---
+
+# Redis 使用マニュアル
+
+このガイドでは、Redisの基本的な使用方法から応用的なテクニックまでを詳細に説明します。Redisは、オープンソースのインメモリデータ構造ストアで、高速なデータ操作とスケーラビリティを提供します。
+
+## 目次
+1. [Redisのインストール](#redisのインストール)
+    - [Linuxでのインストール](#linuxでのインストール)
+    - [Windowsでのインストール](#windowsでのインストール)
+    - [macOSでのインストール](#macosでのインストール)
+2. [基本設定](#基本設定)
+    - [初期設定とRedisサービスの起動](#初期設定とredisサービスの起動)
+    - [設定ファイルの調整](#設定ファイルの調整)
+3. [遠隔アクセスの設定](#遠隔アクセスの設定)
+4. [ユーザーと権限の管理](#ユーザーと権限の管理)
+5. [基本的なクエリ](#基本的なクエリ)
+    - [データの追加](#データの追加)
+    - [データの取得](#データの取得)
+    - [データの削除](#データの削除)
+6. [高度なクエリ](#高度なクエリ)
+    - [リスト操作](#リスト操作)
+    - [セット操作](#セット操作)
+    - [ハッシュ操作](#ハッシュ操作)
+    - [ソート済みセット操作](#ソート済みセット操作)
+7. [高度な使用方法](#高度な使用方法)
+    - [パイプライン](#パイプライン)
+    - [トランザクション](#トランザクション)
+    - [パフォーマンスチューニング](#パフォーマンスチューニング)
+    - [レプリケーションと高可用性](#レプリケーションと高可用性)
+
+## Redisのインストール
+
+### Linuxでのインストール
+
+1. Redisの公式リポジトリを追加し、Redisをインストールします。
+    ```bash
+    sudo apt-get update
+    sudo apt-get install redis-server
+    ```
+
+2. Redisサービスを起動します。
+    ```bash
+    sudo systemctl start redis-server
+    sudo systemctl enable redis-server
+    ```
+
+### Windowsでのインストール
+
+1. Redisの公式サイト（[https://redis.io/download](https://redis.io/download)）からWindows用のバイナリをダウンロードします。
+2. ダウンロードしたZIPファイルを解凍し、適当なフォルダに配置します。
+3. コマンドプロンプトを開き、Redisを起動します。
+    ```bash
+    cd path\to\redis
+    redis-server.exe
+    ```
+
+### macOSでのインストール
+
+1. Homebrewを使用してRedisをインストールします。
+    ```bash
+    brew install redis
+    ```
+
+2. Redisサービスを起動します。
+    ```bash
+    brew services start redis
+    ```
+
+## 基本設定
+
+### 初期設定とRedisサービスの起動
+
+1. Redisの設定ファイル（通常は`/etc/redis/redis.conf`）を編集して初期設定を行います。
+    ```bash
+    sudo nano /etc/redis/redis.conf
+    ```
+
+2. 設定変更後、Redisサービスを再起動します。
+    ```bash
+    sudo systemctl restart redis-server
+    ```
+
+### 設定ファイルの調整
+
+- バインドアドレスの設定
+    ```conf
+    bind 0.0.0.0
+    ```
+
+- パスワードの設定
+    ```conf
+    requirepass yourpassword
+    ```
+
+## 遠隔アクセスの設定
+
+遠隔アクセスを許可するために、必要なポート（通常は6379）をファイアウォールで開放します。
+
+```bash
+# ファイアウォールの設定（例：UFW）
+sudo ufw allow 6379/tcp
+```
+
+### ユーザーと権限の管理
+Redis 6.0以降では、ACL（アクセス制御リスト）を使用してユーザーと権限を管理できます。
+
+1. ユーザーの作成と権限の設定
+
+```bash
+acl setuser myuser on >password ~* +@all
+```
+
+2. ユーザーの権限の確認
+
+```bash
+acl list
+```
+
+## 基本的なクエリ
+### データの追加
+キーと値を設定します。
+
+```bash
+SET key value
+```
+
+### データの取得
+キーに対応する値を取得します。
+
+```bash
+GET key
+```
+
+### データの削除
+キーを削除します。
+
+```bash
+DEL key
+```
+
+## 高度なクエリ
+### リスト操作
+リストに値を追加します。
+
+```bash
+LPUSH mylist value1
+RPUSH mylist value2
+```
+
+リストから値を取得します。
+
+```bash
+LPOP mylist
+RPOP mylist
+```
+
+### セット操作
+セットに値を追加します。
+
+```bash
+SADD myset value1
+SADD myset value2
+```
+
+セットの全ての値を取得します。
+
+```bash
+SMEMBERS myset
+```
+
+### ハッシュ操作
+ハッシュにフィールドと値を追加します。
+
+```bash
+HSET myhash field1 value1
+HSET myhash field2 value2
+```
+
+ハッシュからフィールドの値を取得します。
+
+```bash
+HGET myhash field1
+```
+
+### ソート済みセット操作
+ソート済みセットにスコアと値を追加します。
+
+```bash
+ZADD myzset 1.0 value1
+ZADD myzset 2.0 value2
+```
+
+ソート済みセットから値を範囲指定で取得します。
+
+```bash
+ZRANGE myzset 0 -1
+```
+
+## 高度な使用方法
+### パイプライン
+パイプラインを使用して複数のコマンドを一度に送信します。
+
+```bash
+redis-cli --pipe
+SET key1 value1
+SET key2 value2
+```
+
+### トランザクション
+トランザクションを使用して複数のコマンドをアトミックに実行します。
+
+```bash
+MULTI
+SET key1 value1
+SET key2 value2
+EXEC
+```
+
+### パフォーマンスチューニング
+- メモリ使用量の設定
+
+```conf
+maxmemory 256mb
+```
+
+- Evictionポリシーの設定
+
+```conf
+maxmemory-policy allkeys-lru
+```
+
+### レプリケーションと高可用性
+- マスターとスレーブの設定（スレーブ側で設定）
+
+```conf
+replicaof master-host master-port
+```
+
+- Sentinelを使用した高可用性の設定
+
+```bash
+sentinel monitor mymaster 127.0.0.1 6379 2
+```
+
+以上で、Redisの基本的な使用方法と高度な操作についての説明を終わります。Redisは高速で柔軟なデータストアですが、効率的に使用するためには各機能を理解し、適切に活用することが重要です。

@@ -1,0 +1,176 @@
+---
+id: sqlite-guide
+title: SQLiteマニュアル
+---
+
+# SQLite 使用マニュアル
+
+このガイドでは、SQLiteの基本的な使用方法から応用的なテクニックまでを詳細に説明します。SQLiteは、軽量で組み込み型のリレーショナルデータベース管理システム（RDBMS）であり、アプリケーション内部のデータ管理によく使用されます。
+
+## 目次
+1. [SQLiteのインストール](#sqliteのインストール)
+ - [Linuxでのインストール](#linuxでのインストール)
+ - [Windowsでのインストール](#windowsでのインストール)
+ - [macOSでのインストール](#macosでのインストール)
+2. [基本設定](#基本設定)
+ - [データベースの作成](#データベースの作成)
+ - [設定ファイルの調整](#設定ファイルの調整)
+3. [遠隔アクセス](#遠隔アクセス)
+4. [ユーザーと権限の管理](#ユーザーと権限の管理)
+5. [基本的なクエリ](#基本的なクエリ)
+ - [データの挿入](#データの挿入)
+ - [データの取得](#データの取得)
+ - [データの更新](#データの更新)
+ - [データの削除](#データの削除)
+6. [高度なクエリ](#高度なクエリ)
+ - [ジョイン](#ジョイン)
+ - [サブクエリ](#サブクエリ)
+ - [トリガー](#トリガー)
+7. [高度な使用方法](#高度な使用方法)
+ - [トランザクション](#トランザクション)
+ - [ストアドプロシージャと関数](#ストアドプロシージャと関数)
+ - [パフォーマンスチューニング](#パフォーマンスチューニング)
+
+## SQLiteのインストール
+
+### Linuxでのインストール
+
+多くのLinuxディストリビューションのリポジトリには、SQLiteが含まれています。以下は、Ubuntuでのインストール手順です。
+
+```bash
+sudo apt update
+sudo apt install sqlite3
+```
+
+### Windowsでのインストール
+1. SQLiteの公式サイト（https://www.sqlite.org）から、Windows用のバイナリをダウンロードします。
+2. ダウンロードしたZIPファイルを解凍し、適当なフォルダに配置します。
+
+### macOSでのインストール
+SQLiteは、macOSにプリインストールされています。最新バージョンを使用する場合は、Homebrewを使用してインストールできます。
+
+```bash
+brew install sqlite
+```
+
+## 基本設定
+### データベースの作成
+SQLiteデータベースを作成するには、sqlite3コマンドを使用します。
+
+```bash
+sqlite3 mydatabase.db
+```
+### 設定ファイルの調整
+SQLiteには特定の設定ファイルはありませんが、必要に応じて環境変数やPRAGMAコマンドを使用して設定を調整できます。
+
+```sql
+PRAGMA journal_mode = WAL;
+```
+
+### 遠隔アクセス
+SQLiteは主にローカルデータベースとして設計されています。遠隔アクセスを必要とする場合は、SQLiteをバックエンドとして使用し、WebサーバーやAPI経由でアクセスすることが一般的です。
+
+### ユーザーと権限の管理
+SQLiteにはネイティブのユーザー管理機能はありません。アプリケーションレベルでユーザー管理と権限管理を実装する必要があります。
+
+## 基本的なクエリ
+### データの挿入
+テーブルにデータを挿入します。
+
+```sql
+INSERT INTO mytable (column1, column2) VALUES ('value1', 'value2');
+```
+
+### データの取得
+テーブルからデータを取得します。
+
+```sql
+SELECT column1, column2 FROM mytable WHERE condition;
+```
+
+### データの更新
+テーブルのデータを更新します。
+
+```sql
+UPDATE mytable SET column1 = 'newvalue' WHERE condition;
+```
+
+### データの削除
+テーブルのデータを削除します。
+
+```sql
+DELETE FROM mytable WHERE condition;
+```
+
+## 高度なクエリ
+### ジョイン
+複数のテーブルを結合してデータを取得します。
+
+```sql
+SELECT a.column1, b.column2
+FROM table1 a
+JOIN table2 b ON a.common_column = b.common_column;
+```
+
+### サブクエリ
+サブクエリを使用して、複雑なクエリを作成します。
+
+```sql
+SELECT column1
+FROM mytable
+WHERE column2 IN (SELECT column2 FROM anothertable WHERE condition);
+```
+
+### トリガー
+トリガーを使用して、特定の操作が実行されたときに自動的に実行されるアクションを定義します。
+
+```sql
+CREATE TRIGGER mytrigger
+AFTER INSERT ON mytable
+FOR EACH ROW
+BEGIN
+-- トリガーが実行するSQL文
+END;
+```
+
+## 高度な使用方法
+### トランザクション
+トランザクションを使用して、一連の操作をアトミックに実行します。
+
+```sql
+BEGIN;
+UPDATE account SET balance = balance - 100 WHERE account_id = 1;
+UPDATE account SET balance = balance + 100 WHERE account_id = 2;
+COMMIT;
+```
+
+### ストアドプロシージャと関数
+SQLiteでは、ストアドプロシージャや関数を使用することはできませんが、カスタム関数を定義することが可能です。
+
+- カスタム関数の作成
+```bash
+.load ./myextension.so
+CREATE FUNCTION myfunc AS 'myfunc';
+```
+
+### パフォーマンスチューニング
+SQLiteのパフォーマンスを向上させるための設定と最適化を行います。
+
+- インデックスの作成
+
+```sql
+CREATE INDEX myindex ON mytable (mycolumn);
+```
+
+- クエリプランの確認
+
+```sql
+EXPLAIN QUERY PLAN
+SELECT * FROM mytable WHERE mycolumn = 'value';
+```
+- VACUUMコマンドの実行
+
+```sql
+VACUUM;
+```
+以上で、SQLiteの基本的な使用方法と高度な操作についての説明を終わります。SQLiteは軽量で組み込みやすいデータベース管理システムですが、効率的に使用するためには各機能を理解し、適切に活用することが重要です。

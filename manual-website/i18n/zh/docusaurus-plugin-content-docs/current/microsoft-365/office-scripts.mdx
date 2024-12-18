@@ -1,0 +1,207 @@
+---
+id: office-scripts
+title: Office Scriptsマニュアル
+---
+
+# Office Scripts 使用マニュアル
+
+このガイドでは、Office Scriptsの基本的な使用方法から応用的なテクニックまでを詳細に説明します。Office Scriptsは、Excel Onlineでスクリプトを作成してタスクを自動化するための強力なツールです。
+
+## 目次
+1. [Office Scriptsの基本説明](#office-scriptsの基本説明)
+    - [Office Scriptsのインストールと設定](#office-scriptsのインストールと設定)
+    - [スクリプトエディタの使用方法](#スクリプトエディタの使用方法)
+2. [Office Scriptsの基本機能](#office-scriptsの基本機能)
+    - [基本的なスクリプトの作成](#基本的なスクリプトの作成)
+    - [セルの値を取得して設定する](#セルの値を取得して設定する)
+    - [範囲の操作](#範囲の操作)
+    - [条件付き書式](#条件付き書式)
+3. [Office Scriptsの高度な機能](#office-scriptsの高度な機能)
+    - [関数の作成と使用](#関数の作成と使用)
+    - [イベントハンドリング](#イベントハンドリング)
+    - [外部データの取得](#外部データの取得)
+    - [エラーハンドリングとデバッグ](#エラーハンドリングとデバッグ)
+    - [スクリプトの共有と実行](#スクリプトの共有と実行)
+
+## Office Scriptsの基本説明
+
+### Office Scriptsのインストールと設定
+
+Office ScriptsはExcel Onlineで利用可能です。特別なインストールは不要ですが、Microsoft 365のアカウントが必要です。
+
+1. [Microsoft 365](https://www.office.com/)にアクセスし、サインインします。
+2. Excel Onlineを開き、スクリプトを使用するブックを作成または開きます。
+
+### スクリプトエディタの使用方法
+
+1. Excel Onlineのリボンから「自動化」タブを選択します。
+2. 「新しいスクリプト」ボタンをクリックしてスクリプトエディタを開きます。
+3. スクリプトエディタでコードを記述し、「保存」ボタンをクリックします。
+
+## Office Scriptsの基本機能
+
+### 基本的なスクリプトの作成
+
+基本的なスクリプトを作成して、Excelのタスクを自動化します。
+
+#### 使用例
+
+1. セルA1に「Hello, World!」と表示するスクリプトを作成します。
+    ```typescript
+    function main(workbook: ExcelScript.Workbook) {
+      let sheet = workbook.getActiveWorksheet();
+      sheet.getRange("A1").setValue("Hello, World!");
+    }
+    ```
+
+### セルの値を取得して設定する
+
+セルの値を取得し、別のセルに設定します。
+
+#### 使用例
+
+1. セルA1の値を取得してセルB1に設定します。
+    ```typescript
+    function main(workbook: ExcelScript.Workbook) {
+      let sheet = workbook.getActiveWorksheet();
+      let value = sheet.getRange("A1").getValue();
+      sheet.getRange("B1").setValue(value);
+    }
+    ```
+
+### 範囲の操作
+
+セル範囲を操作してデータを処理します。
+
+#### 使用例
+
+1. セル範囲A1:A5の値を2倍にします。
+    ```typescript
+    function main(workbook: ExcelScript.Workbook) {
+      let sheet = workbook.getActiveWorksheet();
+      let range = sheet.getRange("A1:A5");
+      let values = range.getValues();
+
+      for (let i = 0; i < values.length; i++) {
+        values[i][0] = values[i][0] * 2;
+      }
+
+      range.setValues(values);
+    }
+    ```
+
+### 条件付き書式
+
+条件付き書式を適用してデータの視覚的な強調を行います。
+
+#### 使用例
+
+1. セル範囲A1:A5の値が10以上の場合、セルの背景色を赤にします。
+    ```typescript
+    function main(workbook: ExcelScript.Workbook) {
+      let sheet = workbook.getActiveWorksheet();
+      let range = sheet.getRange("A1:A5");
+
+      range.getConditionalFormatCollection().add(ExcelScript.ConditionalFormatType.cellValue)
+        .getCellValue()
+        .getRule()
+        .setFormula1("=10")
+        .setFormat({ fill: { color: "red" } });
+    }
+    ```
+
+## Office Scriptsの高度な機能
+
+### 関数の作成と使用
+
+カスタム関数を作成して再利用可能なコードブロックを定義します。
+
+#### 使用例
+
+1. 数値を2倍にする関数を作成して使用します。
+    ```typescript
+    function main(workbook: ExcelScript.Workbook) {
+      let sheet = workbook.getActiveWorksheet();
+      let value = sheet.getRange("A1").getValue();
+      sheet.getRange("B1").setValue(double(value));
+    }
+
+    function double(number: number): number {
+      return number * 2;
+    }
+    ```
+
+### イベントハンドリング
+
+特定のイベントが発生したときにスクリプトを実行します。
+
+#### 使用例
+
+1. セルの値が変更されたときにメッセージを表示します。
+    ```typescript
+    function main(workbook: ExcelScript.Workbook) {
+      let sheet = workbook.getActiveWorksheet();
+      sheet.onChanged = (event) => {
+        console.log("セルの値が変更されました");
+      };
+    }
+    ```
+
+### 外部データの取得
+
+外部データを取得してExcelシートにインポートします。
+
+#### 使用例
+
+1. 外部APIからデータを取得してセルA1に表示します。
+    ```typescript
+    async function main(workbook: ExcelScript.Workbook) {
+      let response = await fetch("https://api.example.com/data");
+      let data = await response.json();
+
+      let sheet = workbook.getActiveWorksheet();
+      sheet.getRange("A1").setValue(data.value);
+    }
+    ```
+
+### エラーハンドリングとデバッグ
+
+スクリプトのエラーを処理し、デバッグします。
+
+#### 使用例
+
+1. エラーが発生した場合にエラーメッセージを表示します。
+    ```typescript
+    function main(workbook: ExcelScript.Workbook) {
+      try {
+        let sheet = workbook.getActiveWorksheet();
+        let value = sheet.getRange("A1").getValue();
+        if (typeof value !== "number") {
+          throw new Error("セルA1の値は数値ではありません");
+        }
+        sheet.getRange("B1").setValue(value * 2);
+      } catch (error) {
+        console.error("エラーが発生しました: " + error.message);
+      }
+    }
+    ```
+
+### スクリプトの共有と実行
+
+スクリプトを他のユーザーと共有し、再利用可能なタスクとして保存します。
+
+#### 使用例
+
+1. スクリプトを保存し、他のユーザーと共有します。
+    ```typescript
+    function main(workbook: ExcelScript.Workbook) {
+      let sheet = workbook.getActiveWorksheet();
+      sheet.getRange("A1").setValue("共有スクリプトのテスト");
+    }
+    ```
+
+2. スクリプトをタスクとして保存し、定期的に実行します。
+    - Excel Onlineの「自動化」タブでスクリプトを保存します。
+    - 「タスクのスケジュール設定」を使用してスクリプトを定期的に実行します。
+
+以上で、Office Scriptsの基本的な使用方法と高度な操作についての説明を終わります。Office Scriptsは強力で柔軟な自動化ツールであり、効率的に使用するためには各機能を理解し、適切に活用することが重要です。

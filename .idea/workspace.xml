@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99e448e3-76ac-4557-a624-0f2b3fd51d4e" name="更改" comment="" />
+    <list default="true" id="99e448e3-76ac-4557-a624-0f2b3fd51d4e" name="更改" comment="更改">
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/faq/windows-faq.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manual-website/docs/faq/windows11-rdp-password-save-issue.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,7 +67,7 @@
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/DS201906079/Downloads/Github/Personal/Docusaurus/manual-website/docs/printer&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/DS201906079/Downloads/Github/Personal/Docusaurus/manual-website&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -71,7 +75,7 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;npm.start.executor&quot;: &quot;Run&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.fileTypes&quot;,
     &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\DS201906079\\Downloads\\Github\\Personal\\Docusaurus\\manual-website\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
@@ -152,8 +156,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
-        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
       </set>
     </attachedChunks>
   </component>
@@ -275,6 +279,24 @@
       <workItem from="1725861889785" duration="480000" />
       <workItem from="1725927380457" duration="75000" />
       <workItem from="1725945023454" duration="747000" />
+      <workItem from="1726036261186" duration="1266000" />
+      <workItem from="1726039643846" duration="2000" />
+      <workItem from="1726102766410" duration="102000" />
+      <workItem from="1726117806066" duration="308000" />
+      <workItem from="1726118171678" duration="18000" />
+      <workItem from="1726118224595" duration="21000" />
+      <workItem from="1726118330660" duration="16000" />
+      <workItem from="1726118398887" duration="78000" />
+      <workItem from="1726804962561" duration="16000" />
+      <workItem from="1726804996031" duration="1937000" />
+      <workItem from="1727679627138" duration="1725000" />
+      <workItem from="1727826165112" duration="43000" />
+      <workItem from="1727828633857" duration="27000" />
+      <workItem from="1727828672772" duration="193000" />
+      <workItem from="1727828894808" duration="435000" />
+      <workItem from="1727829352232" duration="116000" />
+      <workItem from="1727829488713" duration="161000" />
+      <workItem from="1727829665119" duration="3239000" />
     </task>
     <servers />
   </component>
