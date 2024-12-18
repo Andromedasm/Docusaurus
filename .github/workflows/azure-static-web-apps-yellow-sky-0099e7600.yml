@@ -25,13 +25,23 @@ jobs:
         with:
           node-version: '18.x'
 
+      - name: Install sharp for platform
+        run: npm install --platform=linux --arch=x64 sharp
+        working-directory: ./manual-website
+
       - name: Install dependencies
-        run: npm install
-        working-directory: ./manual-website # 确保此路径与 package.json 所在目录匹配
+        run: npm install --include=optional
+        working-directory: ./manual-website
+
+      - name: Clean and rebuild dependencies
+        run: |
+          rm -rf node_modules package-lock.json
+          npm install --include=optional
+        working-directory: ./manual-website
 
       - name: Build Docusaurus site
         run: npm run build
-        working-directory: ./manual-website # 确保此路径与构建目录匹配
+        working-directory: ./manual-website
 
       - name: Build And Deploy
         id: builddeploy
@@ -40,5 +50,5 @@ jobs:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_YELLOW_SKY_0099E7600 }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
-          app_location: "./manual-website" # 确保此路径与项目的实际结构匹配
+          app_location: "./manual-website"
           output_location: "build"
