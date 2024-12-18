@@ -38,11 +38,20 @@ jobs:
 
       - name: Verify Docusaurus Installation
         run: |
-          npx docusaurus --version
+          npx docusaurus --version || true
+        working-directory: ./manual-website
+
+      - name: Debug Docusaurus Installation
+        run: |
+          echo "Listing node_modules for manual-website"
+          ls -la ./manual-website/node_modules/@docusaurus/core
+          echo "Checking Docusaurus CLI"
+          npx docusaurus build --help || true
         working-directory: ./manual-website
 
       - name: Build Project
-        run: npm run build
+        run: |
+          npm run build
         working-directory: ./manual-website
 
       - name: Build And Deploy
