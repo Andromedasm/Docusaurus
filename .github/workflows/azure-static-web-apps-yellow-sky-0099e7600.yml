@@ -28,7 +28,7 @@ jobs:
       - name: Install dependencies
         run: |
           rm -rf node_modules package-lock.json
-          npm install @docusaurus/*@3.4.0
+          npm install @docusaurus/core@3.4.0 @docusaurus/preset-classic@3.4.0 @docusaurus/plugin-ideal-image@3.4.0
         working-directory: ./manual-website
 
       - name: Build Docusaurus site
