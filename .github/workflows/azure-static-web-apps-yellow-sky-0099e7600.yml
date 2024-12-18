@@ -25,18 +25,10 @@ jobs:
         with:
           node-version: '18.x'
 
-      - name: Install sharp for platform
-        run: npm install --platform=linux --arch=x64 sharp
-        working-directory: ./manual-website
-
       - name: Install dependencies
-        run: npm install --include=optional
-        working-directory: ./manual-website
-
-      - name: Clean and rebuild dependencies
         run: |
           rm -rf node_modules package-lock.json
-          npm install --include=optional
+          npm install @docusaurus/*@3.4.0
         working-directory: ./manual-website
 
       - name: Build Docusaurus site
