@@ -20,38 +20,31 @@ jobs:
           submodules: true
           lfs: false
 
-      # 调试路径和文件
-      - name: Debug Paths
-        run: |
-          echo "Working Directory: $(pwd)"
-          ls -la ./manual-website
-          cat ./manual-website/package.json
-
-      # 安装系统依赖
       - name: Install System Dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y libvips-dev
 
-      # 设置 Node.js 环境
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '20'
 
-      # 安装项目依赖
       - name: Install Dependencies
         run: |
-          npm install --include=optional sharp
-          npm audit fix --force
-        working-directory: ./manual-website
+          npm install --include=optional sharp --no-audit --legacy-peer-deps
+        env:
+          NPM_CONFIG_AUDIT: "false"
+          NPM_CONFIG_FORCE: "true"
 
-      # 构建项目
+      - name: Fix Vulnerabilities
+        run: |
+          npm audit fix || true
+
       - name: Build Project
         run: npm run build
         working-directory: ./manual-website
 
-      # 部署到 Azure Static Web Apps
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
@@ -60,7 +53,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
           app_location: "./manual-website"
-          api_location: "" # 无 API 时为空
+          api_location: ""
           output_location: "build"
 
   close_pull_request_job:
