@@ -28,18 +28,18 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: '18'
 
       - name: Install Dependencies
         run: |
-          npm install --include=optional sharp --no-audit --legacy-peer-deps
-        env:
-          NPM_CONFIG_AUDIT: "false"
-          NPM_CONFIG_FORCE: "true"
+          npm install
+          npm install @docusaurus/core @docusaurus/preset-classic
+        working-directory: ./manual-website
 
-      - name: Fix Vulnerabilities
+      - name: Verify Docusaurus Installation
         run: |
-          npm audit fix || true
+          npx docusaurus --version
+        working-directory: ./manual-website
 
       - name: Build Project
         run: npm run build
